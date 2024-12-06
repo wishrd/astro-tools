@@ -1,0 +1,71 @@
+{
+	"name": "@astro-tools/client-directives",
+	"version": "0.1.0",
+	"description": "Collection of Astro client directives",
+	"license": "MIT",
+	"publishConfig": {
+		"access": "public"
+	},
+	"sideEffects": false,
+	"exports": {
+		"./on": {
+			"types": "./dist/on/integration.d.ts",
+			"default": "./dist/on/integration.js"
+		},
+		"./event": {
+			"types": "./dist/event/integration.d.ts",
+			"default": "./dist/event/integration.js"
+		},
+		"./event/directive": {
+			"types": "./dist/event/directive.d.ts",
+			"default": "./dist/event/directive.js"
+		},
+		"./click": {
+			"types": "./dist/click/integration.d.ts",
+			"default": "./dist/click/integration.js"
+		},
+		"./click/directive": {
+			"types": "./dist/click/directive.d.ts",
+			"default": "./dist/click/directive.js"
+		},
+		"./hover": {
+			"types": "./dist/hover/integration.d.ts",
+			"default": "./dist/hover/integration.js"
+		},
+		"./hover/directive": {
+			"types": "./dist/hover/directive.d.ts",
+			"default": "./dist/hover/directive.js"
+		},
+		"./timer": {
+			"types": "./dist/timer/integration.d.ts",
+			"default": "./dist/timer/integration.js"
+		},
+		"./timer/directive": {
+			"types": "./dist/timer/directive.d.ts",
+			"default": "./dist/timer/directive.js"
+		},
+		"./viewport": {
+			"types": "./dist/viewport/integration.d.ts",
+			"default": "./dist/viewport/integration.js"
+		},
+		"./viewport/directive": {
+			"types": "./dist/viewport/directive.d.ts",
+			"default": "./dist/viewport/directive.js"
+		}
+	},
+	"files": ["dist"],
+	"scripts": {
+		"dev": "tsup --watch",
+		"build": "tsup"
+	},
+	"type": "module",
+	"peerDependencies": {
+		"astro": "^5.0.3"
+	},
+	"dependencies": {
+		"astro-integration-kit": "^0.17.0"
+	},
+	"devDependencies": {
+		"tsup": "^8.3.5"
+	}
+}
