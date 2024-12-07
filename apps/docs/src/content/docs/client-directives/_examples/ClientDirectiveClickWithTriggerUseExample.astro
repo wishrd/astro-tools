@@ -7,4 +7,6 @@ interface Props {
 
 const { id } = Astro.props;
 ---
-<Square {id} text="Click me!" client:on="click; timer 3000" />
+<button id="trigger">Click to Hydrate!</button>
+<hr/>
+<Square {id} text="Hydrate me!" client:click="#trigger" />

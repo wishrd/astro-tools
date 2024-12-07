@@ -8,6 +8,7 @@
 	"type": "module",
   "exports": {
     "./*": "./src/*",
+    "./hydration": "./src/hydration/index.ts",
     "./example": "./src/example/index.ts",
     "./components": "./src/components/index.ts"
   },

@@ -1,7 +1,7 @@
 import type { ClientDirective } from 'astro';
 
 const clientDirective: ClientDirective = (load, options, el) => {
-  if (options.value) {
+  if (options.value && typeof options.value === 'string') {
     const target = document.querySelector(options.value);
     if (!target) {
       throw new Error(`client:click target ${options.value}`);

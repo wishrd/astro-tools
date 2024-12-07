@@ -1,11 +1,11 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import { notifyHydration } from '../hydration';
+  import { notifyHydration } from '@astro-tools/docs-utils/hydration';
 
   export let id: string;
+  export let text: string;
 
   let hydrated = false;
-  let text = 'Click me!';
 
   onMount(() => {
     hydrated = true;
@@ -22,18 +22,5 @@
 </button>
 
 <style lang="scss">
-  .square {
-    cursor: pointer;
-    width: 100px;
-    height: 100px;
-    font-weight: bold;
-    border: none;
-    border-radius: 8px;
-    background-color: var(--at-color-hydration-off);
-    transition: background-color 200ms ease;
-  }
-
-  .square--hydrated {
-    background-color: var(--at-color-hydration-on);
-  }
+  @import '@astro-tools/docs-utils/components/Square.scss';
 </style>

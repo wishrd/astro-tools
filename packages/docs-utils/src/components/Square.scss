@@ -1,0 +1,14 @@
+.square {
+  cursor: pointer;
+  width: 100px;
+  height: 100px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  background-color: var(--at-color-hydration-off);
+  transition: background-color 200ms ease;
+}
+
+.square--hydrated {
+  background-color: var(--at-color-hydration-on);
+}

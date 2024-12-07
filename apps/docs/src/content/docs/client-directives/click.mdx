@@ -1,0 +1,79 @@
+---
+title: 'Click'
+description: A guide in my new Starlight docs site.
+---
+import { Code, Tabs, TabItem, Steps, Aside } from '@astrojs/starlight/components';
+import { Example, ExamplePreview } from '@astro-tools/docs-utils/example';
+import ClientDirectiveClickUseExample from './_examples/ClientDirectiveClickUseExample.astro';
+import ClientDirectiveClickWithTriggerUseExample from './_examples/ClientDirectiveClickWithTriggerUseExample.astro';
+
+import squareCodeExample from '@astro-tools/docs-utils/components/Square.svelte?raw';
+import clientDirectiveClickSetupExampleRaw from './_examples/ClientDirectiveClickSetupExample.ts?raw';
+import clientDirectiveClickUseExampleRaw from './_examples/ClientDirectiveClickUseExample.astro?raw';
+import clientDirectiveClickWithTriggerUseExampleRaw from './_examples/ClientDirectiveClickWithTriggerUseExample.astro?raw';
+
+The `client:click` directive hydrates the component when clicking on it or when the specified element is clicked.
+
+## Setup
+
+For setting up the directive, include the integration in your Astro project.
+
+<Steps>
+1.  Install the library using your preferred package manager:
+    ```
+    npm i -D @astro-tools/client-directives
+    ```
+2.  Add the integration to your project configuration:
+    <Code title="astro.config.mjs" code={clientDirectiveClickSetupExampleRaw} lang="typescript" />
+</Steps>
+
+## Use
+
+Add the directive as attribute of the component to hydrate:
+```astro
+<MyComponent client:click />
+```
+
+When clicking in any part of the component, the component will be hydrated and the event will be replayed using the target of the initial event.
+
+<Aside type="caution">UI frameworks that re-render the component during hydration won't work because the target of the initial event will be removed from the DOM.</Aside>
+
+### With an element trigger
+
+Add the directive as attribute of the component to hydrate with a valid query selector:
+```astro
+<button id="my-trigger">Hydrate!</button>
+<MyComponent client:click="#my-trigger" />
+```
+
+<Example>
+  <Tabs>
+    <TabItem label="Example.astro">
+      <Code code={clientDirectiveClickUseExampleRaw} lang="astro" />
+    </TabItem>
+    <TabItem label="Square.svelte">
+      <Code code={squareCodeExample} lang="svelte" />
+    </TabItem>
+  </Tabs>
+  <ExamplePreview hydration="example-with-trigger">
+    <ClientDirectiveClickUseExample id="example-with-trigger" />
+  </ExamplePreview>
+</Example>
+
+For combining directives, just separate them by `;`. If a directive has options, just separate them from the directive name by spaces.
+
+The options type is `string` and parsing them is delegated to each directive.
+
+<Example>
+  <Tabs>
+    <TabItem label="Example.astro">
+      <Code code={clientDirectiveClickWithTriggerUseExampleRaw} lang="astro" />
+    </TabItem>
+    <TabItem label="Square.svelte">
+      <Code code={squareCodeExample} lang="svelte" />
+    </TabItem>
+  </Tabs>
+  <ExamplePreview hydration="example">
+    <ClientDirectiveClickWithTriggerUseExample id="example" />
+  </ExamplePreview>
+</Example>

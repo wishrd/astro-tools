@@ -8,7 +8,7 @@ const customClientDirectiveSchema = z.object({
 
 type CustomClientDirective = z.infer<typeof customClientDirectiveSchema>;
 
-export const integration = defineIntegration({
+export const onClientDirective = defineIntegration({
 	name: '@astro-tools/client-directives/on',
   optionsSchema: z.object({
     directives: z.array(customClientDirectiveSchema),
