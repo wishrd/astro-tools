@@ -1,0 +1,56 @@
+---
+title: 'On'
+description: A guide in my new Starlight docs site.
+---
+import { Code, Tabs, TabItem, Steps, Aside } from '@astrojs/starlight/components';
+import { Example, ExamplePreview } from '@astro-tools/docs-utils/example';
+import ClientDirectiveOnUseExample from './_examples/ClientDirectiveOnUseExample.astro';
+
+import clientDirectiveOnSetupExampleRaw from './_examples/ClientDirectiveOnSetupExample.ts?raw';
+import clientDirectiveOnUseExampleRaw from './_examples/ClientDirectiveOnUseExample.astro?raw';
+import squareCodeExample from '@astro-tools/docs-utils/components/Square.svelte?raw';
+
+The `client:on` directive allows you to combine client directives with an **OR** condition using a specific syntax: when any of the conditions meet, the component will be hydrated.
+
+Any directive included in this package and any custom directive you have could be added to the syntax. This feature makes this directive a very powerful one!
+
+## Setup
+
+For setting up the directive, include the integration in your Astro project config and declare the directives you want to include in the syntax parser, specifying the `name` and the `entrypoint` of the directive.
+
+> Every directive included in this package exports an entrypoint under the `/directive` path, for example `@astro-tools/client-directives/click/directive`.
+
+<Steps>
+1.  Install the library using your preferred package manager:
+    ```
+    npm i -D @astro-tools/client-directives
+    ```
+2.  Add the integration to your project configuration:
+    <Code title="astro.config.mjs" code={clientDirectiveOnSetupExampleRaw} lang="typescript" />
+    <Aside type="tip">Don't worry about adding as many directives as you want, only the used directives will be loaded!</Aside>
+</Steps>
+
+## Use
+
+Add the directive as attribute of the component to hydrate:
+```astro
+<MyComponent client:on="click; my-directive options" />
+```
+
+For combining directives, just separate them by `;`. If a directive has options, just separate them from the directive name by spaces.
+
+The options type is `string` and parsing them is delegated to each directive.
+
+<Example>
+  <Tabs>
+    <TabItem label="Example.astro">
+      <Code code={clientDirectiveOnUseExampleRaw} lang="astro" />
+    </TabItem>
+    <TabItem label="Square.svelte">
+      <Code code={squareCodeExample} lang="svelte" />
+    </TabItem>
+  </Tabs>
+  <ExamplePreview hydration="example">
+    <ClientDirectiveOnUseExample id="example" />
+  </ExamplePreview>
+</Example>

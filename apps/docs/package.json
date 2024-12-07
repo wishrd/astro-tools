@@ -1,20 +1,24 @@
 {
-  "name": "astro-tools",
+  "name": "@astro-tools/docs",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
+    "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.0.2"
+    "@astrojs/starlight": "^0.29.2",
+    "astro": "^4.16.17",
+    "sharp": "^0.32.6"
   },
   "devDependencies": {
-    "@astrojs/svelte": "^7.0.1",
+    "@astrojs/svelte": "^6.0.2",
     "@astro-tools/client-directives": "workspace:*",
-    "svelte": "^5.7.1",
+    "@astro-tools/docs-utils": "workspace:*",
+    "svelte": "^5.8.0",
     "sass-embedded": "^1.82.0"
   }
 }

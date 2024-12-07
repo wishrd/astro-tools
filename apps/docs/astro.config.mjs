@@ -1,22 +1,31 @@
-// @ts-check
 import { defineConfig } from 'astro/config';
+import starlight from '@astrojs/starlight';
 import svelte from '@astrojs/svelte';
+import { integration as astroOnClientDirective } from '@astro-tools/client-directives/on';
 import { integration as astroEventClientDirective } from '@astro-tools/client-directives/event';
 import { integration as astroClickClientDirective } from '@astro-tools/client-directives/click';
 import { integration as astroHoverClientDirective } from '@astro-tools/client-directives/hover';
 import { integration as astroTimerClientDirective } from '@astro-tools/client-directives/timer';
 import { integration as astroViewportClientDirective } from '@astro-tools/client-directives/viewport';
-import { integration as astroOnClientDirective } from '@astro-tools/client-directives/on';
 
-// https://astro.build/config
 export default defineConfig({
-  integrations: [
+	integrations: [
+		starlight({
+			title: 'Astro Tools',
+			social: {
+				github: 'https://github.com/withastro/starlight',
+			},
+			sidebar: [
+				{
+					label: 'Client directives',
+					autogenerate: { directory: 'client-directives' },
+				}
+			],
+      customCss: [
+        './src/styles/theme.scss',
+      ],
+		}),
     svelte(),
-    astroEventClientDirective(),
-    astroClickClientDirective(),
-    astroHoverClientDirective(),
-    astroTimerClientDirective(),
-    astroViewportClientDirective(),
     astroOnClientDirective({
       directives: [
         { name: 'event', entrypoint: '@astro-tools/client-directives/event/directive' },
@@ -26,5 +35,10 @@ export default defineConfig({
         { name: 'viewport', entrypoint: '@astro-tools/client-directives/viewport/directive' },
       ]
     }),
-  ],
+    astroEventClientDirective(),
+    astroClickClientDirective(),
+    astroHoverClientDirective(),
+    astroTimerClientDirective(),
+    astroViewportClientDirective(),
+	],
 });

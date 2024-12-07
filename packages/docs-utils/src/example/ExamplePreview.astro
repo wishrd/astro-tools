@@ -1,0 +1,45 @@
+---
+import ExamplePreviewHydrationStatus from './ExamplePreviewHydrationStatus.svelte';
+
+interface Props {
+  hydration?: string;
+}
+
+const { hydration } = Astro.props;
+---
+<div class="preview">
+  <figcaption class="preview-title">
+    <span>Preview</span>
+    {hydration && <ExamplePreviewHydrationStatus id={hydration} client:load />}
+  </figcaption>
+  <div class="preview-content">
+    <slot></slot>
+  </div>
+</div>
+
+<style lang="scss">
+  :global(.sl-markdown-content) {
+   .preview {
+      border: 1px solid var(--sl-color-gray-5);
+      border-top: none;
+      margin-top: 0;
+    }
+
+    .preview-title {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      font-size: var(--sl-text-sm);
+      font-weight: 600;
+      padding: .5rem 1rem 0;
+    }
+
+    .preview-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 1rem;
+      margin-top: 0;
+    }
+  }
+</style>
