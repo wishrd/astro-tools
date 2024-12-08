@@ -1,0 +1,49 @@
+---
+title: 'Event'
+description: Custom event client directive for Astro
+---
+import { Code, Tabs, TabItem, Steps, Aside } from '@astrojs/starlight/components';
+import { Example, ExamplePreview } from '@astro-tools/docs-utils/example';
+import ClientDirectiveEventUseExample from './_examples/event/Example.astro';
+
+import squareCodeExample from '@astro-tools/docs-utils/components/Square.svelte?raw';
+import clientDirectiveEventSetupExampleRaw from './_examples/event/setup.ts?raw';
+import ClientDirectiveEventUseExampleRaw from './_examples/event/Example.astro?raw';
+
+The `client:event` directive hydrates the component when the specified event is sent through the `window` object.
+
+## Setup
+
+For setting up the directive, include the integration in your Astro project.
+
+<Steps>
+1.  Install the library using your preferred package manager:
+    ```
+    npm i -D @astro-tools/client-directives
+    ```
+2.  Add the integration to your project configuration:
+    <Code title="astro.config.mjs" code={clientDirectiveEventSetupExampleRaw} lang="typescript" />
+</Steps>
+
+## Use
+
+Add the directive as attribute of the component to hydrate with the event name to listen:
+```astro
+<MyComponent client:event="my-custom-event" />
+```
+
+Remember that the event must be sent using `dispatchEvent` method because the communication is being done using the `window` object.
+
+<Example>
+  <Tabs>
+    <TabItem label="Example.astro">
+      <Code code={ClientDirectiveEventUseExampleRaw} lang="astro" />
+    </TabItem>
+    <TabItem label="Square.svelte">
+      <Code code={squareCodeExample} lang="svelte" />
+    </TabItem>
+  </Tabs>
+  <ExamplePreview hydration="example">
+    <ClientDirectiveEventUseExample id="example" />
+  </ExamplePreview>
+</Example>

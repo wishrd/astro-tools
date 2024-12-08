@@ -2,7 +2,7 @@ import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import svelte from '@astrojs/svelte';
 import { onClientDirective } from '@astro-tools/client-directives/on';
-import { integration as astroEventClientDirective } from '@astro-tools/client-directives/event';
+import { eventClientDirective } from '@astro-tools/client-directives/event';
 import { clickClientDirective } from '@astro-tools/client-directives/click';
 import { integration as astroHoverClientDirective } from '@astro-tools/client-directives/hover';
 import { integration as astroTimerClientDirective } from '@astro-tools/client-directives/timer';
@@ -35,7 +35,7 @@ export default defineConfig({
         { name: 'viewport', entrypoint: '@astro-tools/client-directives/viewport/directive' },
       ]
     }),
-    astroEventClientDirective(),
+    eventClientDirective(),
     clickClientDirective(),
     astroHoverClientDirective(),
     astroTimerClientDirective(),

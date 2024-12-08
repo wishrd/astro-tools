@@ -1,0 +1,18 @@
+---
+import { Square } from '@astro-tools/docs-utils/components';
+
+interface Props {
+  id: string;
+}
+
+const { id } = Astro.props;
+---
+<button id="event-directive-btn">Click to dispatch the event!</button>
+<hr/>
+<Square {id} text="Click me!" client:event="my-custom-event" />
+
+<script>
+  document.getElementById('event-directive-btn')!.addEventListener('click', () => {
+    dispatchEvent(new CustomEvent('my-custom-event'));
+  });
+</script>

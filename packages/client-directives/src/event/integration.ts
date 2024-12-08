@@ -1,6 +1,6 @@
 import { createResolver, defineIntegration } from 'astro-integration-kit';
 
-export const integration = defineIntegration({
+export const eventClientDirective = defineIntegration({
 	name: '@astro-tools/client-directives/event',
 	setup() {
     const { resolve } = createResolver(import.meta.url);
