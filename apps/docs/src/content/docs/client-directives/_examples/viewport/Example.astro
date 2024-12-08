@@ -1,0 +1,10 @@
+---
+import { Square } from '@astro-tools/docs-utils/components';
+
+interface Props {
+  id: string;
+}
+
+const { id } = Astro.props;
+---
+<Square {id} text="Click me!" client:viewport />
