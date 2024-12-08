@@ -1,0 +1,49 @@
+---
+title: 'Timer'
+description: Custom event client directive for Astro
+---
+import { Code, Tabs, TabItem, Steps, Aside } from '@astrojs/starlight/components';
+import { Example, ExamplePreview } from '@astro-tools/docs-utils/example';
+import ClientDirectiveTimerUseExample from './_examples/timer/Example.astro';
+
+import squareCodeExample from '@astro-tools/docs-utils/components/Square.svelte?raw';
+import clientDirectiveTimerSetupExampleRaw from './_examples/timer/setup.ts?raw';
+import ClientDirectiveTimerUseExampleRaw from './_examples/timer/Example.astro?raw';
+
+The `client:timer` directive hydrates the component when the specified time in milliseconds has been elapsed. It uses `setTimeout` under the hood.
+
+## Setup
+
+For setting up the directive, include the integration in your Astro project.
+
+<Steps>
+1.  Install the library using your preferred package manager:
+    ```
+    npm i -D @astro-tools/client-directives
+    ```
+2.  Add the integration to your project configuration:
+    <Code title="astro.config.mjs" code={clientDirectiveTimerSetupExampleRaw} lang="typescript" />
+</Steps>
+
+## Use
+
+Add the directive as attribute of the component to hydrate with the time in millseconds:
+```astro
+<MyComponent client:timer="3000" />
+```
+
+Remember, this directive doesn't take into consideration the loading state of the page.
+
+<Example>
+  <Tabs>
+    <TabItem label="Example.astro">
+      <Code code={ClientDirectiveTimerUseExampleRaw} lang="astro" />
+    </TabItem>
+    <TabItem label="Square.svelte">
+      <Code code={squareCodeExample} lang="svelte" />
+    </TabItem>
+  </Tabs>
+  <ExamplePreview hydration="example">
+    <ClientDirectiveTimerUseExample id="example" />
+  </ExamplePreview>
+</Example>
