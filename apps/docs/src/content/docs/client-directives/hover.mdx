@@ -1,0 +1,49 @@
+---
+title: 'Hover'
+description: Hover client directive for Astro
+---
+import { Code, Tabs, TabItem, Steps, Aside } from '@astrojs/starlight/components';
+import { Example, ExamplePreview } from '@astro-tools/docs-utils/example';
+import ClientDirectiveHoverUseExample from './_examples/hover/Example.astro';
+
+import squareCodeExample from '@astro-tools/docs-utils/components/Square.svelte?raw';
+import clientDirectiveHoverSetupExampleRaw from './_examples/hover/setup.ts?raw';
+import clientDirectiveHoverUseExampleRaw from './_examples/hover/Example.astro?raw';
+
+The `client:hover` directive hydrates the component when clicking on it or when the specified element is clicked.
+
+## Setup
+
+For setting up the directive, include the integration in your Astro project.
+
+<Steps>
+1.  Install the library using your preferred package manager:
+    ```
+    npm i -D @astro-tools/client-directives
+    ```
+2.  Add the integration to your project configuration:
+    <Code title="astro.config.mjs" code={clientDirectiveHoverSetupExampleRaw} lang="typescript" />
+</Steps>
+
+## Use
+
+Add the directive as attribute of the component to hydrate:
+```astro
+<MyComponent client:hover />
+```
+
+When hovering in any part of the component, the component will be hydrated and the event will be replayed using the target of the initial event.
+
+<Example>
+  <Tabs>
+    <TabItem label="Example.astro">
+      <Code code={clientDirectiveHoverUseExampleRaw} lang="astro" />
+    </TabItem>
+    <TabItem label="Square.svelte">
+      <Code code={squareCodeExample} lang="svelte" />
+    </TabItem>
+  </Tabs>
+  <ExamplePreview hydration="example">
+    <ClientDirectiveHoverUseExample id="example" />
+  </ExamplePreview>
+</Example>

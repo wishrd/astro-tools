@@ -36,6 +36,20 @@ Add the directive as attribute of the component to hydrate:
 
 When clicking in any part of the component, the component will be hydrated and the event will be replayed using the target of the initial event.
 
+<Example>
+  <Tabs>
+    <TabItem label="Example.astro">
+      <Code code={clientDirectiveClickUseExampleRaw} lang="astro" />
+    </TabItem>
+    <TabItem label="Square.svelte">
+      <Code code={squareCodeExample} lang="svelte" />
+    </TabItem>
+  </Tabs>
+  <ExamplePreview hydration="example">
+    <ClientDirectiveClickUseExample id="example" />
+  </ExamplePreview>
+</Example>
+
 <Aside type="caution">UI frameworks that re-render the component during hydration won't work because the target of the initial event will be removed from the DOM.</Aside>
 
 ### With an element trigger
@@ -46,23 +60,7 @@ Add the directive as attribute of the component to hydrate with a valid query se
 <MyComponent client:click="#my-trigger" />
 ```
 
-<Example>
-  <Tabs>
-    <TabItem label="Example.astro">
-      <Code code={clientDirectiveClickUseExampleRaw} lang="astro" />
-    </TabItem>
-    <TabItem label="Square.svelte">
-      <Code code={squareCodeExample} lang="svelte" />
-    </TabItem>
-  </Tabs>
-  <ExamplePreview hydration="example-with-trigger">
-    <ClientDirectiveClickUseExample id="example-with-trigger" />
-  </ExamplePreview>
-</Example>
-
-For combining directives, just separate them by `;`. If a directive has options, just separate them from the directive name by spaces.
-
-The options type is `string` and parsing them is delegated to each directive.
+When clicking the element target, the component will be hydrated. In this case, the event replay won't be done.
 
 <Example>
   <Tabs>
@@ -73,7 +71,7 @@ The options type is `string` and parsing them is delegated to each directive.
       <Code code={squareCodeExample} lang="svelte" />
     </TabItem>
   </Tabs>
-  <ExamplePreview hydration="example">
-    <ClientDirectiveClickWithTriggerUseExample id="example" />
+  <ExamplePreview hydration="example-with-trigger">
+    <ClientDirectiveClickWithTriggerUseExample id="example-with-trigger" />
   </ExamplePreview>
 </Example>

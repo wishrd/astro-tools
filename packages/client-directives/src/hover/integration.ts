@@ -1,6 +1,6 @@
 import { createResolver, defineIntegration } from 'astro-integration-kit';
 
-export const integration = defineIntegration({
+export const hoverClientDirective = defineIntegration({
 	name: '@astro-tools/client-directives/hover',
 	setup() {
     const { resolve } = createResolver(import.meta.url);

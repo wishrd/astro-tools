@@ -4,9 +4,9 @@ import svelte from '@astrojs/svelte';
 import { onClientDirective } from '@astro-tools/client-directives/on';
 import { eventClientDirective } from '@astro-tools/client-directives/event';
 import { clickClientDirective } from '@astro-tools/client-directives/click';
-import { integration as astroHoverClientDirective } from '@astro-tools/client-directives/hover';
-import { integration as astroTimerClientDirective } from '@astro-tools/client-directives/timer';
-import { integration as astroViewportClientDirective } from '@astro-tools/client-directives/viewport';
+import { hoverClientDirective } from '@astro-tools/client-directives/hover';
+import { timerClientDirective } from '@astro-tools/client-directives/timer';
+import { viewportClientDirective } from '@astro-tools/client-directives/viewport';
 
 export default defineConfig({
 	integrations: [
@@ -37,8 +37,8 @@ export default defineConfig({
     }),
     eventClientDirective(),
     clickClientDirective(),
-    astroHoverClientDirective(),
-    astroTimerClientDirective(),
-    astroViewportClientDirective(),
+    hoverClientDirective(),
+    timerClientDirective(),
+    viewportClientDirective(),
 	],
 });

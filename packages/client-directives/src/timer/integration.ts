@@ -1,6 +1,6 @@
 import { createResolver, defineIntegration } from 'astro-integration-kit';
 
-export const integration = defineIntegration({
+export const timerClientDirective = defineIntegration({
 	name: '@astro-tools/client-directives/timer',
 	setup() {
     const { resolve } = createResolver(import.meta.url);

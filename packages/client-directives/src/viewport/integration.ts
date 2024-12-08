@@ -1,6 +1,6 @@
 import { createResolver, defineIntegration } from 'astro-integration-kit';
 
-export const integration = defineIntegration({
+export const viewportClientDirective = defineIntegration({
 	name: '@astro-tools/client-directives/viewport',
 	setup() {
     const { resolve } = createResolver(import.meta.url);
