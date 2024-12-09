@@ -1,6 +1,8 @@
 ---
-title: 'Viewport'
+title: 'Client directive: Viewport'
 description: Viewport client directive for Astro
+sidebar:
+  label: Viewport
 ---
 import { Code, Tabs, TabItem, Steps, Aside } from '@astrojs/starlight/components';
 import { Example, ExamplePreview } from '@astro-tools/docs-utils/example';
@@ -12,6 +14,8 @@ import clientDirectiveViewportSetupWithClientOnExampleRaw from './_examples/view
 import ClientDirectiveViewportUseExampleRaw from './_examples/viewport/Example.astro?raw';
 
 The `client:viewport` directive hydrates the component when its visible. If the component is visible from start, it will be hydrated.
+
+<Aside type="note">If you don't want to use this directive with `client:on`, it is recommended to use the Astro `client:visible` directive instead.</Aside>
 
 ## Setup
 
@@ -31,7 +35,7 @@ For setting up the directive, include the integration in your Astro project.
 To integrate this directive with the `client:on`, configure the directive as follows:
 <Code title="astro.config.mjs" code={clientDirectiveViewportSetupWithClientOnExampleRaw} lang="typescript" />
 
-<Aside type="note">Both integrations, `client:on` integration and this one, can be included in the project configuration, allowing you to use both directives, `client:viewport` and `client:on="viewport"`, in your components.</Aside>
+<Aside type="tip">Both integrations, `client:on` integration and this one, can be included in the project configuration, allowing you to use both directives, `client:viewport` and `client:on="viewport"`, in your components.</Aside>
 
 ## Use
 
@@ -41,8 +45,6 @@ Add the directive as attribute of the component to hydrate when visible:
 ```
 
 This directive is similar to the Astro `client:visible` directive, but it allows integration with the `client:on` directive.
-
-<Aside type="tip">If you don't want to use this directive with `client:on`, it is recommended to use the Astro `client:visible` directive instead.</Aside>
 
 <Example>
   <Tabs>

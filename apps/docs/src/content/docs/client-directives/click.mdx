@@ -1,6 +1,8 @@
 ---
-title: 'Click'
+title: 'Client directive: Click'
 description: Click client directive for Astro
+sidebar:
+  label: Click
 ---
 import { Code, Tabs, TabItem, Steps, Aside } from '@astrojs/starlight/components';
 import { Example, ExamplePreview } from '@astro-tools/docs-utils/example';
@@ -33,7 +35,7 @@ For setting up the directive, include the integration in your Astro project.
 To integrate this directive with the `client:on`, configure the directive as follows:
 <Code title="astro.config.mjs" code={clientDirectiveViewportSetupWithClientOnExampleRaw} lang="typescript" />
 
-<Aside type="note">Both integrations, `client:on` integration and this one, can be included in the project configuration, allowing you to use both directives, `client:click` and `client:on="click"`, in your components.</Aside>
+<Aside type="tip">Both integrations, `client:on` integration and this one, can be included in the project configuration, allowing you to use both directives, `client:click` and `client:on="click"`, in your components.</Aside>
 
 ## Use
 

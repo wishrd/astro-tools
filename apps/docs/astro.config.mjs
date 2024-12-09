@@ -13,7 +13,7 @@ export default defineConfig({
 		starlight({
 			title: 'Astro Tools',
 			social: {
-				github: 'https://github.com/withastro/starlight',
+				github: 'https://github.com/wishrd/astro-tools',
 			},
 			sidebar: [
 				{
