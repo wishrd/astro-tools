@@ -3,6 +3,11 @@
 	"version": "0.0.0",
 	"description": "Collection of Astro client directives",
 	"license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wishrd/astro-tools",
+    "directory": "packages/client-directives"
+  },
   "homepage": "https://astro-tools.pages.dev",
   "keywords": ["astro", "withastro", "client-directives"],
   "author": {
