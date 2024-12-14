@@ -1,6 +1,6 @@
 {
 	"name": "@astro-tools/transfer-state",
-	"version": "0.0.0",
+	"version": "0.1.0",
 	"description": "A state management integration for having request isolated state transferred from server to client",
 	"license": "MIT",
 	"repository": {
@@ -12,7 +12,7 @@
 	"keywords": [
 		"astro",
 		"withastro",
-    "transfer",
+		"transfer",
 		"state"
 	],
 	"author": {
@@ -38,14 +38,14 @@
 	"type": "module",
 	"peerDependencies": {
 		"astro": "^4.16.17",
-    "vite": "^5.4.11"
+		"vite": "^5.4.11"
 	},
 	"dependencies": {
 		"astro-integration-kit": "^0.17.0",
-    "@alenaksu/json-viewer": "^2.1.2"
+		"@alenaksu/json-viewer": "^2.1.2"
 	},
 	"devDependencies": {
 		"tsup": "^8.3.5",
-    "vite": "^5.4.11"
+		"vite": "^5.4.11"
 	}
 }
