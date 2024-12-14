@@ -1,5 +1,7 @@
 import { addVirtualImports, createResolver, defineIntegration } from 'astro-integration-kit';
 
+import toolbarIcon from './toolbar/icon.ts';
+
 const VIRTUAL_MODULE_ID = '@astro-tools:transfer-state';
 
 export const transferState =  defineIntegration({
@@ -10,7 +12,7 @@ export const transferState =  defineIntegration({
     return {
       hooks: {
         'astro:config:setup': (options) => {
-          const { addMiddleware } = options;
+          const { addMiddleware, addDevToolbarApp } = options;
 
           addMiddleware({
             order: 'pre',
@@ -31,6 +33,13 @@ export const transferState =  defineIntegration({
                 context: 'client',
               }
             ],
+          });
+
+          addDevToolbarApp({
+            id: name,
+            name: 'Astro Tools - Transfer State',
+            icon: toolbarIcon,
+            entrypoint: resolve('./toolbar/index.js'),
           });
         },
         'astro:config:done': ({ injectTypes }) => {
