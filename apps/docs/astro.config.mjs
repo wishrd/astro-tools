@@ -1,6 +1,7 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import svelte from '@astrojs/svelte';
+import { transferState } from '@astro-tools/transfer-state';
 import { onClientDirective } from '@astro-tools/client-directives/on';
 import { eventClientDirective } from '@astro-tools/client-directives/event';
 import { clickClientDirective } from '@astro-tools/client-directives/click';
@@ -19,13 +20,18 @@ export default defineConfig({
 				{
 					label: 'Client directives',
 					autogenerate: { directory: 'client-directives' },
-				}
+				},
+        {
+          label: 'State management',
+					autogenerate: { directory: 'state-management' },
+        }
 			],
       customCss: [
         './src/styles/theme.scss',
       ],
 		}),
     svelte(),
+    transferState(),
     onClientDirective({
       directives: [
         { name: 'event', entrypoint: '@astro-tools/client-directives/event/directive' },

@@ -1,0 +1,16 @@
+---
+import { setState } from '@astro-tools:transfer-state';
+
+import ExampleComponent from './Example.svelte';
+
+interface Props {
+  id: string;
+}
+
+const { id } = Astro.props;
+
+setState('uuid-after-hydration', 'bed6fb83-0dd9-4566-a675-55052529f18e');
+---
+<button id="after-hydration-trigger">Click me to hydrate!</button>
+<hr />
+<ExampleComponent {id} client:on="click #after-hydration-trigger" />

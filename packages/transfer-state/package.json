@@ -1,0 +1,51 @@
+{
+	"name": "@astro-tools/transfer-state",
+	"version": "0.0.0",
+	"description": "A state management integration for having request isolated state transferred from server to client",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/wishrd/astro-tools",
+		"directory": "packages/transfer-state"
+	},
+	"homepage": "https://astro-tools.pages.dev",
+	"keywords": [
+		"astro",
+		"withastro",
+    "transfer",
+		"state"
+	],
+	"author": {
+		"name": "wishrd"
+	},
+	"publishConfig": {
+		"access": "public"
+	},
+	"sideEffects": false,
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"default": "./dist/index.js"
+		}
+	},
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"dev": "tsup --watch",
+		"build": "tsup"
+	},
+	"type": "module",
+	"peerDependencies": {
+		"astro": "^4.16.17",
+    "vite": "^5.4.11"
+	},
+	"dependencies": {
+		"astro-integration-kit": "^0.17.0",
+    "@alenaksu/json-viewer": "^2.1.2"
+	},
+	"devDependencies": {
+		"tsup": "^8.3.5",
+    "vite": "^5.4.11"
+	}
+}
