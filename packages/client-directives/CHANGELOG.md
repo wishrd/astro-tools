@@ -1,5 +1,11 @@
 # @astro-tools/client-directives
 
+## 0.1.1
+
+### Patch Changes
+
+- e920bdb: Include library files in the final package
+
 ## 0.1.0
 
 ### Minor Changes
