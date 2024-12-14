@@ -19,6 +19,7 @@
     "@astrojs/svelte": "^6.0.2",
     "@astro-tools/client-directives": "workspace:*",
     "@astro-tools/docs-utils": "workspace:*",
+    "@astro-tools/transfer-state": "workspace:*",
     "svelte": "^5.8.0",
     "sass-embedded": "^1.82.0"
   }

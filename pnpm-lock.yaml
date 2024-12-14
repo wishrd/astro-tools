@@ -33,6 +33,9 @@ importers:
       '@astro-tools/docs-utils':
         specifier: workspace:*
         version: link:../../packages/docs-utils
+      '@astro-tools/transfer-state':
+        specifier: workspace:*
+        version: link:../../packages/transfer-state
       '@astrojs/svelte':
         specifier: ^6.0.2
         version: 6.0.2(astro@4.16.17(rollup@4.28.0)(sass-embedded@1.82.0)(sass@1.82.0)(typescript@5.7.2))(sass-embedded@1.82.0)(sass@1.82.0)(svelte@5.8.0)(typescript@5.7.2)
@@ -74,6 +77,22 @@ importers:
       tsup:
         specifier: ^8.3.5
         version: 8.3.5(postcss@8.4.49)(typescript@5.7.2)
+
+  packages/transfer-state:
+    dependencies:
+      astro:
+        specifier: ^4.16.17
+        version: 4.16.17(rollup@4.28.0)(sass-embedded@1.82.0)(sass@1.82.0)(typescript@5.7.2)
+      astro-integration-kit:
+        specifier: ^0.17.0
+        version: 0.17.0(astro@4.16.17(rollup@4.28.0)(sass-embedded@1.82.0)(sass@1.82.0)(typescript@5.7.2))
+    devDependencies:
+      tsup:
+        specifier: ^8.3.5
+        version: 8.3.5(postcss@8.4.49)(typescript@5.7.2)
+      vite:
+        specifier: ^5.4.11
+        version: 5.4.11(sass-embedded@1.82.0)(sass@1.82.0)
 
 packages:
 

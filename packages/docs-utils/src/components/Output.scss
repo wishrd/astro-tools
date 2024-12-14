@@ -1,0 +1,8 @@
+.output {
+  color: var(--at-color-hydration-off);
+  transition: color 200ms ease;
+}
+
+.output--hydrated {
+  color: var(--at-color-hydration-on);
+}
