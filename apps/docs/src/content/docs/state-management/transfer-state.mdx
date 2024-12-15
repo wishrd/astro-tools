@@ -2,6 +2,7 @@
 title: Transfer state
 description: State integration isolated by request that is transferred from server to client
 sidebar:
+  order: 1
   badge:
     text: Featured
     variant: tip
@@ -75,7 +76,7 @@ This integration adds a new option into the Astro Dev Toolbar which allows to ea
 
 The state can be used to render server-side UI framework components, like the one in this example.
 
-The `Example.svelte` is rendered in server-side using the `uuid` state and transferred to the client. The hydration process keeps the value is it is.
+The `Example.svelte` is rendered in server-side using the `uuid` state and transferred to the client. The hydration process keeps the value as it comes from server:
 
 <Example>
   <Tabs>
@@ -94,7 +95,7 @@ The `Example.svelte` is rendered in server-side using the `uuid` state and trans
   </ExamplePreview>
 </Example>
 
-Also, the state value can be recovered at any moment, for example, after hydration or any logic you want.
+Also, the state value can be recovered at any moment, for example, after hydration or any logic you want:
 
 <Example>
   <Tabs>

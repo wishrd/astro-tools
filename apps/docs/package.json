@@ -19,7 +19,9 @@
     "@astrojs/svelte": "^6.0.2",
     "@astro-tools/client-directives": "workspace:*",
     "@astro-tools/docs-utils": "workspace:*",
+    "@astro-tools/reactive-transfer-state": "workspace:*",
     "@astro-tools/transfer-state": "workspace:*",
+    "nanostores": "^0.11.3",
     "svelte": "^5.8.0",
     "sass-embedded": "^1.82.0"
   }

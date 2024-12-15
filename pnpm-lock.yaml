@@ -33,12 +33,18 @@ importers:
       '@astro-tools/docs-utils':
         specifier: workspace:*
         version: link:../../packages/docs-utils
+      '@astro-tools/reactive-transfer-state':
+        specifier: workspace:*
+        version: link:../../packages/reactive-transfer-state
       '@astro-tools/transfer-state':
         specifier: workspace:*
         version: link:../../packages/transfer-state
       '@astrojs/svelte':
         specifier: ^6.0.2
         version: 6.0.2(astro@4.16.17(rollup@4.28.0)(sass-embedded@1.82.0)(sass@1.82.0)(typescript@5.7.2))(sass-embedded@1.82.0)(sass@1.82.0)(svelte@5.8.0)(typescript@5.7.2)
+      nanostores:
+        specifier: ^0.11.3
+        version: 0.11.3
       sass-embedded:
         specifier: ^1.82.0
         version: 1.82.0
@@ -74,6 +80,18 @@ importers:
       sass-embedded:
         specifier: ^1.82.0
         version: 1.82.0
+      tsup:
+        specifier: ^8.3.5
+        version: 8.3.5(postcss@8.4.49)(typescript@5.7.2)
+
+  packages/reactive-transfer-state:
+    devDependencies:
+      '@astro-tools/transfer-state':
+        specifier: workspace:*
+        version: link:../transfer-state
+      nanostores:
+        specifier: ^0.11.3
+        version: 0.11.3
       tsup:
         specifier: ^8.3.5
         version: 8.3.5(postcss@8.4.49)(typescript@5.7.2)
@@ -2124,6 +2142,10 @@ packages:
     resolution: {integrity: sha512-WNLf5Sd8oZxOm+TzppcYk8gVOgP+l58xNy58D0nbUnOxOWRWvlcCV4kUF7ltmI6PsrLl/BgKEyS4mqsGChFN0w==}
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
+
+  nanostores@0.11.3:
+    resolution: {integrity: sha512-TUes3xKIX33re4QzdxwZ6tdbodjmn3tWXCEc1uokiEmo14sI1EaGYNs2k3bU2pyyGNmBqFGAVl6jAGWd06AVIg==}
+    engines: {node: ^18.0.0 || >=20.0.0}
 
   napi-build-utils@1.0.2:
     resolution: {integrity: sha512-ONmRUqK7zj7DWX0D9ADe03wbwOBZxNAfF20PlGfCWQcD3+/MakShIHrMqx9YwPTfxDdF1zLeL+RGZiR9kGMLdg==}
@@ -5578,6 +5600,8 @@ snapshots:
       thenify-all: 1.6.0
 
   nanoid@3.3.8: {}
+
+  nanostores@0.11.3: {}
 
   napi-build-utils@1.0.2: {}
 
