@@ -1,5 +1,11 @@
 # @astro-tools/transfer-state
 
+## 0.1.1
+
+### Patch Changes
+
+- 462c6b8: Fixes look and feel of transfer state toolbar section when there is no transfer state
+
 ## 0.1.0
 
 ### Minor Changes
