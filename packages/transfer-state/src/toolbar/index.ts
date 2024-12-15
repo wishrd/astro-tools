@@ -19,17 +19,26 @@ function createHeader(text: string): HTMLElement {
   return header;
 }
 
+function createContent(): HTMLElement {
+  const content = document.createElement('div');
+  content.style.display = 'flex';
+  content.style.flexDirection = 'column';
+  return content;
+}
+
 export default defineToolbarApp({
   init: async (canvas) => {
     const toolbarWindow = document.createElement('astro-dev-toolbar-window');
+    const toolbarWindowContent = createContent();
     toolbarWindow.appendChild(createHeader('Transfer state'));
+    toolbarWindow.appendChild(toolbarWindowContent);
 
     const transferState = document.getElementById('astro-tools-transfer-state');
 
     if (!transferState || !transferState.textContent) {
-      toolbarWindow.textContent = 'Transfer state element not found';
+      toolbarWindowContent.textContent = 'Transfer state element not found';
     } else if (!transferState.textContent) {
-      toolbarWindow.textContent = 'Transfer state element is empty';
+      toolbarWindowContent.textContent = 'Transfer state element is empty';
     } else {
       let textContent: string | null = null;
 
@@ -40,14 +49,18 @@ export default defineToolbarApp({
       }
 
       if (!textContent) {
-        toolbarWindow.textContent = 'Transfer state content is not valid';
+        toolbarWindowContent.textContent = 'Transfer state content is not valid';
       } else {
-        await import('@alenaksu/json-viewer');
+        if (Object.keys(textContent).length > 0) {
+          await import('@alenaksu/json-viewer');
 
-        const jsonViewer = document.createElement('json-viewer');
-        jsonViewer.style.padding = '0 1rem';
-        jsonViewer.textContent = JSON.stringify(textContent);
-        toolbarWindow.appendChild(jsonViewer);
+          const jsonViewer = document.createElement('json-viewer');
+          jsonViewer.style.padding = '0 1rem';
+          jsonViewer.textContent = JSON.stringify(textContent);
+          toolbarWindowContent.appendChild(jsonViewer);
+        } else {
+          toolbarWindowContent.textContent = 'Transfer state is empty';
+        }
       }
     }
 
