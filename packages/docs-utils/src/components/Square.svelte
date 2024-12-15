@@ -22,5 +22,5 @@
 </button>
 
 <style lang="scss">
-  @import '@astro-tools/docs-utils/components/Square.scss';
+  @use '@astro-tools/docs-utils/components/Square.scss';
 </style>
