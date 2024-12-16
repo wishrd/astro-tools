@@ -1,5 +1,5 @@
 ---
-title: Reactive transfer state
+title: Reactive Transfer State
 description: State integration isolated by request that is transferred from server to client
 ---
 import { Code, Tabs, TabItem, Aside, Steps } from '@astrojs/starlight/components';
@@ -8,27 +8,35 @@ import { Example, ExamplePreview } from '@astro-tools/docs-utils/example';
 
 import TransferStateExample from './_examples/reactive-transfer-state/Example.astro';
 
+import setupExampleRaw from './_examples/reactive-transfer-state/setup.ts?raw';
 import uuidStoreExampleRaw from './_examples/reactive-transfer-state/uuid-store.ts?raw';
 import transferStateExampleRaw from './_examples/reactive-transfer-state/Example.astro?raw';
 import transferStateExampleChildRaw from './_examples/reactive-transfer-state/Example.svelte?raw';
 import outputCodeExample from '@astro-tools/docs-utils/components/Output.svelte?raw';
 
-The Reactive transfer state uses `nanostores` to bring up reactivity to the `@astro-tools/transfer-state` library.
+The Reactive Transfer State integration uses `nanostores` to bring up reactivity to the `@astro-tools/transfer-state` library.
 
 This way, you can subscribe to store changes and follow the Astro recommendations for sharing state with the improvement of having
 isolated state between requests and transferred state from server to client, with Astro and any UI framework.
 
+<Aside type="caution">Adding this integration will disable stream rendering because the state must be available before executing any client script.</Aside>
+
 ## Setup
 
-Include the library in your Astro application, using your preferred package manager:
-```
-npm i -D @astro-tools/reactive-transfer-state
-```
-<Aside type="note">For using this library, [`@astro-tools/transfer-state`](/state-management/transfer-state/) and `nanostores` must be installed.</Aside>
+For setting up the reactive state management with request isolation and transfer state, include the integration in your Astro project:
+<Steps>
+1.  Install the library and its dependencies using your preferred package manager:
+    ```
+    npm i -D astro-integration-kit @astro-tools/transfer-state @astro-tools/reactive-transfer-state
+    ```
+2.  Add the integration to your project configuration:
+    <Code title="astro.config.mjs" code={setupExampleRaw} lang="typescript" />
+    <Aside type="note">You don't need to include `transferState` integration, this integration will include it automatically.</Aside>
+</Steps>
 
 ## Use
 
-Use `withTransferState` with any `ReadableAtom` from `nanostores` library to create a store. This store will be transferred from the server to the client and will be isolated by request:
+Use `withTransferState` from the virtual module `@astro-tools:reactive-transfer-state` with any `ReadableAtom` from `nanostores` library to create a store. This store will be transferred from the server to the client and will be isolated by request:
 
 ```typescript
 import { atom } from 'nanostores';

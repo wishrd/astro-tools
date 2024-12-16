@@ -21,6 +21,7 @@
     "@astro-tools/docs-utils": "workspace:*",
     "@astro-tools/reactive-transfer-state": "workspace:*",
     "@astro-tools/transfer-state": "workspace:*",
+    "astro-integration-kit": "^0.17.0",
     "nanostores": "^0.11.3",
     "svelte": "^5.8.0",
     "sass-embedded": "^1.82.0"
