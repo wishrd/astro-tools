@@ -1,7 +1,7 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import svelte from '@astrojs/svelte';
-import { transferState } from '@astro-tools/transfer-state';
+import { reactiveTransferState } from '@astro-tools/reactive-transfer-state';
 import { onClientDirective } from '@astro-tools/client-directives/on';
 import { eventClientDirective } from '@astro-tools/client-directives/event';
 import { clickClientDirective } from '@astro-tools/client-directives/click';
@@ -31,7 +31,7 @@ export default defineConfig({
       ],
 		}),
     svelte(),
-    transferState(),
+    reactiveTransferState(),
     onClientDirective({
       directives: [
         { name: 'event', entrypoint: '@astro-tools/client-directives/event/directive' },

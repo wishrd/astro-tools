@@ -1,5 +1,5 @@
 ---
-title: Transfer state
+title: Transfer State
 description: State integration isolated by request that is transferred from server to client
 sidebar:
   order: 1
@@ -21,7 +21,7 @@ import transferStateAfterHydrationExampleRaw from './_examples/transfer-state/af
 import transferStateAfterHydrationExampleChildRaw from './_examples/transfer-state/after-hydration/Example.svelte?raw';
 import outputCodeExample from '@astro-tools/docs-utils/components/Output.svelte?raw';
 
-The Transfer state integration allows you to manage the state of your application isolated by request and transferred from the server to the client.
+The Transfer State integration allows you to manage the state of your application isolated by request and transferred from the server to the client.
 
 With this, instead of having to use `Astro.locals` for isolation and pass every value to the UI frameworks through properties or custom scripts, you can use the `setState` and `getState` functions to share the state between Astro and any UI framework component (Svelte, SolidJS, React...).
 
@@ -29,12 +29,12 @@ With this, instead of having to use `Astro.locals` for isolation and pass every 
 
 ## Setup
 
-For setting up the state management with request isolation and transfer state, include the integration in your Astro project.
+For setting up the state management with request isolation and transfer state, include the integration in your Astro project:
 
 <Steps>
-1.  Install the library using your preferred package manager:
+1.  Install the library and its dependencies using your preferred package manager:
     ```
-    npm i -D @astro-tools/transfer-state
+    npm i -D astro-integration-kit @astro-tools/transfer-state
     ```
 2.  Add the integration to your project configuration:
     <Code title="astro.config.mjs" code={setupExampleRaw} lang="typescript" />
@@ -45,9 +45,11 @@ For setting up the state management with request isolation and transfer state, i
 For using the state management, just use `setState` and `getState` methods:
 
 ### setState
-Use `setState` with a key to save the value (JSON-like) into the state. Keys can be removed using `null` as value.
+Use `setState` from the virtual module `@astro-tools:transfer-state` with a key to save the value (JSON-like) into the state. Keys can be removed using `null` as value.
 
 ```typescript
+import { setState } from '@astro-tools:transfer-state';
+
 import type { MyData } from './my-data';
 
 const myData: MyData = { name: 'example' };
@@ -55,9 +57,11 @@ setState('my-data', myData);
 ```
 
 ### getState
-Use `getState` to get the current value of a key. When there is no value, `null` will be returned.
+Use `getState` from the virtual module `@astro-tools:transfer-state` to get the current value of a key. When there is no value, `null` will be returned.
 
 ```typescript
+import { getState } from '@astro-tools:transfer-state';
+
 import type { MyData } from './my-data';
 
 const myData = getState<MyData>('my-data');
