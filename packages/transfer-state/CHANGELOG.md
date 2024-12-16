@@ -1,5 +1,11 @@
 # @astro-tools/transfer-state
 
+## 0.1.2
+
+### Patch Changes
+
+- dcd2590: Open Vite peer dependency version range
+
 ## 0.1.1
 
 ### Patch Changes
