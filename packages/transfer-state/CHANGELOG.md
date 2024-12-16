@@ -1,5 +1,11 @@
 # @astro-tools/transfer-state
 
+## 0.1.3
+
+### Patch Changes
+
+- f4b9bb1: Fix transfer-state and reactive-transfer-state to work together properly through integrations
+
 ## 0.1.2
 
 ### Patch Changes
