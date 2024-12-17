@@ -6,7 +6,7 @@
   "linked": [],
   "access": "restricted",
   "baseBranch": "main",
-  "updateInternalDependencies": "patch",
+  "updateInternalDependencies": "minor",
   "ignore": [
     "@astro-tools/docs",
     "@astro-tools/docs-utils"
