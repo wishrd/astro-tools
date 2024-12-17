@@ -1,4 +1,5 @@
 declare module '@astro-tools:transfer-state' {
-  export const getState: <T>(key: string) => T;
-  export const setState: <T>(key: string, value: T) => void;
+  export type StateKey = string | { name: string; transfer: boolean };
+  export const getState: <T>(key: StateKey) => T;
+  export const setState: <T>(key: StateKey, value: T) => void;
 }

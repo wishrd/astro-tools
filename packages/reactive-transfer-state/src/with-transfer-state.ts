@@ -1,8 +1,8 @@
 import { type ReadableAtom } from 'nanostores';
 
-import { getState, setState } from '@astro-tools:transfer-state';
+import { type StateKey, getState, setState } from '@astro-tools:transfer-state';
 
-export function withTransferState<T extends ReadableAtom<unknown>>(key: string, store: T): T {
+export function withTransferState<T extends ReadableAtom<unknown>>(key: StateKey, store: T): T {
   const initialValue = store.value;
 
   Object.defineProperty(store, 'value', {
