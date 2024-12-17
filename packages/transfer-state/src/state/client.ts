@@ -1,4 +1,5 @@
-import type { TransferState } from '../transfer-state.ts';
+import type { StateKey } from '../models/state-key.ts';
+import type { TransferState } from '../models/transfer-state.ts';
 
 let store: TransferState;
 
@@ -12,10 +13,10 @@ function getStore(): TransferState {
   return store;
 }
 
-export function getState<T>(key: string): T | null {
-  return getStore()[key] as T | undefined || null;
+export function getState<T>(key: StateKey): T | null {
+  return getStore()[typeof key === 'string' ? key : key.name] as T | undefined || null;
 }
 
-export function setState<T>(key: string, value: T | null): void {
-  getStore()[key] = value;
+export function setState<T>(key: StateKey, value: T | null): void {
+  getStore()[typeof key === 'string' ? key : key.name] = value;
 }

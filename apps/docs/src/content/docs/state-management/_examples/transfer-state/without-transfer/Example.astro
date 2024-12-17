@@ -1,0 +1,16 @@
+---
+import { setState } from '@astro-tools:transfer-state';
+
+import ExampleComponent from './Example.svelte';
+
+interface Props {
+  id: string;
+}
+
+const { id } = Astro.props;
+
+setState({ name: 'uuid-without-transfer', transfer: false }, 'fc379108-c24e-47f5-b119-45db86e0e94a');
+---
+<button id="trigger-without-transfer">Click me to hydrate!</button>
+<hr />
+<ExampleComponent {id} client:on="click #trigger-without-transfer" />
