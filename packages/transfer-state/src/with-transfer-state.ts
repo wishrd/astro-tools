@@ -1,11 +1,24 @@
 import type { MiddlewareNext } from 'astro';
 
-import type { TransferState } from './transfer-state.ts';
-import { transferStateStorage } from './transfer-state-storage.ts';
+import type { TransferState } from './models/transfer-state.ts';
+import { stateStorage } from './state-storage.ts';
 
-export function withTransferState(callback: MiddlewareNext): Promise<{ response: Response, transferState: TransferState }> {
-  return new Promise((resolve) => transferStateStorage.run({}, async () => resolve({
-    response: await callback(),
-    transferState: transferStateStorage.getStore() || {},
-  })));
+export function withTransferState(callback: MiddlewareNext): Promise<{ response: Response, getTransferState: () => TransferState }> {
+  return new Promise((resolve) => stateStorage.run({}, async () => {
+    const response = await callback();
+    const serverState = stateStorage.getStore() || {};
+
+    resolve({
+      response,
+      getTransferState: () => {
+        return Object.keys(serverState).reduce<TransferState>((state, key) => {
+          if (serverState[key]?.transfer) {
+            state[key] = serverState[key].value;
+          }
+
+          return state;
+        }, {});
+      },
+    });
+  }));
 }
