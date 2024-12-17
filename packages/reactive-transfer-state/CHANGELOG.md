@@ -1,5 +1,11 @@
 # @astro-tools/reactive-transfer-state
 
+## 0.2.0
+
+### Minor Changes
+
+- 9ad84cc: Align with transfer-state 0.2.0
+
 ## 0.1.2
 
 ### Patch Changes
