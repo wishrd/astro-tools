@@ -1,6 +1,6 @@
 {
 	"name": "@astro-tools/reactive-transfer-state",
-	"version": "1.0.0",
+	"version": "0.1.2",
 	"description": "A reactive state management library using nanostores and @astro-tools/transfer-state libraries for having isolation by request state transferred from server to client",
 	"license": "MIT",
 	"repository": {
