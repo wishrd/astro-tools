@@ -1,5 +1,11 @@
 # @astro-tools/transfer-state
 
+## 0.2.0
+
+### Minor Changes
+
+- 88868d7: Allow skiping the transfer of the state passing a transfer parameter within the key
+
 ## 0.1.3
 
 ### Patch Changes

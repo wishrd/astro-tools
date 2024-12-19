@@ -13,12 +13,15 @@ import { Example, ExamplePreview } from '@astro-tools/docs-utils/example';
 
 import TransferStateExample from './_examples/transfer-state/before-hydration/Example.astro';
 import TransferStateAfterHydrationExample from './_examples/transfer-state/after-hydration/Example.astro';
+import TransferStateWithoutTransferExample from './_examples/transfer-state/without-transfer/Example.astro';
 
 import setupExampleRaw from './_examples/transfer-state/setup.ts?raw';
 import transferStateExampleRaw from './_examples/transfer-state/before-hydration/Example.astro?raw';
 import transferStateExampleChildRaw from './_examples/transfer-state/before-hydration/Example.svelte?raw';
 import transferStateAfterHydrationExampleRaw from './_examples/transfer-state/after-hydration/Example.astro?raw';
 import transferStateAfterHydrationExampleChildRaw from './_examples/transfer-state/after-hydration/Example.svelte?raw';
+import transferStateWithoutTransferExampleRaw from './_examples/transfer-state/without-transfer/Example.astro?raw';
+import transferStateWithoutTransferExampleChildRaw from './_examples/transfer-state/without-transfer/Example.svelte?raw';
 import outputCodeExample from '@astro-tools/docs-utils/components/Output.svelte?raw';
 
 The Transfer State integration allows you to manage the state of your application isolated by request and transferred from the server to the client.
@@ -56,8 +59,20 @@ const myData: MyData = { name: 'example' };
 setState('my-data', myData);
 ```
 
+If, for any reason, transferring the state should be avoided, then use the `transfer: boolean` parameter within the key to mark the key as not transferrable:
+```typescript
+import { setState } from '@astro-tools:transfer-state';
+
+import type { MyData } from './my-data';
+
+const myData: MyData = { name: 'example' };
+setState({ name: 'my-private-data', transfer: false }, myData);
+```
+
 ### getState
 Use `getState` from the virtual module `@astro-tools:transfer-state` to get the current value of a key. When there is no value, `null` will be returned.
+
+Passing a key with `transfer: boolean` parameter will be ignored.
 
 ```typescript
 import { getState } from '@astro-tools:transfer-state';
@@ -115,6 +130,25 @@ Also, the state value can be recovered at any moment, for example, after hydrati
   </Tabs>
   <ExamplePreview hydration="example-after-hydration">
     <TransferStateAfterHydrationExample id="example-after-hydration" />
+  </ExamplePreview>
+</Example>
+
+Finally, the state can be used in server-side without transfer it to the client. It could make sense for some use cases in which request isolation state is required but the state is private and removed from the client bundle using `import.meta.env.SSR`:
+
+<Example>
+  <Tabs>
+    <TabItem label="Example.astro">
+      <Code code={transferStateWithoutTransferExampleRaw} lang="astro" />
+    </TabItem>
+    <TabItem label="Example.svelte">
+      <Code code={transferStateWithoutTransferExampleChildRaw} lang="astro" />
+    </TabItem>
+    <TabItem label="Output.svelte">
+      <Code code={outputCodeExample} lang="svelte" />
+    </TabItem>
+  </Tabs>
+  <ExamplePreview hydration="example-without-transfer">
+    <TransferStateWithoutTransferExample id="example-without-transfer" />
   </ExamplePreview>
 </Example>
 

@@ -1,8 +1,9 @@
-import { transferStateStorage } from '../transfer-state-storage.ts';
-import type { TransferState } from '../transfer-state.ts';
+import { stateStorage } from '../state-storage.ts';
+import type { StateKey } from '../models/state-key.ts';
+import type { ServerTransferState } from '../models/server-transfer-state.ts';
 
-function getStore(): TransferState {
-  const store = transferStateStorage.getStore();
+function getStore(): ServerTransferState {
+  const store = stateStorage.getStore();
   if (!store) {
     throw new Error('Server store is not defined!');
   }
@@ -10,10 +11,20 @@ function getStore(): TransferState {
   return store;
 }
 
-export function getState<T>(key: string): T | null {
-  return getStore()[key] as T | undefined || null;
+export function getState<T>(key: StateKey): T | null {
+  return getStore()[typeof key === 'string' ? key : key.name]?.value as T | undefined || null;
 }
 
-export function setState<T>(key: string, value: T | null): void {
-  getStore()[key] = value;
+export function setState<T>(key: StateKey, value: T | null): void {
+  const store = getStore();
+  const keyName = typeof key === 'string' ? key : key.name;
+
+  let transfer: boolean;
+  if (typeof key === 'string') {
+    transfer = store[keyName] ? store[keyName].transfer : true;
+  } else {
+    transfer = key.transfer;
+  }
+
+  store[keyName] = { transfer, value };
 }
