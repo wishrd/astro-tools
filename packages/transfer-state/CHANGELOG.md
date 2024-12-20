@@ -1,5 +1,11 @@
 # @astro-tools/transfer-state
 
+## 0.2.2
+
+### Patch Changes
+
+- f47d92d: fix toolbar overflow
+
 ## 0.2.1
 
 ### Patch Changes
