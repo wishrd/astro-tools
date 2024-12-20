@@ -23,6 +23,7 @@ function createContent(): HTMLElement {
   const content = document.createElement('div');
   content.style.display = 'flex';
   content.style.flexDirection = 'column';
+  content.style.overflowY = 'auto';
   return content;
 }
 
