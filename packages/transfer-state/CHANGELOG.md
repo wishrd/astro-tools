@@ -1,5 +1,11 @@
 # @astro-tools/transfer-state
 
+## 0.2.1
+
+### Patch Changes
+
+- bb92217: Render transfer state on head tag to avoid race condition issues
+
 ## 0.2.0
 
 ### Minor Changes
