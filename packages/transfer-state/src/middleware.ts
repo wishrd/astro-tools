@@ -10,11 +10,11 @@ export const onRequest = defineMiddleware(async (_, next) => {
   }
 
   const content = await response.text();
-  const bodyCloseIndex = content.indexOf('</body>');
+  const headCloseIndex = content.indexOf('</head>');
 
-  const newContent = content.slice(0, bodyCloseIndex)
+  const newContent = content.slice(0, headCloseIndex)
     + `<script id="astro-tools-transfer-state" type="application/json">${JSON.stringify(getTransferState())}</script>`
-    + content.slice(bodyCloseIndex);
+    + content.slice(headCloseIndex);
 
   return new Response(newContent, response);
 });
