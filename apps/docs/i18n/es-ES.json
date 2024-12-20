@@ -1,0 +1,14 @@
+{
+  "home": {
+    "title": "Esta es una página de ejemplo",
+    "meta": {
+      "description": "sta es una página de ejemplo construida por {ownerName} | {companyName}"
+    }
+  },
+  "products": {
+    "total": "Hay {count:number} productos"
+  },
+  "product": {
+    "title": "Producto: {name}"
+  }
+}

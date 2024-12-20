@@ -13,7 +13,7 @@ export default defineConfig((options) => {
 		clean: true,
 		splitting: true,
 		minify: !dev,
-		external: [...Object.keys(peerDependencies)],
+		external: [...Object.keys(peerDependencies), '@astro-tools:transfer-state'],
 		tsconfig: "tsconfig.json"
 	};
 });

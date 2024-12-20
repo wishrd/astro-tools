@@ -1,6 +1,7 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import svelte from '@astrojs/svelte';
+import { i18n } from '@astro-tools/i18n';
 import { reactiveTransferState } from '@astro-tools/reactive-transfer-state';
 import { onClientDirective } from '@astro-tools/client-directives/on';
 import { eventClientDirective } from '@astro-tools/client-directives/event';
@@ -8,6 +9,7 @@ import { clickClientDirective } from '@astro-tools/client-directives/click';
 import { hoverClientDirective } from '@astro-tools/client-directives/hover';
 import { timerClientDirective } from '@astro-tools/client-directives/timer';
 import { viewportClientDirective } from '@astro-tools/client-directives/viewport';
+import { i18nSchemaLoder } from './scripts/i18n-schema-loader.mjs';
 
 export default defineConfig({
 	integrations: [
@@ -24,6 +26,10 @@ export default defineConfig({
         {
           label: 'State management',
 					autogenerate: { directory: 'state-management' },
+        },
+        {
+          label: 'Internationalization',
+					autogenerate: { directory: 'internationalization' },
         }
 			],
       customCss: [
@@ -32,6 +38,9 @@ export default defineConfig({
 		}),
     svelte(),
     reactiveTransferState(),
+    i18n({
+      loader: i18nSchemaLoder('./i18n/en-US.json'),
+    }),
     onClientDirective({
       directives: [
         { name: 'event', entrypoint: '@astro-tools/client-directives/event/directive' },

@@ -33,6 +33,9 @@ importers:
       '@astro-tools/docs-utils':
         specifier: workspace:*
         version: link:../../packages/docs-utils
+      '@astro-tools/i18n':
+        specifier: workspace:*
+        version: link:../../packages/i18n
       '@astro-tools/reactive-transfer-state':
         specifier: workspace:*
         version: link:../../packages/reactive-transfer-state
@@ -92,6 +95,9 @@ importers:
       '@alenaksu/json-viewer':
         specifier: ^2.1.2
         version: 2.1.2
+      ts-deepmerge:
+        specifier: ^7.0.2
+        version: 7.0.2
     devDependencies:
       astro:
         specifier: ^4.16.0
@@ -2870,6 +2876,10 @@ packages:
 
   trough@2.2.0:
     resolution: {integrity: sha512-tmMpK00BjZiUyVyvrBK7knerNgmgvcV/KLVyuma/SC+TQN167GrMRciANTz09+k3zW8L8t60jWO1GpfkZdjTaw==}
+
+  ts-deepmerge@7.0.2:
+    resolution: {integrity: sha512-akcpDTPuez4xzULo5NwuoKwYRtjQJ9eoNfBACiBMaXwNAx7B1PKfe5wqUFJuW5uKzQ68YjDFwPaWHDG1KnFGsA==}
+    engines: {node: '>=14.13.1'}
 
   ts-interface-checker@0.1.13:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}
@@ -6468,6 +6478,8 @@ snapshots:
   trim-lines@3.0.1: {}
 
   trough@2.2.0: {}
+
+  ts-deepmerge@7.0.2: {}
 
   ts-interface-checker@0.1.13: {}
 
