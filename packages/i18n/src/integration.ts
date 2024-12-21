@@ -44,7 +44,7 @@ export const i18n =  defineIntegration({
 
           injectTypes({
             filename: 'types.d.ts',
-            content: `declare module '@astro-tools:i18n' {\nexport function i18n({ locale, fallbackLocale, loader }: I18nOptions): Promise<void>;\nexport function locale(): string;\nexport function fallbackLocale(): string;\n${translateFn}\n}`,
+            content: `declare module '@astro-tools:i18n' {\nimport type { I18nOptions } from '@astro-tools/i18n';\nexport function i18n(options: I18nOptions): Promise<void>;\nexport function locale(): string;\nexport function fallbackLocale(): string;\n${translateFn}\n}`,
           });
         }
       }
