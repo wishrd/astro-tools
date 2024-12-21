@@ -12,8 +12,8 @@
 	"keywords": [
 		"astro",
 		"withastro",
-		"transfer",
-		"state"
+		"i18n",
+		"translations"
 	],
 	"author": {
 		"name": "wishrd"
