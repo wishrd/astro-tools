@@ -1,6 +1,6 @@
 {
 	"name": "@astro-tools/i18n",
-	"version": "0.0.0",
+	"version": "0.1.0",
 	"description": "Type-safe i18n integration for Astro which translates in runtime",
 	"license": "MIT",
 	"repository": {
@@ -42,7 +42,7 @@
 		"astro-integration-kit": "^0.17.0"
 	},
 	"dependencies": {
-    "ts-deepmerge": "^7.0.2"
+		"ts-deepmerge": "^7.0.2"
 	},
 	"devDependencies": {
 		"@astro-tools/transfer-state": "workspace:*",
