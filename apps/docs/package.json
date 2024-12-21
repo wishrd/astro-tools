@@ -19,6 +19,7 @@
     "@astrojs/svelte": "^6.0.2",
     "@astro-tools/client-directives": "workspace:*",
     "@astro-tools/docs-utils": "workspace:*",
+    "@astro-tools/i18n": "workspace:*",
     "@astro-tools/reactive-transfer-state": "workspace:*",
     "@astro-tools/transfer-state": "workspace:*",
     "astro-integration-kit": "^0.17.0",

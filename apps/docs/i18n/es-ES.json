@@ -1,0 +1,10 @@
+{
+  "home": {
+    "title": "Página de ejemplo",
+    "description": "Página de ejemplo de {companyName} construida por {ownerName}"
+  },
+  "rating": {
+    "title": "Valora {library:string}!",
+    "stars": "Esta librería tiene {stars:number} estrellas!"
+  }
+}

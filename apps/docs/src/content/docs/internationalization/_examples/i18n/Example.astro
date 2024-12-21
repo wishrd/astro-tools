@@ -1,0 +1,22 @@
+---
+import { Output } from '@astro-tools/docs-utils/components';
+
+import { t } from '@astro-tools:i18n';
+
+import { useTranslations } from './use-translations';
+import ClientSideExample from './ClientSideExample.svelte';
+
+interface Props {
+  id: string;
+}
+
+const { id } = Astro.props;
+
+await useTranslations('es-ES');
+---
+<Output text={t('home.title')}></Output>
+<Output text={t('home.description', { ownerName: 'Doc', companyName: 'Astro Tools' })}></Output>
+<br />
+<button type="button" id="i18n-button">Click me to hydrate!</button>
+<br />
+<ClientSideExample {id} client:on="click #i18n-button" />

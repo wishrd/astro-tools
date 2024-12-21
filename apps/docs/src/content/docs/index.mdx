@@ -1,9 +1,9 @@
 ---
 title: Astro Tools
-description: A set of packages that contains utilities to help you build Astro websites.
-template: doc
+description: A set of packages for building enterprise grade Astro websites.
+template: splash
 hero:
-  tagline: A set of packages that contains utilities to help you build Astro websites.
+  tagline: A set of packages for building enterprise grade Astro websites.
   image:
     file: ../../assets/houston.webp
   actions:
@@ -15,3 +15,10 @@ hero:
       icon: github
       variant: minimal
 ---
+import { LinkCard, CardGrid } from '@astrojs/starlight/components';
+
+<CardGrid>
+  <LinkCard title="Client directives" description="More client directives for hydrating the Astro Islands as you never imagine!" href="/client-directives/on/"></LinkCard>
+  <LinkCard title="State management" description="Add state management to your Astro project, isolated per request and transferred to the client side!" href="/state-management/transfer-state/"></LinkCard>
+  <LinkCard title="Internationalization" description="Integrate runtime translations with type-checking when Astro i18n is not enough!" href="/internationalization/i18n/"></LinkCard>
+</CardGrid>

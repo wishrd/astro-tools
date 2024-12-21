@@ -1,0 +1,11 @@
+{
+  "home": {
+    "title": "Sample page",
+    "description": "{companyName} sample page built by {ownerName}!"
+  },
+  "rating": {
+    "title": "Rate {library:string}!",
+    "stars": "This library has {stars:number} stars!",
+    "empty": "There are no votes yet!"
+  }
+}
