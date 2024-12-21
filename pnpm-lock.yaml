@@ -99,6 +99,9 @@ importers:
         specifier: ^7.0.2
         version: 7.0.2
     devDependencies:
+      '@astro-tools/transfer-state':
+        specifier: workspace:*
+        version: link:../transfer-state
       astro:
         specifier: ^4.16.0
         version: 4.16.17(rollup@4.28.0)(sass-embedded@1.82.0)(sass@1.82.0)(typescript@5.7.2)

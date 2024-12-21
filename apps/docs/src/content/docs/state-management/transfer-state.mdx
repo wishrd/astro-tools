@@ -3,9 +3,6 @@ title: Transfer State
 description: State integration isolated by request that is transferred from server to client
 sidebar:
   order: 1
-  badge:
-    text: Featured
-    variant: tip
 ---
 import { Code, Tabs, TabItem, Aside, Steps } from '@astrojs/starlight/components';
 
@@ -37,7 +34,7 @@ For setting up the state management with request isolation and transfer state, i
 <Steps>
 1.  Install the library and its dependencies using your preferred package manager:
     ```
-    npm i -D astro-integration-kit @astro-tools/transfer-state
+    npm i -D @astro-tools/transfer-state astro-integration-kit
     ```
 2.  Add the integration to your project configuration:
     <Code title="astro.config.mjs" code={setupExampleRaw} lang="typescript" />

@@ -1,14 +1,11 @@
 {
   "home": {
-    "title": "This is a sample page",
-    "meta": {
-      "description": "This is a sample page built by {ownerName} | {companyName}"
-    }
+    "title": "Sample page",
+    "description": "{companyName} sample page built by {ownerName}!"
   },
-  "products": {
-    "total": "There are {count:number} products"
-  },
-  "product": {
-    "title": "Product: {name}"
+  "rating": {
+    "title": "Rate {library:string}!",
+    "stars": "This library has {stars:number} stars!",
+    "empty": "There are no votes yet!"
   }
 }

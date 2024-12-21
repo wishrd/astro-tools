@@ -1,5 +1,8 @@
-import { addVirtualImports, createResolver, defineIntegration } from 'astro-integration-kit';
+import { addIntegration, addVirtualImports, createResolver, defineIntegration, hasIntegration } from 'astro-integration-kit';
 import { z } from 'astro/zod';
+
+import { transferState } from '@astro-tools/transfer-state';
+
 import { getTranslateFn } from './get-translate-fn.ts';
 
 const VIRTUAL_MODULE_ID = '@astro-tools:i18n';
@@ -19,6 +22,13 @@ export const i18n =  defineIntegration({
     return {
       hooks: {
         'astro:config:setup': (options) => {
+          if (!hasIntegration(options, { name: '@astro-tools/transfer-state' })) {
+						addIntegration(options, {
+							ensureUnique: true,
+							integration: transferState(),
+						});
+					}
+
           addVirtualImports(options, {
             name,
             imports: [
@@ -30,7 +40,7 @@ export const i18n =  defineIntegration({
           });
         },
         'astro:config:done': async ({ injectTypes }) => {
-          const translateFn = await getTranslateFn(options.loader);
+          const translateFn = getTranslateFn(await options.loader());
 
           injectTypes({
             filename: 'types.d.ts',

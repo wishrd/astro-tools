@@ -1,14 +1,10 @@
 {
   "home": {
-    "title": "Esta es una página de ejemplo",
-    "meta": {
-      "description": "sta es una página de ejemplo construida por {ownerName} | {companyName}"
-    }
+    "title": "Página de ejemplo",
+    "description": "Página de ejemplo de {companyName} construida por {ownerName}"
   },
-  "products": {
-    "total": "Hay {count:number} productos"
-  },
-  "product": {
-    "title": "Producto: {name}"
+  "rating": {
+    "title": "Valora {library:string}!",
+    "stars": "Esta librería tiene {stars:number} estrellas!"
   }
 }

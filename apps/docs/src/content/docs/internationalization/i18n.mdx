@@ -3,11 +3,127 @@ title: i18n
 description: i18n integration for applications which have high number of locales and requires type-checking
 sidebar:
   order: 1
-  badge:
-    text: Featured
-    variant: tip
 ---
+import { Code, Tabs, TabItem, Aside, Steps } from '@astrojs/starlight/components';
 
-import I18nExample from './_examples/core/Example.astro';
+import { Example, ExamplePreview } from '@astro-tools/docs-utils/example';
 
-<I18nExample />
+import setupExampleRaw from './_examples/i18n/setup.ts?raw';
+import i18nSchemaMapTranslationsRaw from '../../../../config/map-translations.mjs?raw';
+import i18nSchemaLoaderRaw from '../../../../config/i18n-schema-loader.mjs?raw';
+import enUSRaw from '../../../../i18n/en-US.json?raw';
+import mapTranslationsRaw from './_examples/i18n/map-translations.ts?raw';
+import useTranslationsRaw from './_examples/i18n/use-translations.ts?raw';
+import i18nExampleRaw from './_examples/i18n/Example.astro?raw';
+import i18nClientSideExampleRaw from './_examples/i18n/ClientSideExample.svelte?raw';
+
+import I18nExample from './_examples/i18n/Example.astro';
+import { getTranslateTypes } from './_helpers/get-translate-types';
+
+The i18n integration provides runtime translations while keeps type-checking, preventing most of the runtime errors in this kind of libraries.
+
+It is intended to be used for projects with a large number of languages or locales and websites with Astro Islands that require some translations.
+For static or small projects, I'd recommend using the official [Astro i18n](https://docs.astro.build/en/guides/internationalization/) or any other existing type-safe libraries. In any case, give it a try!
+
+## Format
+
+The `key` of the translation can be any string in any format. The supported format for the translation is a `string` with interpolation values surrounded by `{}`, like the following example:
+```text
+Hello {name}!
+```
+
+Variables in the translations can be typed to `number` and `string` using the following format:
+```
+Hello {name:string}! click here to get {points:number} points!
+```
+
+<Aside type="note">We are improving the format to support plurals and more types!</Aside>
+
+## Setup
+
+For setting up the internationalization, include the integration in your Astro project:
+
+<Steps>
+1.  Install the library and its dependencies using your preferred package manager:
+    ```
+    npm i -D @astro-tools/i18n @astro-tools/transfer-state astro-integration-kit
+    ```
+2.  Add the integration to your project configuration:
+    <Code title="astro.config.mjs" code={setupExampleRaw} lang="typescript" />
+</Steps>
+
+### Loader
+
+To extract the typings properly, add the `loader` function which loads every translation from the main locale file following a specific model.
+
+It is delegated to the project, allowing to store the translations in any format.
+
+For example, you can use a loader like the referenced in the setup section, in Javascript or Typescript, depending on your configuration language:
+
+<Example>
+  <Tabs>
+    <TabItem label="@/config/i18n-schema-loader.mjs">
+      <Code code={i18nSchemaLoaderRaw} lang="javascript" />
+    </TabItem>
+    <TabItem label="./map-translations.mjs">
+      <Code code={i18nSchemaMapTranslationsRaw} lang="javascript" />
+    </TabItem>
+    <TabItem label="./i18n/en-US.json">
+      <Code code={enUSRaw} lang="json" />
+    </TabItem>
+  </Tabs>
+</Example>
+
+The result is the overload functions of the function `t`, which can be used to render translations:
+<Code title="types.d.ts" code={getTranslateTypes()} lang="typescript" />
+
+## Use
+
+The integration exposes the virtual module `@astro-tools:i18n` with the required functions for managing translations.
+As we do for the integration, the loading of the translation files is delegated to the project.
+
+### Configure
+
+Before render any translation, configure the locale, fallback locale and the translation loader using the function `i18n()`:
+
+```typescript
+const esES = { title: '¡Hola mundo!' };
+const enUS = { title: 'Hello world!' };
+
+i18n({
+  locale: 'es-ES',
+  fallbackLocale: 'en-US',
+  loader: (locale) => locale === 'es-ES' ? esES : enUS,
+});
+```
+
+It is recommended to create a wrapper with your own logic following DRY principle. For example, create a function `useTranslations`:
+
+<Tabs>
+  <TabItem label="use-translations.ts">
+    <Code code={useTranslationsRaw} lang="typescript" />
+  </TabItem>
+  <TabItem label="map-translations.ts">
+    <Code code={mapTranslationsRaw} lang="typescript" />
+  </TabItem>
+</Tabs>
+
+### Translate
+
+Then, for translating keys, just use the previous `useTranslations` function with the desired locale for the page being rendered and use the `t` function to render a translation.
+
+If a translation does not exists in the configured `locale`, then the `fallbackLocale` will be used. If the translation still missing, the `key` will be rendered.
+
+<Example>
+  <Tabs>
+    <TabItem label="Example.astro">
+      <Code code={i18nExampleRaw} lang="astro" />
+    </TabItem>
+    <TabItem label="ClientSideExample.svelte">
+      <Code code={i18nClientSideExampleRaw} lang="svelte" />
+    </TabItem>
+  </Tabs>
+  <ExamplePreview hydration="i18n-example">
+    <I18nExample id="i18n-example" />
+  </ExamplePreview>
+</Example>

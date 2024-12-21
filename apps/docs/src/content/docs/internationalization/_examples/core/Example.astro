@@ -1,8 +1,0 @@
----
-import { useTranslations } from './use-translations';
-import { t } from '@astro-tools:i18n';
-
-await useTranslations('es-ES');
----
-<p>This is a server-side translation: {t('home.title')}</p>
-<p>This is a server-side translation with parameters: {t('home.meta.description', { ownerName: 'Doc', companyName: 'Astro Tools' })}</p>

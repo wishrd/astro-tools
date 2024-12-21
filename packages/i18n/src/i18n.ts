@@ -7,7 +7,7 @@ import type { I18n } from './models/i18n.ts';
 function i18nState(): I18n {
   const state = getState<I18n>('i18n');
   if (!state) {
-    throw new Error(`i8n state is not set`);
+    throw new Error(`i18n is not configured!`);
   }
 
   return state;
@@ -16,8 +16,7 @@ function i18nState(): I18n {
 export async function i18n({ locale, fallbackLocale, loader }: I18nOptions): Promise<void> {
   const localeTranslations = await loader(locale);
   const fallbackLocaleTranslations = fallbackLocale !== locale ? await loader(fallbackLocale) : {};
-
-  const translations = merge(localeTranslations, fallbackLocaleTranslations);
+  const translations = merge(fallbackLocaleTranslations, localeTranslations);
 
   setState('i18n', {
     locale,

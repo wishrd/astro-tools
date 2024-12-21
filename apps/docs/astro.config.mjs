@@ -9,7 +9,7 @@ import { clickClientDirective } from '@astro-tools/client-directives/click';
 import { hoverClientDirective } from '@astro-tools/client-directives/hover';
 import { timerClientDirective } from '@astro-tools/client-directives/timer';
 import { viewportClientDirective } from '@astro-tools/client-directives/viewport';
-import { i18nSchemaLoder } from './scripts/i18n-schema-loader.mjs';
+import { i18nSchemaLoader } from './config/i18n-schema-loader.mjs';
 
 export default defineConfig({
 	integrations: [
@@ -39,7 +39,7 @@ export default defineConfig({
     svelte(),
     reactiveTransferState(),
     i18n({
-      loader: i18nSchemaLoder('./i18n/en-US.json'),
+      loader: i18nSchemaLoader('./i18n/en-US.json'),
     }),
     onClientDirective({
       directives: [
