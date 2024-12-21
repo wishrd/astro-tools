@@ -92,9 +92,6 @@ importers:
 
   packages/i18n:
     dependencies:
-      '@alenaksu/json-viewer':
-        specifier: ^2.1.2
-        version: 2.1.2
       ts-deepmerge:
         specifier: ^7.0.2
         version: 7.0.2
