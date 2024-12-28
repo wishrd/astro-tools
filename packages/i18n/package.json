@@ -1,6 +1,6 @@
 {
 	"name": "@astro-tools/i18n",
-	"version": "0.1.0",
+	"version": "0.2.0",
 	"description": "Type-safe i18n integration for Astro which translates in runtime",
 	"license": "MIT",
 	"repository": {
@@ -54,7 +54,7 @@
 	},
 	"devDependencies": {
 		"@astro-tools/transfer-state": "workspace:*",
-    "@types/node": "^22.10.2",
+		"@types/node": "^22.10.2",
 		"astro": "^4.16.0",
 		"astro-integration-kit": "^0.17.0",
 		"tsup": "^8.3.5"
