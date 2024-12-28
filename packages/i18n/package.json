@@ -26,6 +26,14 @@
 		".": {
 			"types": "./dist/index.d.ts",
 			"default": "./dist/index.js"
+		},
+		"./types": {
+			"types": "./dist/types/index.d.ts",
+			"default": "./dist/types/index.js"
+		},
+		"./providers": {
+			"types": "./dist/providers/index.d.ts",
+			"default": "./dist/providers/index.js"
 		}
 	},
 	"files": [
@@ -46,6 +54,7 @@
 	},
 	"devDependencies": {
 		"@astro-tools/transfer-state": "workspace:*",
+    "@types/node": "^22.10.2",
 		"astro": "^4.16.0",
 		"astro-integration-kit": "^0.17.0",
 		"tsup": "^8.3.5"

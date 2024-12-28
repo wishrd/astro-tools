@@ -9,10 +9,11 @@ import { Code, Tabs, TabItem, Aside, Steps } from '@astrojs/starlight/components
 import { Example, ExamplePreview } from '@astro-tools/docs-utils/example';
 
 import setupExampleRaw from './_examples/i18n/setup.ts?raw';
-import i18nSchemaMapTranslationsRaw from '../../../../config/map-translations.mjs?raw';
-import i18nSchemaLoaderRaw from '../../../../config/i18n-schema-loader.mjs?raw';
-import enUSRaw from '../../../../i18n/en-US.json?raw';
-import mapTranslationsRaw from './_examples/i18n/map-translations.ts?raw';
+import typesProviderRaw from '../../../i18n/types-provider.mjs?raw';
+import pluralProviderRaw from '../../../i18n/plural-provider.ts?raw';
+import translationsProviderRaw from '../../../i18n/translations-provider.ts?raw';
+import enUSRaw from '../../../i18n/translations/en-US.json?raw';
+import esESRaw from '../../../i18n/translations/es-ES.json?raw';
 import useTranslationsRaw from './_examples/i18n/use-translations.ts?raw';
 import i18nExampleRaw from './_examples/i18n/Example.astro?raw';
 import i18nClientSideExampleRaw from './_examples/i18n/ClientSideExample.svelte?raw';
@@ -37,7 +38,20 @@ Variables in the translations can be typed to `number` and `string` using the fo
 Hello {name:string}! click here to get {points:number} points!
 ```
 
-<Aside type="note">We are improving the format to support plurals and more types!</Aside>
+#### Pluralization
+
+Pluralization is delegated to the `I18nPluralProvider`, so it can be customized with any behavior.
+
+The default implementation uses [`Intl.PluralRules`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules),
+in which a key with plurals is a key with an object as value that contains the keys `zero`, `one`, `two`... (as many as needed) and `other`:
+
+```json
+{
+  "zero": "There isn't any animal",
+  "one": "There is {value} animal",
+  "other": "There are {value} animals"
+}
+```
 
 ## Setup
 
@@ -52,23 +66,21 @@ For setting up the internationalization, include the integration in your Astro p
     <Code title="astro.config.mjs" code={setupExampleRaw} lang="typescript" />
 </Steps>
 
-### Loader
+For more details about the integration options, continue reading.
 
-To extract the typings properly, add the `loader` function which loads every translation from the main locale file following a specific model.
+### Types
 
+To extract the typings properly, add the `types` function which loads every translation of the base locale following a specific model.
 It is delegated to the project, allowing to store the translations in any format.
 
-For example, you can use a loader like the referenced in the setup section, in Javascript or Typescript, depending on your configuration language:
+The default implementation expects a JSON file with the base locale translations and it can be imported from `@astro-tools/i18n/types`:
 
 <Example>
   <Tabs>
     <TabItem label="@/config/i18n-schema-loader.mjs">
-      <Code code={i18nSchemaLoaderRaw} lang="javascript" />
+      <Code code={typesProviderRaw} lang="javascript" />
     </TabItem>
-    <TabItem label="./map-translations.mjs">
-      <Code code={i18nSchemaMapTranslationsRaw} lang="javascript" />
-    </TabItem>
-    <TabItem label="./i18n/en-US.json">
+    <TabItem label="./translations/en-US.json">
       <Code code={enUSRaw} lang="json" />
     </TabItem>
   </Tabs>
@@ -77,6 +89,32 @@ For example, you can use a loader like the referenced in the setup section, in J
 The result is the overload functions of the function `t`, which can be used to render translations:
 <Code title="types.d.ts" code={getTranslateTypes()} lang="typescript" />
 
+> Pluralized translations requires an additional argument `count: number`, which is used to select the proper plural.
+
+### Providers
+
+The providers allow you to configure the way of loading and parsing translations. There are several providers:
+
+- `I18nPluralProvider`: selects the proper plural from a translation for a `count: number`.
+- `I18nTranslationsProvider`: loads and parses the proper translations for a `locale: string`.
+
+The `@astro-tools/i18n/providers` sub-package provides default implementations for translations using JSON files:
+
+<Example>
+  <Tabs>
+    <TabItem label="translations-provider.ts">
+      <Code code={translationsProviderRaw} lang="typescript" />
+    </TabItem>
+    <TabItem label="plural-provider.ts">
+      <Code code={pluralProviderRaw} lang="typescript" />
+    </TabItem>
+  </Tabs>
+</Example>
+
+These files will be used to initialize the `@astro-tools:i18n` library before using it in client and server side.
+
+<Aside type="note">Take a look to the JSON files in the examples to be familiar with the expected format when using the default providers.</Aside>
+
 ## Use
 
 The integration exposes the virtual module `@astro-tools:i18n` with the required functions for managing translations.
@@ -84,27 +122,12 @@ As we do for the integration, the loading of the translation files is delegated 
 
 ### Configure
 
-Before render any translation, configure the locale, fallback locale and the translation loader using the function `i18n()`:
-
-```typescript
-const esES = { title: '¡Hola mundo!' };
-const enUS = { title: 'Hello world!' };
-
-i18n({
-  locale: 'es-ES',
-  fallbackLocale: 'en-US',
-  loader: (locale) => locale === 'es-ES' ? esES : enUS,
-});
-```
-
-It is recommended to create a wrapper with your own logic following DRY principle. For example, create a function `useTranslations`:
+Before render any translation, configure the locale and fallback locale using the function `use`.
+It is recommended to create a wrapper with your own logic following DRY principle:
 
 <Tabs>
   <TabItem label="use-translations.ts">
     <Code code={useTranslationsRaw} lang="typescript" />
-  </TabItem>
-  <TabItem label="map-translations.ts">
-    <Code code={mapTranslationsRaw} lang="typescript" />
   </TabItem>
 </Tabs>
 
@@ -121,6 +144,12 @@ If a translation does not exists in the configured `locale`, then the `fallbackL
     </TabItem>
     <TabItem label="ClientSideExample.svelte">
       <Code code={i18nClientSideExampleRaw} lang="svelte" />
+    </TabItem>
+    <TabItem label="es-ES.json">
+      <Code code={esESRaw} lang="json" />
+    </TabItem>
+    <TabItem label="en-US.json">
+      <Code code={enUSRaw} lang="json" />
     </TabItem>
   </Tabs>
   <ExamplePreview hydration="i18n-example">

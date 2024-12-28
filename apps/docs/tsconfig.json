@@ -3,7 +3,7 @@
   "compilerOptions": {
     "paths": {
       "@/components/*": ["./src/components/*"],
-      "@/config/*": ["./config/*"]
+      "@/i18n/*": ["./src/i18n/*"]
     }
   }
 }
