@@ -1,4 +1,4 @@
-import type { I18nTranslations, I18nTranslation } from '@astro-tools/i18n';
+import type { I18nTranslation, I18nTranslations } from '../core/models/i18n-translations.ts';
 
 export interface Translations {
   [key: string]: Translations | string;
