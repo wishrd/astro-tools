@@ -5,7 +5,10 @@
   },
   "rating": {
     "title": "Rate {library:string}!",
-    "stars": "This library has {stars:number} stars!",
-    "empty": "There are no votes yet!"
+    "stars": {
+      "zero": "There are no votes yet!",
+      "one": "This library has {stars:number} star!",
+      "other": "This library has {stars:number} stars!"
+    }
   }
 }

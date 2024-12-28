@@ -5,6 +5,9 @@
   },
   "rating": {
     "title": "Valora {library:string}!",
-    "stars": "Esta librería tiene {stars:number} estrellas!"
+    "stars": {
+      "one": "¡Esta librería tiene {stars:number} estrella!",
+      "other": "¡Esta librería tiene {stars:number} estrellas!"
+    }
   }
 }

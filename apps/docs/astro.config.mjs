@@ -1,3 +1,5 @@
+import { join, dirname } from 'path';
+import { fileURLToPath } from 'url';
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import svelte from '@astrojs/svelte';
@@ -9,7 +11,10 @@ import { clickClientDirective } from '@astro-tools/client-directives/click';
 import { hoverClientDirective } from '@astro-tools/client-directives/hover';
 import { timerClientDirective } from '@astro-tools/client-directives/timer';
 import { viewportClientDirective } from '@astro-tools/client-directives/viewport';
-import { i18nSchemaLoader } from './config/i18n-schema-loader.mjs';
+
+import i18nTypes from './src/i18n/types-provider.mjs';
+
+const resolve = (path) => join(dirname(fileURLToPath(import.meta.url)), path);
 
 export default defineConfig({
 	integrations: [
@@ -39,7 +44,11 @@ export default defineConfig({
     svelte(),
     reactiveTransferState(),
     i18n({
-      loader: i18nSchemaLoader('./i18n/en-US.json'),
+      types: i18nTypes,
+      providers: {
+        plural: resolve('./src/i18n/plural-provider.ts'),
+        translations: resolve('./src/i18n/translations-provider.ts'),
+      },
     }),
     onClientDirective({
       directives: [
