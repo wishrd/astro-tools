@@ -1,4 +1,4 @@
-import { readFile } from 'fs';
+import { readFile } from 'node:fs';
 
 import { mapTranslations } from '../adapters/json-to-translations.ts';
 import type { I18nTranslations } from '../core/models/i18n-translations.ts';
