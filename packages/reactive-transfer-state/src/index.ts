@@ -32,7 +32,7 @@ export const reactiveTransferState =  defineIntegration({
         'astro:config:done': ({ injectTypes }) => {
           injectTypes({
             filename: 'types.d.ts',
-            content: `declare module '@astro-tools:reactive-transfer-state' { import type { ReadableAtom } from 'nanostores'; export function withTransferState<T extends ReadableAtom<unknown>>(key: string, store: T): T; }`,
+            content: `declare module '@astro-tools:reactive-transfer-state' { import type { ReadableAtom } from 'nanostores'; import type { StateKey } from '@astro-tools:transfer-state'; export function withTransferState<T extends ReadableAtom<unknown>>(key: StateKey, store: T): T; }`,
           });
         }
       }
