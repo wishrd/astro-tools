@@ -1,5 +1,11 @@
 # @astro-tools/reactive-transfer-state
 
+## 0.2.1
+
+### Patch Changes
+
+- 5524d8d: Fix "key" argument typing of "withTransferState" function
+
 ## 0.2.0
 
 ### Minor Changes
