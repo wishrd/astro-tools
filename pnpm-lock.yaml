@@ -90,6 +90,12 @@ importers:
         specifier: ^8.3.5
         version: 8.3.5(postcss@8.4.49)(typescript@5.7.2)
 
+  packages/http-client:
+    devDependencies:
+      tsup:
+        specifier: ^8.3.5
+        version: 8.3.5(postcss@8.4.49)(typescript@5.7.2)
+
   packages/i18n:
     dependencies:
       ts-deepmerge:
