@@ -65,6 +65,14 @@
 		"./viewport/directive": {
 			"types": "./dist/viewport/directive.d.ts",
 			"default": "./dist/viewport/directive.js"
+		},
+		"./media": {
+			"types": "./dist/media/integration.d.ts",
+			"default": "./dist/media/integration.js"
+		},
+		"./media/directive": {
+			"types": "./dist/media/directive.d.ts",
+			"default": "./dist/media/directive.js"
 		}
 	},
 	"files": [

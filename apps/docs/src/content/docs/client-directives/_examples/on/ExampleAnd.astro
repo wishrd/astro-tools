@@ -1,0 +1,10 @@
+---
+import { Square } from '@astro-tools/docs-utils/components';
+
+interface Props {
+  id: string;
+}
+
+const { id } = Astro.props;
+---
+<Square {id} text="Resize me!" client:on="(media (max-width: 640px)) and (timer 3000)" />

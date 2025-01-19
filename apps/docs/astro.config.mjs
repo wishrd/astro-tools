@@ -57,6 +57,7 @@ export default defineConfig({
         { name: 'hover', entrypoint: '@astro-tools/client-directives/hover/directive' },
         { name: 'timer', entrypoint: '@astro-tools/client-directives/timer/directive' },
         { name: 'viewport', entrypoint: '@astro-tools/client-directives/viewport/directive' },
+        { name: 'media', entrypoint: '@astro-tools/client-directives/media/directive' },
       ]
     }),
     eventClientDirective(),

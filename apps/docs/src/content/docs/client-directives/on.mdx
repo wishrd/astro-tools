@@ -11,10 +11,12 @@ sidebar:
 import { Code, Tabs, TabItem, Steps, Aside } from '@astrojs/starlight/components';
 import { Example, ExamplePreview } from '@astro-tools/docs-utils/example';
 import ClientDirectiveOnUseExample from './_examples/on/Example.astro';
+import ClientDirectiveOnAndUseExample from './_examples/on/ExampleAnd.astro';
 
 import squareCodeExample from '@astro-tools/docs-utils/components/Square.svelte?raw';
 import clientDirectiveOnSetupExampleRaw from './_examples/on/setup.ts?raw';
 import clientDirectiveOnUseExampleRaw from './_examples/on/Example.astro?raw';
+import clientDirectiveOnAndUseExampleRaw from './_examples/on/ExampleAnd.astro?raw';
 
 The `client:on` directive allows you to combine client directives with an **OR** condition using a specific syntax: when any of the conditions meet, the component will be hydrated.
 
@@ -58,5 +60,30 @@ The options type is `string` and parsing them is delegated to each directive.
   </Tabs>
   <ExamplePreview hydration="example">
     <ClientDirectiveOnUseExample id="example" />
+  </ExamplePreview>
+</Example>
+
+### AND conditions
+
+In some use cases, you would want to meet all conditions before hydrating. For example, hydrating on visible but on a specific viewport size.
+
+For this, wrap each group of directives between parenthesis `()` and join them with the `and` word:
+```html
+<Example client:on="(media (max-width: 740px)) and (click; timer 3000)" />
+```
+
+In the following example, we want to hydrate in mobile viewport AND after clicking:
+
+<Example>
+  <Tabs>
+    <TabItem label="Example.astro">
+      <Code code={clientDirectiveOnAndUseExampleRaw} lang="astro" />
+    </TabItem>
+    <TabItem label="Square.svelte">
+      <Code code={squareCodeExample} lang="svelte" />
+    </TabItem>
+  </Tabs>
+  <ExamplePreview hydration="example-and">
+    <ClientDirectiveOnAndUseExample id="example-and" />
   </ExamplePreview>
 </Example>
