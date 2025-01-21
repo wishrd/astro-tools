@@ -38,7 +38,7 @@
 	},
 	"type": "module",
 	"peerDependencies": {
-		"@astro-tools/transfer-state": "^0.2.2",
+		"@astro-tools/transfer-state": "^0.2.3",
 		"astro": "^4.16.0",
 		"astro-integration-kit": "^0.17.0",
 		"nanostores": "^0.11.3"
