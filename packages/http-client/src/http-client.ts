@@ -9,7 +9,7 @@ async function parseBody<T, K>(response: Response, adapter?: HttpClientBodyAdapt
   }
 
   if (!response.body || !response.headers.has('Content-Type') || !response.headers.get('Content-Type')?.includes('application/json')) {
-    throw new Error(`Cannot parse body, expecting body with Content-Type application/json`);
+    throw new Error(`Cannot parse body, expecting body with Content-Type header value application/json`);
   }
 
   return adapter(await response.json());
@@ -25,28 +25,25 @@ export function httpClient(initOptions: HttpClientInitOptions): HttpClient {
       search.forEach((value, key) => url.searchParams.append(key, value));
     }
 
-    const request = new Request(url, options.requestOptions);
-
-    initOptions.beforeRequest?.(request);
-
-    const finalRequest = new Request(request, {
-      signal: options.timeout ? AbortSignal.timeout(options.timeout) : null,
+    const request = new Request(url, {
+      ...options.requestOptions,
+      signal: options.requestOptions?.signal ?? (options.timeout ? AbortSignal.timeout(options.timeout) : null),
     });
 
+    initOptions.beforeRequest?.(request, options.requestOptions);
+
     try {
-      let response = await fetch(finalRequest);
-      response = initOptions.afterResponse?.(response, finalRequest) || response;
+      let response = await fetch(request);
+      response = initOptions.afterResponse?.(response, request, options.requestOptions) || response;
 
-      const ok = response.ok;
-
-      if (ok) {
+      if (response.ok) {
         const body = await parseBody(response, options.bodyAdapter);
-        return { status: HttpClientResponseStatus.RESPONSE_SUCCESS, request: finalRequest, response, statusCode: response.status, body };
+        return { status: HttpClientResponseStatus.RESPONSE_SUCCESS, request, response, statusCode: response.status, body };
       }
 
-      return { status: HttpClientResponseStatus.RESPONSE_ERROR, request: finalRequest, response, statusCode: response.status };
+      return { status: HttpClientResponseStatus.RESPONSE_ERROR, request, response, statusCode: response.status };
     } catch (error) {
-      return { status: HttpClientResponseStatus.ERROR, request: finalRequest, error: error instanceof Error ? error : null };
+      return { status: HttpClientResponseStatus.ERROR, request, error: error instanceof Error ? error : null };
     }
   };
 }
