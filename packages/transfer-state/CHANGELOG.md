@@ -1,5 +1,11 @@
 # @astro-tools/transfer-state
 
+## 0.2.3
+
+### Patch Changes
+
+- 4766e6c: Reject when any error ocurrs in the middleware
+
 ## 0.2.2
 
 ### Patch Changes
