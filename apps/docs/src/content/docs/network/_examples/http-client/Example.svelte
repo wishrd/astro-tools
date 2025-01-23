@@ -3,6 +3,7 @@
   import { Output } from '@astro-tools/docs-utils/components';
 
   import { httpClient } from '@astro-tools/http-client';
+  import { exampleBodyAdapter } from './example-body-adapter';
 
   const publicAPIClient = httpClient({
     baseUrl: () => location.origin + '/api',
@@ -11,17 +12,19 @@
     },
     afterResponse: (response) => {
       console.debug('afterResponse', response);
+      return response;
     }
   });
 
-  async function makeRequest(path: string): void {
+  async function makeRequest(path: string): Promise<void> {
     const response = await publicAPIClient({
       path,
       requestOptions: {
         headers: {
           'X-Test': 'test',
         }
-      }
+      },
+      bodyAdapter: exampleBodyAdapter,
     });
 
     console.debug('HttpClientResponse', response);

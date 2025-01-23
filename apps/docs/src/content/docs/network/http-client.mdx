@@ -7,6 +7,9 @@ import { Code, Tabs, TabItem, Aside, Steps } from '@astrojs/starlight/components
 import { Example, ExamplePreview } from '@astro-tools/docs-utils/example';
 
 import httpClientExampleRaw from './_examples/http-client/Example.svelte?raw';
+import exampleModelRaw from './_examples/http-client/example.ts?raw';
+import exampleResponseModelRaw from './_examples/http-client/example-response.ts?raw';
+import exampleBodyAdapterRaw from './_examples/http-client/example-body-adapter.ts?raw';
 
 import HttpClientExample from './_examples/http-client/Example.svelte';
 
@@ -72,6 +75,15 @@ This example is using the `httpClient` to create an instance of `HttpClient` and
   <Tabs>
     <TabItem label="Example.svelte">
       <Code code={httpClientExampleRaw} lang="svelte" />
+    </TabItem>
+    <TabItem label="example-body-adapter.ts">
+      <Code code={exampleBodyAdapterRaw} lang="typescript" />
+    </TabItem>
+    <TabItem label="example-response.ts">
+      <Code code={exampleResponseModelRaw} lang="typescript" />
+    </TabItem>
+    <TabItem label="example.ts">
+      <Code code={exampleModelRaw} lang="typescript" />
     </TabItem>
   </Tabs>
   <ExamplePreview>
