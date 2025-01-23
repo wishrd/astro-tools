@@ -35,6 +35,10 @@ export default defineConfig({
         {
           label: 'Internationalization',
 					autogenerate: { directory: 'internationalization' },
+        },
+        {
+          label: 'Networking',
+					autogenerate: { directory: 'networking' },
         }
 			],
       customCss: [

@@ -3,6 +3,16 @@ import type { HttpClientBodyAdapter, HttpClientOptions } from './models/http-cli
 import type { HttpClient } from './models/http-client.ts';
 import { type HttpClientResponse, HttpClientResponseStatus } from './models/http-response.ts';
 
+function mapBody(requestInit: RequestInit): BodyInit | null {
+  const headers = new Headers(requestInit.headers);
+
+  if (headers.get('Content-Type') === 'application/json' && requestInit.body) {
+    return JSON.stringify(requestInit.body);
+  }
+
+  return null;
+}
+
 async function parseBody<T, K>(response: Response, adapter?: HttpClientBodyAdapter<T, K>): Promise<K | void> {
   if (!adapter) {
     return;
@@ -27,6 +37,7 @@ export function httpClient(initOptions: HttpClientInitOptions): HttpClient {
 
     const request = new Request(url, {
       ...options.requestOptions,
+      body: options.requestOptions?.body ? mapBody(options.requestOptions) : null,
       signal: options.requestOptions?.signal ?? (options.timeout ? AbortSignal.timeout(options.timeout) : null),
     });
 
