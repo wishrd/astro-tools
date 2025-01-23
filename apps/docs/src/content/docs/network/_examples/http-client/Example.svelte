@@ -5,7 +5,7 @@
   import { httpClient } from '@astro-tools/http-client';
 
   const publicAPIClient = httpClient({
-    baseUrl: () => location.origin + '/public',
+    baseUrl: () => location.origin + '/api',
     beforeRequest: (request, requestOptions) => {
       console.debug('beforeRequest', request, requestOptions);
     },
