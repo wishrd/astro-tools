@@ -1,0 +1,150 @@
+---
+title: Http Client
+description: A simple http client using fetch that provides interceptors, timeout and isolation per instance
+---
+import { Code, Tabs, TabItem, Aside, Steps } from '@astrojs/starlight/components';
+
+import { Example, ExamplePreview } from '@astro-tools/docs-utils/example';
+
+import httpClientExampleRaw from './_examples/http-client/Example.svelte?raw';
+import exampleModelRaw from './_examples/http-client/example.ts?raw';
+import exampleResponseModelRaw from './_examples/http-client/example-response.ts?raw';
+import exampleBodyAdapterRaw from './_examples/http-client/example-body-adapter.ts?raw';
+
+import HttpClientExample from './_examples/http-client/Example.svelte';
+
+The HttpClient library provides an factory for getting an http client based that uses `fetch` under the hood and provides extra features like hooks, timeouts and automatic mapping and parsing for the JSON content type.
+
+Also, this http client captures any error and returns a response based on the response status with type inference:
+- `HttpClientSuccessResponse<T>`: when the response has a success status code.
+- `HttpClientErrorResponse`: when the response has a error status code.
+- `HttpClientError`: when the request failed for any reason.
+
+All of these types are combined under the `HttpClientResponse<T>` type.
+
+## Setup
+
+Install the library using your preferred package manager:
+```
+npm i -D @astro-tools/http-client
+```
+
+## Use
+
+For getting an instance of `HttpClient`, just use the `httpClient` factory with the desired options:
+```typescript
+import { httpClient } from '@astro-tools/http-client';
+
+const myHttpClient = httpClient({
+  baseUrl: 'https//my-api-server.com',
+});
+```
+
+then use the generated client to make requests to the baseUrl:
+
+```typescript
+import { HttpClientResponseStatus } from '@astro-tools/http-client';
+
+const response = await myHttpClient({
+  path: '/example',
+  bodyAdapter: (body: MyExampleResponse) => mapMyExample(body),
+});
+
+if (response.status === HttpClientResponseStatus.RESPONSE_SUCCESS) {
+  console.info(response.body);
+}
+```
+
+Alternatively, the `throwOnError` helper can be used to throw an Error if the request result is an error. The type inference will work as usual:
+```typescript
+import { HttpClientResponseStatus, throwOnError } from '@astro-tools/http-client';
+
+const response = throwOnError(await myHttpClient({
+  path: '/example',
+  bodyAdapter: (body: MyExampleResponse) => mapMyExample(body),
+}));
+
+console.info(response.body);
+```
+
+## Example
+
+This example is using the `httpClient` to create an instance of `HttpClient` and make requests trying to get the example data:
+
+<Example>
+  <Tabs>
+    <TabItem label="Example.svelte">
+      <Code code={httpClientExampleRaw} lang="svelte" />
+    </TabItem>
+    <TabItem label="example-body-adapter.ts">
+      <Code code={exampleBodyAdapterRaw} lang="typescript" />
+    </TabItem>
+    <TabItem label="example-response.ts">
+      <Code code={exampleResponseModelRaw} lang="typescript" />
+    </TabItem>
+    <TabItem label="example.ts">
+      <Code code={exampleModelRaw} lang="typescript" />
+    </TabItem>
+  </Tabs>
+  <ExamplePreview>
+    <HttpClientExample client:idle />
+  </ExamplePreview>
+</Example>
+
+## Reference
+
+### httpClient (factory)
+
+The `httpClient` function is a factory that creates `HttpClient` instances with the desired options that will be applied to any request made by the instance created.
+There are several options defined in the interface `HttpClientInitOptions`:
+
+#### baseUrl
+`baseUrl: (() => string) | string`
+
+Defines the base url to use in every request.
+
+#### beforeRequest
+`beforeRequest?: (request: Request, requestOptions?: RequestInit) => void`
+
+Defines a hook that will be executed before making the request. The request can be modified as desired and the initial `requestOptions` can be used to make decisions.
+
+#### afterResponse
+`afterResponse?: (response: Response, request: Request, requestOptions?: RequestInit) => Response`
+
+Defines a hook that will be executed immediately after receiving the response. A new response can be returned with any desired modification.
+
+<Aside type="caution">The automatic body parsing for JSON responses will be done AFTER this hook.</Aside>
+
+### HttpClient (instance)
+
+The `httpClient` factory returns a `HttpClient` instance for making the requests and it has several options to configure the request properly defined in the `HttpClientOptions<T, K>` interface.
+
+#### path
+`path: string`
+
+Defines that request URL path to append to the `baseUrl`.
+
+#### search
+`search?: string[][] | Record<string, string> | string | URLSearchParams`
+
+It defines the query parameters that will be used to build the request URL.
+
+#### timeout
+`timeout?: number`
+
+The request will be cancelled after the indicated amount of milliseconds. It uses [`AbortController`](https://developer.mozilla.org/en-US/docs/Web/API/AbortController) under the hood.
+
+#### requestOptions
+`requestOptions?: RequestInit`
+
+It is the default `RequestInit` dictionary that `fetch` uses. For more details, go to the [official documentation](https://developer.mozilla.org/en-US/docs/Web/API/RequestInit).
+
+#### bodyAdapter
+`bodyAdapter?: <T, K>(body: T) => K;`
+
+If specified, the `HttpClientSuccessResponse<T>` type will automatically type the response with the returned type of the `bodyAdapter` function.
+
+### throwOnError
+
+The `throwOnError` can be used to throw an `Error` with the property `cause: HttpClientErrorResponse | HttpClientError`.
+It can be useful is some cases in which the application has a global error handler and it is not needed a fine grain management of the request result.

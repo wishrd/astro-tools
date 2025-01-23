@@ -1,0 +1,42 @@
+{
+	"name": "@astro-tools/http-client",
+	"version": "0.0.0",
+	"description": "Tiny http library wrapping the Fetch API which adds some features",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/wishrd/astro-tools",
+		"directory": "packages/http"
+	},
+	"homepage": "https://astro-tools.pages.dev",
+	"keywords": [
+		"http",
+    "http-client",
+    "fetch"
+	],
+	"author": {
+		"name": "wishrd"
+	},
+	"publishConfig": {
+		"access": "public"
+	},
+	"sideEffects": false,
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"default": "./dist/index.js"
+		}
+	},
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"dev": "tsup --watch",
+		"build": "tsup"
+	},
+	"type": "module",
+  "peerDependencies": {},
+	"devDependencies": {
+		"tsup": "^8.3.5"
+	}
+}

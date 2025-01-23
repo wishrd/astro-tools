@@ -33,6 +33,9 @@ importers:
       '@astro-tools/docs-utils':
         specifier: workspace:*
         version: link:../../packages/docs-utils
+      '@astro-tools/http-client':
+        specifier: workspace:*
+        version: link:../../packages/http-client
       '@astro-tools/i18n':
         specifier: workspace:*
         version: link:../../packages/i18n
@@ -86,6 +89,12 @@ importers:
       sass-embedded:
         specifier: ^1.82.0
         version: 1.82.0
+      tsup:
+        specifier: ^8.3.5
+        version: 8.3.5(postcss@8.4.49)(typescript@5.7.2)
+
+  packages/http-client:
+    devDependencies:
       tsup:
         specifier: ^8.3.5
         version: 8.3.5(postcss@8.4.49)(typescript@5.7.2)
