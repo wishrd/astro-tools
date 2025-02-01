@@ -1,0 +1,13 @@
+---
+import { PageNotFoundError } from '@astro-tools/error-handler/errors';
+
+throw new PageNotFoundError();
+---
+<html>
+  <head>
+    <title>Should not render</title>
+  </head>
+  <body>
+    <p>This page is unavailable and it should not be rendered. Instead, the 500 page will be rendered.</p>
+  </body>
+</html>

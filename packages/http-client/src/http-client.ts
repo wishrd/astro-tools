@@ -54,7 +54,7 @@ export function httpClient(initOptions: HttpClientInitOptions): HttpClient {
 
       return { status: HttpClientResponseStatus.RESPONSE_ERROR, request, response, statusCode: response.status };
     } catch (error) {
-      return { status: HttpClientResponseStatus.ERROR, request, error: error instanceof Error ? error : null };
+      return { status: HttpClientResponseStatus.REQUEST_ERROR, request, error: error instanceof Error ? error : null };
     }
   };
 }

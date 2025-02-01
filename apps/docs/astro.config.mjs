@@ -11,6 +11,7 @@ import { clickClientDirective } from '@astro-tools/client-directives/click';
 import { hoverClientDirective } from '@astro-tools/client-directives/hover';
 import { timerClientDirective } from '@astro-tools/client-directives/timer';
 import { viewportClientDirective } from '@astro-tools/client-directives/viewport';
+import { errorHandler } from '@astro-tools/error-handler';
 
 import i18nTypes from './src/i18n/types-provider.mjs';
 
@@ -68,5 +69,6 @@ export default defineConfig({
     hoverClientDirective(),
     timerClientDirective(),
     viewportClientDirective(),
+    errorHandler(),
 	],
 });
