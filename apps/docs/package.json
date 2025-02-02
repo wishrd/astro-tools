@@ -23,7 +23,6 @@
     "@astro-tools/http-client": "workspace:*",
     "@astro-tools/reactive-transfer-state": "workspace:*",
     "@astro-tools/transfer-state": "workspace:*",
-    "@astro-tools/error-handler": "workspace:*",
     "astro-integration-kit": "^0.17.0",
     "nanostores": "^0.11.3",
     "svelte": "^5.8.0",

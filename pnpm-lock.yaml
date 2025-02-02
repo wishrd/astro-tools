@@ -33,9 +33,6 @@ importers:
       '@astro-tools/docs-utils':
         specifier: workspace:*
         version: link:../../packages/docs-utils
-      '@astro-tools/error-handler':
-        specifier: workspace:*
-        version: link:../../packages/error-handler
       '@astro-tools/http-client':
         specifier: workspace:*
         version: link:../../packages/http-client
@@ -92,18 +89,6 @@ importers:
       sass-embedded:
         specifier: ^1.82.0
         version: 1.82.0
-      tsup:
-        specifier: ^8.3.5
-        version: 8.3.5(postcss@8.4.49)(typescript@5.7.2)
-
-  packages/error-handler:
-    devDependencies:
-      astro:
-        specifier: ^4.16.0
-        version: 4.16.17(@types/node@22.10.2)(rollup@4.28.0)(sass-embedded@1.82.0)(sass@1.82.0)(typescript@5.7.2)
-      astro-integration-kit:
-        specifier: ^0.17.0
-        version: 0.17.0(astro@4.16.17(@types/node@22.10.2)(rollup@4.28.0)(sass-embedded@1.82.0)(sass@1.82.0)(typescript@5.7.2))
       tsup:
         specifier: ^8.3.5
         version: 8.3.5(postcss@8.4.49)(typescript@5.7.2)
