@@ -13,7 +13,7 @@ import exampleBodyAdapterRaw from './_examples/http-client/example-body-adapter.
 
 import HttpClientExample from './_examples/http-client/Example.svelte';
 
-The HttpClient library provides an factory for getting an http client based that uses `fetch` under the hood and provides extra features like hooks, timeouts and automatic mapping and parsing for the JSON content type.
+The HttpClient library provides a factory for creating an http client that uses `fetch` under the hood and provides extra features like hooks, timeouts and automatic mapping and parsing for the JSON content type.
 
 Also, this http client captures any error and returns a response based on the response status with type inference:
 - `HttpClientSuccessResponse<T>`: when the response has a success status code.
