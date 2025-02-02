@@ -1,10 +1,10 @@
 export enum HttpClientResponseStatus {
   RESPONSE_SUCCESS = 'response-success',
   RESPONSE_ERROR = 'response-error',
-  ERROR = 'error',
+  REQUEST_ERROR = 'error',
 }
 
-export interface HttpClientSuccessResponse<T> {
+export interface HttpClientResponseSuccess<T> {
   status: HttpClientResponseStatus.RESPONSE_SUCCESS;
   statusCode: number;
   request: Request;
@@ -12,17 +12,17 @@ export interface HttpClientSuccessResponse<T> {
   body: T;
 }
 
-export interface HttpClientErrorResponse {
+export interface HttpClientResponseError {
   status: HttpClientResponseStatus.RESPONSE_ERROR;
   statusCode: number;
   request: Request;
   response: Response;
 }
 
-export interface HttpClientError {
-  status: HttpClientResponseStatus.ERROR;
+export interface HttpClientRequestError {
+  status: HttpClientResponseStatus.REQUEST_ERROR;
   request: Request;
   error: Error | null;
 }
 
-export type HttpClientResponse<T> = HttpClientSuccessResponse<T> | HttpClientErrorResponse | HttpClientError;
+export type HttpClientResponse<T> = HttpClientResponseSuccess<T> | HttpClientResponseError | HttpClientRequestError;

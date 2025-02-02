@@ -39,7 +39,7 @@ export default defineConfig({
         {
           label: 'Network',
 					autogenerate: { directory: 'network' },
-        }
+        },
 			],
       customCss: [
         './src/styles/theme.scss',
