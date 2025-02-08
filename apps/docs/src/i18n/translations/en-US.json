@@ -1,14 +1,10 @@
 {
-  "home": {
-    "title": "Sample page",
-    "description": "{companyName} sample page built by {ownerName}!"
-  },
-  "rating": {
-    "title": "Rate {library:string}!",
-    "stars": {
-      "zero": "There are no votes yet!",
-      "one": "This library has {stars:number} star!",
-      "other": "This library has {stars:number} stars!"
-    }
+  "home.title": "Sample page",
+  "home.description": "{companyName} sample page built by {ownerName}!",
+  "rating.title": "Rate {library:string}!",
+  "rating.stars": {
+    "zero": "There are no votes yet!",
+    "one": "This library has {stars:number} star!",
+    "other": "This library has {stars:number} stars!"
   }
 }

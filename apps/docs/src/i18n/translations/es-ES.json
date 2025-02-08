@@ -1,13 +1,9 @@
 {
-  "home": {
-    "title": "Página de ejemplo",
-    "description": "Página de ejemplo de {companyName} construida por {ownerName}"
-  },
-  "rating": {
-    "title": "Valora {library:string}!",
-    "stars": {
-      "one": "¡Esta librería tiene {stars:number} estrella!",
-      "other": "¡Esta librería tiene {stars:number} estrellas!"
-    }
+  "home.title": "Página de ejemplo",
+  "home.description": "Página de ejemplo de {companyName} construida por {ownerName}",
+  "rating.title": "Valora {library:string}!",
+  "rating.stars": {
+    "one": "¡Esta librería tiene {stars:number} estrella!",
+    "other": "¡Esta librería tiene {stars:number} estrellas!"
   }
 }

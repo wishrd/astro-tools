@@ -12,9 +12,9 @@ import { hoverClientDirective } from '@astro-tools/client-directives/hover';
 import { timerClientDirective } from '@astro-tools/client-directives/timer';
 import { viewportClientDirective } from '@astro-tools/client-directives/viewport';
 
-import i18nTypes from './src/i18n/types-provider.mjs';
+import { typesLoader as i18nTypesLoader } from './src/i18n/types-loader.ts';
 
-const resolve = (path) => join(dirname(fileURLToPath(import.meta.url)), path);
+const resolve = (path: string) => join(dirname(fileURLToPath(import.meta.url)), path);
 
 export default defineConfig({
 	integrations: [
@@ -48,11 +48,11 @@ export default defineConfig({
     svelte(),
     reactiveTransferState(),
     i18n({
-      types: i18nTypes,
+      types: i18nTypesLoader(),
       providers: {
         plural: resolve('./src/i18n/plural-provider.ts'),
         translations: resolve('./src/i18n/translations-provider.ts'),
-      },
+      }
     }),
     onClientDirective({
       directives: [

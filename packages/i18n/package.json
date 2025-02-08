@@ -8,7 +8,7 @@
 		"url": "https://github.com/wishrd/astro-tools",
 		"directory": "packages/i18n"
 	},
-	"homepage": "https://astro-tools.pages.dev",
+	"homepage": "https://astro-tools.pages.dev/internationalization/i18n/",
 	"keywords": [
 		"astro",
 		"withastro",
@@ -45,11 +45,11 @@
 	},
 	"type": "module",
 	"peerDependencies": {
-		"@astro-tools/transfer-state": "^0.2.3",
-		"astro": "^4.16.0",
-		"astro-integration-kit": "^0.17.0"
+		"astro": "^4.16.0"
 	},
 	"dependencies": {
+		"@astro-tools/transfer-state": "^0.2.3",
+		"astro-integration-kit": "^0.17.0",
 		"ts-deepmerge": "^7.0.2"
 	},
 	"devDependencies": {

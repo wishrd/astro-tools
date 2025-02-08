@@ -1,11 +1,16 @@
-import type { I18nPlural } from '../../core/models/i18n-translations.ts';
+import type { I18nTranslation } from '../../models/i18n-translations.ts';
 import { getInterpolationValues } from './get-interpolation-values.ts';
 
-export function getTranslationOverload(translation: { key: string, value: string | I18nPlural }) {
+export interface I18nTranslationPair {
+  key: string;
+  value: I18nTranslation;
+};
+
+export function getTranslationOverload({ key, value }: I18nTranslationPair) {
   let interpolationValues: Array<{ key: string, type: string }>;
   let isPlural = false;
 
-  const translationValue = translation.value;
+  const translationValue = value;
   if (typeof translationValue === 'string') {
     interpolationValues = getInterpolationValues(translationValue);
   } else {
@@ -30,5 +35,5 @@ export function getTranslationOverload(translation: { key: string, value: string
     valuesArgument = `, values: { ${interpolationValues.map(({ key, type }) => `${key}: ${type}`).join(', ')} }`;
   }
 
-  return `export function t(key: '${translation.key}'${pluralArgument}${valuesArgument});`;
+  return `export function t(key: '${key}'${pluralArgument}${valuesArgument}): string;`;
 }
