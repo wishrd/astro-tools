@@ -1,4 +1,4 @@
-import type { I18nTranslations } from '../../core/models/i18n-translations.ts';
+import type { I18nTranslations } from '../../models/i18n-translations.ts';
 import { getTranslationOverload } from './get-translation-overload.ts';
 
 export function getTranslateFn(translations: I18nTranslations): string {

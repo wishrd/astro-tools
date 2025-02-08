@@ -9,12 +9,12 @@ import { Code, Tabs, TabItem, Aside, Steps } from '@astrojs/starlight/components
 import { Example, ExamplePreview } from '@astro-tools/docs-utils/example';
 
 import setupExampleRaw from './_examples/i18n/setup.ts?raw';
-import typesProviderRaw from '../../../i18n/types-provider.mjs?raw';
+import typesLoaderRaw from '../../../i18n/types-loader.ts?raw';
 import pluralProviderRaw from '../../../i18n/plural-provider.ts?raw';
 import translationsProviderRaw from '../../../i18n/translations-provider.ts?raw';
+import useTranslationsRaw from '../../../i18n/use-translations.ts?raw';
 import enUSRaw from '../../../i18n/translations/en-US.json?raw';
 import esESRaw from '../../../i18n/translations/es-ES.json?raw';
-import useTranslationsRaw from './_examples/i18n/use-translations.ts?raw';
 import i18nExampleRaw from './_examples/i18n/Example.astro?raw';
 import i18nClientSideExampleRaw from './_examples/i18n/ClientSideExample.svelte?raw';
 
@@ -26,30 +26,41 @@ The i18n integration provides runtime translations while keeps type-checking, pr
 It is intended to be used for projects with a large number of languages or locales and websites with Astro Islands that require some translations.
 For static or small projects, I'd recommend using the official [Astro i18n](https://docs.astro.build/en/guides/internationalization/) or any other existing type-safe libraries. In any case, give it a try!
 
-## Format
+> This package uses [`@astro-tools/transfer-state`](http://localhost:4321/state-management/transfer-state/) for managing the state.
 
-The `key` of the translation can be any string in any format. The supported format for the translation is a `string` with interpolation values surrounded by `{}`, like the following example:
-```text
-Hello {name}!
+## Model
+
+The model managed by the integration and the library is an object of type `I18nTranslations`. This object must be serializable and it will be transferred to the client.
+
+### Translations
+
+The `key` of the translation must be type `string`. The supported types for the translation value is a `string` or `Record<string, string>` (plurals only) with interpolation values surrounded by `{}`, like the following example:
+```json
+{
+  "hello": "Hello {name}!"
+}
 ```
 
 Variables in the translations can be typed to `number` and `string` using the following format:
+```json
+{
+  "hello": "Hello {name:string}! click here to get {points:number} points!"
+}
 ```
-Hello {name:string}! click here to get {points:number} points!
-```
 
-#### Pluralization
+### Plurals
 
-Pluralization is delegated to the `I18nPluralProvider`, so it can be customized with any behavior.
+A plural is a `Record<string, string>` in which the keys are each plural variant with the `string` value following the same format as any other non-plural translation.
 
-The default implementation uses [`Intl.PluralRules`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules),
-in which a key with plurals is a key with an object as value that contains the keys `zero`, `one`, `two`... (as many as needed) and `other`:
+For example, a plural translation compatible with [`Intl.PluralRules`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules) could be:
 
 ```json
 {
-  "zero": "There isn't any animal",
-  "one": "There is {value} animal",
-  "other": "There are {value} animals"
+  "animals": {
+    "zero": "There isn't any animal",
+    "one": "There is {value} animal",
+    "other": "There are {value} animals"
+  }
 }
 ```
 
@@ -60,27 +71,24 @@ For setting up the internationalization, include the integration in your Astro p
 <Steps>
 1.  Install the library and its dependencies using your preferred package manager:
     ```
-    npm i -D @astro-tools/i18n @astro-tools/transfer-state astro-integration-kit
+    npm i -D @astro-tools/i18n
     ```
 2.  Add the integration to your project configuration:
-    <Code title="astro.config.mjs" code={setupExampleRaw} lang="typescript" />
+    <Code title="astro.config.ts" code={setupExampleRaw} lang="typescript" />
 </Steps>
 
 For more details about the integration options, continue reading.
 
 ### Types
 
-To extract the typings properly, add the `types` function which loads every translation of the base locale following a specific model.
-It is delegated to the project, allowing to store the translations in any format.
-
-The default implementation expects a JSON file with the base locale translations and it can be imported from `@astro-tools/i18n/types`:
+To extract the typings properly, define the `types` function which should return an object of type `I18nTranslations`:
 
 <Example>
   <Tabs>
-    <TabItem label="./src/i18n/types-provider.mjs">
-      <Code code={typesProviderRaw} lang="javascript" />
+    <TabItem label="types-provider.ts">
+      <Code code={typesLoaderRaw} lang="javascript" />
     </TabItem>
-    <TabItem label="./translations/en-US.json">
+    <TabItem label="en-US.json">
       <Code code={enUSRaw} lang="json" />
     </TabItem>
   </Tabs>
@@ -89,40 +97,48 @@ The default implementation expects a JSON file with the base locale translations
 The result is the overload functions of the function `t`, which can be used to render translations:
 <Code title="types.d.ts" code={getTranslateTypes()} lang="typescript" />
 
-> Pluralized translations requires an additional argument `count: number`, which is used to select the proper plural.
+> Pluralized translations require an additional argument `count: number`, which is used to select the proper plural.
 
 ### Providers
 
-The providers allow you to configure the way of loading and parsing translations. There are several providers:
+The providers allow to configure the behaviors of the library in runtime. For example, a provider could execute a block of code for the server and other block for the client.
 
-- `I18nPluralProvider`: selects the proper plural from a translation for a `count: number`.
-- `I18nTranslationsProvider`: loads and parses the proper translations for a `locale: string`.
+The implementation is delegated to the project but the sub-package `@astro-tools/i18n/providers` provides default providers that should be enough for simple use cases.
 
-The `@astro-tools/i18n/providers` sub-package provides default implementations for translations using JSON files:
+#### `I18nTranslationsProvider`
+
+This provider loads the proper translations for a `locale: string`:
 
 <Example>
   <Tabs>
     <TabItem label="translations-provider.ts">
       <Code code={translationsProviderRaw} lang="typescript" />
     </TabItem>
+  </Tabs>
+</Example>
+
+#### `I18nPluralProvider`
+
+This provider selects the proper plural from a translation using the `count: number` argument.
+
+The default provider uses [`Intl.PluralRules`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules) for selecting the plural:
+<Example>
+  <Tabs>
     <TabItem label="plural-provider.ts">
       <Code code={pluralProviderRaw} lang="typescript" />
     </TabItem>
   </Tabs>
 </Example>
 
-These files will be used to initialize the `@astro-tools:i18n` library before using it in client and server side.
-
-<Aside type="note">Take a look to the JSON files in the examples to be familiar with the expected format when using the default providers.</Aside>
+<Aside type="note">Take a look to the JSON files in the examples to be familiar with the expected format when using the default providers. In any case, you can implement your own providers.</Aside>
 
 ## Use
 
 The integration exposes the virtual module `@astro-tools:i18n` with the required functions for managing translations.
-As we do for the integration, the loading of the translation files is delegated to the project.
 
 ### Configure
 
-Before render any translation, configure the locale and fallback locale using the function `use`.
+Before render any translation, configure the locale and fallback locale using the function `use(options: I18nUseOptions): Promise<void>`.
 It is recommended to create a wrapper with your own logic following DRY principle:
 
 <Tabs>
@@ -140,7 +156,7 @@ If a translation does not exists in the configured `locale`, then the `fallbackL
 <Example>
   <Tabs>
     <TabItem label="Example.astro">
-      <Code code={i18nExampleRaw} lang="astro" />
+      <Code code={i18nExampleRaw.replace('../../../../../i18n', '@/i18n')} lang="astro" />
     </TabItem>
     <TabItem label="ClientSideExample.svelte">
       <Code code={i18nClientSideExampleRaw} lang="svelte" />

@@ -1,2 +1,1 @@
-export * from './plural.ts';
-export * from './translations.ts';
+export * from './plural-provider-factory.ts';
