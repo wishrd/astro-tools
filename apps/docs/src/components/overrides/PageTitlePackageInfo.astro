@@ -20,9 +20,9 @@ const changelogUrl = `${repository.url}/tree/main/${repository.directory}/CHANGE
 const npmUrl = `https://npmjs.com/package/${name}`;
 ---
 <div class="package-info">
-  <a class="package-info-item" href={npmUrl}><Icon name="seti:npm" size="24px" />v{version}</a>
-  <a class="package-info-item" href={githubUrl}><Icon name="github" size="16px" />Github</a>
-  <a class="package-info-item" href={changelogUrl}><Icon name="list-format" size="16px" />Changelog</a>
+  <a class="package-info-item" href={npmUrl} target="_blank"><Icon name="seti:npm" size="24px" />v{version}</a>
+  <a class="package-info-item" href={githubUrl} target="_blank"><Icon name="github" size="16px" />Github</a>
+  <a class="package-info-item" href={changelogUrl} target="_blank"><Icon name="list-format" size="16px" />Changelog</a>
 </div>
 
 <style>
