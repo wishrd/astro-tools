@@ -5,6 +5,7 @@ description: State integration isolated by request that is transferred from serv
 import { Code, Tabs, TabItem, Aside, Steps } from '@astrojs/starlight/components';
 
 import { Example, ExamplePreview } from '@astro-tools/docs-utils/example';
+import { BetaAdvice } from '@astro-tools/docs-utils/components';
 
 import TransferStateExample from './_examples/reactive-transfer-state/Example.astro';
 
@@ -13,6 +14,8 @@ import uuidStoreExampleRaw from './_examples/reactive-transfer-state/uuid-store.
 import transferStateExampleRaw from './_examples/reactive-transfer-state/Example.astro?raw';
 import transferStateExampleChildRaw from './_examples/reactive-transfer-state/Example.svelte?raw';
 import outputCodeExample from '@astro-tools/docs-utils/components/Output.svelte?raw';
+
+<BetaAdvice />
 
 The Reactive Transfer State integration uses `nanostores` to bring up reactivity to the `@astro-tools/transfer-state` library.
 

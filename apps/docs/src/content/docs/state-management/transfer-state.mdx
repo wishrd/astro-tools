@@ -7,6 +7,7 @@ sidebar:
 import { Code, Tabs, TabItem, Aside, Steps } from '@astrojs/starlight/components';
 
 import { Example, ExamplePreview } from '@astro-tools/docs-utils/example';
+import { BetaAdvice } from '@astro-tools/docs-utils/components';
 
 import TransferStateExample from './_examples/transfer-state/before-hydration/Example.astro';
 import TransferStateAfterHydrationExample from './_examples/transfer-state/after-hydration/Example.astro';
@@ -20,6 +21,8 @@ import transferStateAfterHydrationExampleChildRaw from './_examples/transfer-sta
 import transferStateWithoutTransferExampleRaw from './_examples/transfer-state/without-transfer/Example.astro?raw';
 import transferStateWithoutTransferExampleChildRaw from './_examples/transfer-state/without-transfer/Example.svelte?raw';
 import outputCodeExample from '@astro-tools/docs-utils/components/Output.svelte?raw';
+
+<BetaAdvice />
 
 The Transfer State integration allows you to manage the state of your application isolated by request and transferred from the server to the client.
 

@@ -5,13 +5,18 @@ sidebar:
   label: Event
 ---
 import { Code, Tabs, TabItem, Steps, Aside } from '@astrojs/starlight/components';
+
 import { Example, ExamplePreview } from '@astro-tools/docs-utils/example';
+import { BetaAdvice } from '@astro-tools/docs-utils/components';
+
 import ClientDirectiveEventUseExample from './_examples/event/Example.astro';
 
 import squareCodeExample from '@astro-tools/docs-utils/components/Square.svelte?raw';
 import clientDirectiveEventSetupExampleRaw from './_examples/event/setup.ts?raw';
 import clientDirectiveViewportSetupWithClientOnExampleRaw from './_examples/event/setup-with-client-on.ts?raw';
 import ClientDirectiveEventUseExampleRaw from './_examples/event/Example.astro?raw';
+
+<BetaAdvice />
 
 The `client:event` directive hydrates the component when the specified event is sent through the `window` object.
 

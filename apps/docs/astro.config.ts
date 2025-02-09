@@ -41,6 +41,9 @@ export default defineConfig({
 					autogenerate: { directory: 'network' },
         },
 			],
+      components: {
+        PageTitle: './src/components/overrides/PageTitle.astro',
+      },
       customCss: [
         './src/styles/theme.scss',
       ],

@@ -5,13 +5,18 @@ sidebar:
   label: Timer
 ---
 import { Code, Tabs, TabItem, Steps, Aside } from '@astrojs/starlight/components';
+
 import { Example, ExamplePreview } from '@astro-tools/docs-utils/example';
+import { BetaAdvice } from '@astro-tools/docs-utils/components';
+
 import ClientDirectiveTimerUseExample from './_examples/timer/Example.astro';
 
 import squareCodeExample from '@astro-tools/docs-utils/components/Square.svelte?raw';
 import clientDirectiveTimerSetupExampleRaw from './_examples/timer/setup.ts?raw';
 import clientDirectiveViewportSetupWithClientOnExampleRaw from './_examples/timer/setup-with-client-on.ts?raw';
 import ClientDirectiveTimerUseExampleRaw from './_examples/timer/Example.astro?raw';
+
+<BetaAdvice />
 
 The `client:timer` directive hydrates the component when the specified time in milliseconds has been elapsed. It uses `setTimeout` under the hood.
 

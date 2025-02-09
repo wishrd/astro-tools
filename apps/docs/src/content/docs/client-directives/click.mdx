@@ -5,7 +5,10 @@ sidebar:
   label: Click
 ---
 import { Code, Tabs, TabItem, Steps, Aside } from '@astrojs/starlight/components';
+
 import { Example, ExamplePreview } from '@astro-tools/docs-utils/example';
+import { BetaAdvice } from '@astro-tools/docs-utils/components';
+
 import ClientDirectiveClickUseExample from './_examples/click/Example.astro';
 import ClientDirectiveClickWithTriggerUseExample from './_examples/click/ExampleWithTrigger.astro';
 
@@ -14,6 +17,8 @@ import clientDirectiveClickSetupExampleRaw from './_examples/click/setup.ts?raw'
 import clientDirectiveViewportSetupWithClientOnExampleRaw from './_examples/click/setup-with-client-on.ts?raw';
 import clientDirectiveClickUseExampleRaw from './_examples/click/Example.astro?raw';
 import clientDirectiveClickWithTriggerUseExampleRaw from './_examples/click/ExampleWithTrigger.astro?raw';
+
+<BetaAdvice />
 
 The `client:click` directive hydrates the component when clicking on it or when the specified element is clicked.
 

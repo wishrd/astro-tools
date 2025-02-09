@@ -1,0 +1,20 @@
+---
+import type { Props } from '@astrojs/starlight/props';
+
+import PageTitlePackageInfo from './PageTitlePackageInfo.astro';
+
+const { entry } = Astro.props;
+---
+
+<h1 id="_top">{entry.data.title}</h1>
+{entry.data.package && <PageTitlePackageInfo package={entry.data.package} />}
+
+<style>
+	h1 {
+		/* margin-top: 1rem; */
+		font-size: var(--sl-text-h1);
+		line-height: var(--sl-line-height-headings);
+		font-weight: 600;
+		color: var(--sl-color-white);
+	}
+</style>
