@@ -1,4 +1,5 @@
 ---
+package: client-directives
 title: 'Client directive: On'
 description: On client directive for Astro
 sidebar:
@@ -9,12 +10,17 @@ sidebar:
     variant: tip
 ---
 import { Code, Tabs, TabItem, Steps, Aside } from '@astrojs/starlight/components';
+
 import { Example, ExamplePreview } from '@astro-tools/docs-utils/example';
+import { BetaAdvice } from '@astro-tools/docs-utils/components';
+
 import ClientDirectiveOnUseExample from './_examples/on/Example.astro';
 
 import squareCodeExample from '@astro-tools/docs-utils/components/Square.svelte?raw';
 import clientDirectiveOnSetupExampleRaw from './_examples/on/setup.ts?raw';
 import clientDirectiveOnUseExampleRaw from './_examples/on/Example.astro?raw';
+
+<BetaAdvice />
 
 The `client:on` directive allows you to combine client directives with an **OR** condition using a specific syntax: when any of the conditions meet, the component will be hydrated.
 

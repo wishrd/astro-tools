@@ -1,0 +1,41 @@
+---
+import { join } from 'path';
+import { readFileSync } from 'fs';
+
+import { Icon } from '@astrojs/starlight/components';
+
+import { getRepositoryRootPath } from '../../utils/get-repository-root-path';
+
+interface Props {
+  package: string;
+}
+
+const { package: packageFolder } = Astro.props;
+
+const packageFile = join(getRepositoryRootPath(), 'packages', packageFolder, 'package.json');
+const { name, version, repository } = JSON.parse(readFileSync(packageFile).toString('utf-8'));
+
+const githubUrl = `${repository.url}/tree/main/${repository.directory}`;
+const changelogUrl = `${repository.url}/tree/main/${repository.directory}/CHANGELOG.md`;
+const npmUrl = `https://npmjs.com/package/${name}`;
+---
+<div class="package-info">
+  <a class="package-info-item" href={npmUrl} target="_blank"><Icon name="seti:npm" size="24px" />v{version}</a>
+  <a class="package-info-item" href={githubUrl} target="_blank"><Icon name="github" size="16px" />Github</a>
+  <a class="package-info-item" href={changelogUrl} target="_blank"><Icon name="list-format" size="16px" />Changelog</a>
+</div>
+
+<style>
+  .package-info {
+    margin-top: 0;
+    display: flex;
+    gap: 1rem;
+    font-size: var(--sl-text-xs);
+  }
+
+  .package-info-item {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+</style>

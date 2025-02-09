@@ -1,17 +1,23 @@
 ---
+package: client-directives
 title: 'Client directive: Viewport'
 description: Viewport client directive for Astro
 sidebar:
   label: Viewport
 ---
 import { Code, Tabs, TabItem, Steps, Aside } from '@astrojs/starlight/components';
+
 import { Example, ExamplePreview } from '@astro-tools/docs-utils/example';
+import { BetaAdvice } from '@astro-tools/docs-utils/components';
+
 import ClientDirectiveViewportUseExample from './_examples/viewport/Example.astro';
 
 import squareCodeExample from '@astro-tools/docs-utils/components/Square.svelte?raw';
 import clientDirectiveViewportSetupExampleRaw from './_examples/viewport/setup.ts?raw';
 import clientDirectiveViewportSetupWithClientOnExampleRaw from './_examples/viewport/setup-with-client-on.ts?raw';
 import ClientDirectiveViewportUseExampleRaw from './_examples/viewport/Example.astro?raw';
+
+<BetaAdvice />
 
 The `client:viewport` directive hydrates the component when its visible. If the component is visible from start, it will be hydrated.
 

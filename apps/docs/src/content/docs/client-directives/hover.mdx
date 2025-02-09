@@ -1,17 +1,23 @@
 ---
+package: client-directives
 title: 'Client directive: Hover'
 description: Hover client directive for Astro
 sidebar:
   label: Hover
 ---
 import { Code, Tabs, TabItem, Steps, Aside } from '@astrojs/starlight/components';
+
 import { Example, ExamplePreview } from '@astro-tools/docs-utils/example';
+import { BetaAdvice } from '@astro-tools/docs-utils/components';
+
 import ClientDirectiveHoverUseExample from './_examples/hover/Example.astro';
 
 import squareCodeExample from '@astro-tools/docs-utils/components/Square.svelte?raw';
 import clientDirectiveHoverSetupExampleRaw from './_examples/hover/setup.ts?raw';
 import clientDirectiveViewportSetupWithClientOnExampleRaw from './_examples/hover/setup-with-client-on.ts?raw';
 import clientDirectiveHoverUseExampleRaw from './_examples/hover/Example.astro?raw';
+
+<BetaAdvice />
 
 The `client:hover` directive hydrates the component when clicking on it or when the specified element is clicked.
 
