@@ -15,8 +15,8 @@ const { package: packageFolder } = Astro.props;
 const packageFile = join(getRepositoryRootPath(), 'packages', packageFolder, 'package.json');
 const { name, version, repository } = JSON.parse(readFileSync(packageFile).toString('utf-8'));
 
-const githubUrl = join(repository.url, 'tree', 'main', repository.directory);
-const changelogUrl = join(repository.url, 'tree', 'main', repository.directory, 'CHANGELOG.md');
+const githubUrl = `${repository.url}/tree/main/${repository.directory}`;
+const changelogUrl = `${repository.url}/tree/main/${repository.directory}/CHANGELOG.md`;
 const npmUrl = `https://npmjs.com/package/${name}`;
 ---
 <div class="package-info">
