@@ -17,7 +17,7 @@ const { name, version, repository } = JSON.parse(readFileSync(packageFile).toStr
 
 const githubUrl = join(repository.url, 'tree', 'main', repository.directory);
 const changelogUrl = join(repository.url, 'tree', 'main', repository.directory, 'CHANGELOG.md');
-const npmUrl = `https://npmjs.com/package${name}`;
+const npmUrl = `https://npmjs.com/package/${name}`;
 ---
 <div class="package-info">
   <a class="package-info-item" href={npmUrl}><Icon name="seti:npm" size="24px" />v{version}</a>
