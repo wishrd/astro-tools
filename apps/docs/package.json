@@ -18,7 +18,6 @@
   "devDependencies": {
     "@astrojs/svelte": "^6.0.2",
     "@astro-tools/client-directives": "workspace:*",
-    "@astro-tools/docs-utils": "workspace:*",
     "@astro-tools/i18n": "workspace:*",
     "@astro-tools/http-client": "workspace:*",
     "@astro-tools/reactive-transfer-state": "workspace:*",

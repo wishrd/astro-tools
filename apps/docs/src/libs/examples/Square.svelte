@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import { notifyHydration } from '@astro-tools/docs-utils/hydration';
+  import { notifyHydration } from '@/libs/examples/hydration';
 
   export let id: string;
   export let text: string;
@@ -22,5 +22,5 @@
 </button>
 
 <style lang="scss">
-  @use '@astro-tools/docs-utils/components/Square.scss';
+  @use './Square.scss';
 </style>

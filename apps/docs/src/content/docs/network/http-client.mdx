@@ -5,8 +5,10 @@ description: A simple http client using fetch that provides interceptors, timeou
 ---
 import { Code, Tabs, TabItem, Aside, Steps } from '@astrojs/starlight/components';
 
-import { Example, ExamplePreview } from '@astro-tools/docs-utils/example';
-import { BetaAdvice } from '@astro-tools/docs-utils/components';
+import BetaAdvice from '@/components/BetaAdvice.astro';
+
+import Example from '@/libs/examples/Example.astro';
+import ExamplePreview from '@/libs/examples/ExamplePreview.astro';
 
 import httpClientExampleRaw from './_examples/http-client/Example.svelte?raw';
 import exampleModelRaw from './_examples/http-client/example.ts?raw';

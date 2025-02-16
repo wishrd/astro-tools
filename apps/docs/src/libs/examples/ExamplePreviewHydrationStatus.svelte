@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import { listenHydration } from '../hydration';
+
+  import { listenHydration } from '@/libs/examples/hydration';
 
   export let id: string;
 

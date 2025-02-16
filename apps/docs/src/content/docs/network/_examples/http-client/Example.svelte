@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import { Output } from '@astro-tools/docs-utils/components';
+  import Output from '@/libs/examples/Output.svelte';
 
   import { httpClient } from '@astro-tools/http-client';
   import { exampleBodyAdapter } from './example-body-adapter';

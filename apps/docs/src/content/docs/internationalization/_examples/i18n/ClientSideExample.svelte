@@ -1,8 +1,8 @@
 <script lang="ts">
   import { onMount } from 'svelte';
 
-  import { Output } from '@astro-tools/docs-utils/components';
-  import { notifyHydration } from '@astro-tools/docs-utils/hydration/index.js';
+  import Output from '@/libs/examples/Output.svelte';
+  import { notifyHydration } from '@/libs/examples/hydration';
 
   import { t } from '@astro-tools:i18n';
 

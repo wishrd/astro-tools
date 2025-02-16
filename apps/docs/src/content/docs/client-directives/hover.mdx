@@ -7,12 +7,14 @@ sidebar:
 ---
 import { Code, Tabs, TabItem, Steps, Aside } from '@astrojs/starlight/components';
 
-import { Example, ExamplePreview } from '@astro-tools/docs-utils/example';
-import { BetaAdvice } from '@astro-tools/docs-utils/components';
+import BetaAdvice from '@/components/BetaAdvice.astro';
+
+import Example from '@/libs/examples/Example.astro';
+import ExamplePreview from '@/libs/examples/ExamplePreview.astro';
 
 import ClientDirectiveHoverUseExample from './_examples/hover/Example.astro';
 
-import squareCodeExample from '@astro-tools/docs-utils/components/Square.svelte?raw';
+import squareCodeExample from '@/libs/examples/Square.svelte?raw';
 import clientDirectiveHoverSetupExampleRaw from './_examples/hover/setup.ts?raw';
 import clientDirectiveViewportSetupWithClientOnExampleRaw from './_examples/hover/setup-with-client-on.ts?raw';
 import clientDirectiveHoverUseExampleRaw from './_examples/hover/Example.astro?raw';

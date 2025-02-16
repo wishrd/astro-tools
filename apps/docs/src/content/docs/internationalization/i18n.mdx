@@ -7,8 +7,10 @@ sidebar:
 ---
 import { Code, Tabs, TabItem, Aside, Steps } from '@astrojs/starlight/components';
 
-import { Example, ExamplePreview } from '@astro-tools/docs-utils/example';
-import { BetaAdvice } from '@astro-tools/docs-utils/components';
+import BetaAdvice from '@/components/BetaAdvice.astro';
+
+import Example from '@/libs/examples/Example.astro';
+import ExamplePreview from '@/libs/examples/ExamplePreview.astro';
 
 import setupExampleRaw from './_examples/i18n/setup.ts?raw';
 import typesLoaderRaw from '../../../i18n/types-loader.ts?raw';

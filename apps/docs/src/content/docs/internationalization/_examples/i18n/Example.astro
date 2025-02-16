@@ -1,9 +1,10 @@
 ---
-import { Output } from '@astro-tools/docs-utils/components';
+import Output from '@/libs/examples/Output.svelte';
+
+import { useTranslations } from '@/i18n/use-translations';
 
 import { t } from '@astro-tools:i18n';
 
-import { useTranslations } from '../../../../../i18n/use-translations';
 import ClientSideExample from './ClientSideExample.svelte';
 
 interface Props {

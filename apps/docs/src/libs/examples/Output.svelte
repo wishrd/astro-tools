@@ -6,5 +6,5 @@
 <div class="output" class:output--hydrated={hydrated}>{text}</div>
 
 <style lang="scss">
-  @use '@astro-tools/docs-utils/components/Output.scss';
+  @use './Output.scss';
 </style>

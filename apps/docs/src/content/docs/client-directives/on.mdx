@@ -11,12 +11,14 @@ sidebar:
 ---
 import { Code, Tabs, TabItem, Steps, Aside } from '@astrojs/starlight/components';
 
-import { Example, ExamplePreview } from '@astro-tools/docs-utils/example';
-import { BetaAdvice } from '@astro-tools/docs-utils/components';
+import BetaAdvice from '@/components/BetaAdvice.astro';
+
+import Example from '@/libs/examples/Example.astro';
+import ExamplePreview from '@/libs/examples/ExamplePreview.astro';
 
 import ClientDirectiveOnUseExample from './_examples/on/Example.astro';
 
-import squareCodeExample from '@astro-tools/docs-utils/components/Square.svelte?raw';
+import squareCodeExample from '@/libs/examples/Square.svelte?raw';
 import clientDirectiveOnSetupExampleRaw from './_examples/on/setup.ts?raw';
 import clientDirectiveOnUseExampleRaw from './_examples/on/Example.astro?raw';
 

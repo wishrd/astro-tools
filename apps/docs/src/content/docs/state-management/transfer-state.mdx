@@ -7,8 +7,10 @@ sidebar:
 ---
 import { Code, Tabs, TabItem, Aside, Steps } from '@astrojs/starlight/components';
 
-import { Example, ExamplePreview } from '@astro-tools/docs-utils/example';
-import { BetaAdvice } from '@astro-tools/docs-utils/components';
+import BetaAdvice from '@/components/BetaAdvice.astro';
+
+import Example from '@/libs/examples/Example.astro';
+import ExamplePreview from '@/libs/examples/ExamplePreview.astro';
 
 import TransferStateExample from './_examples/transfer-state/before-hydration/Example.astro';
 import TransferStateAfterHydrationExample from './_examples/transfer-state/after-hydration/Example.astro';
@@ -21,7 +23,7 @@ import transferStateAfterHydrationExampleRaw from './_examples/transfer-state/af
 import transferStateAfterHydrationExampleChildRaw from './_examples/transfer-state/after-hydration/Example.svelte?raw';
 import transferStateWithoutTransferExampleRaw from './_examples/transfer-state/without-transfer/Example.astro?raw';
 import transferStateWithoutTransferExampleChildRaw from './_examples/transfer-state/without-transfer/Example.svelte?raw';
-import outputCodeExample from '@astro-tools/docs-utils/components/Output.svelte?raw';
+import outputCodeExample from '@/libs/examples/Output.svelte?raw';
 
 <BetaAdvice />
 
