@@ -8,7 +8,6 @@
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
   "ignore": [
-    "@astro-tools/docs",
-    "@astro-tools/docs-utils"
+    "@astro-tools/docs"
   ]
 }
