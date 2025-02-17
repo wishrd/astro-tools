@@ -1,3 +1,24 @@
 packages:
   - 'apps/*'
   - 'packages/*'
+
+catalog:
+  '@alenaksu/json-viewer': ^2.1.2
+  '@astrojs/starlight': ^0.29.2
+  '@astrojs/svelte': ^6.0.2
+  '@changesets/cli': ^2.27.10
+  '@types/node': ^22.10.2
+  astro: ^4.16.17
+  astro-integration-kit: ^0.17.0
+  nanostores: ^0.11.3
+  sass-embedded: ^1.82.0
+  sharp: ^0.32.6
+  svelte: ^5.8.0
+  tsup: ^8.3.5
+  ts-deepmerge: ^7.0.2
+  turbo: ^2.3.3
+
+catalogs:
+  peer:
+    astro: ^4
+    nanostores: ^0.11.3

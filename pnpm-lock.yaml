@@ -4,27 +4,76 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+catalogs:
+  default:
+    '@alenaksu/json-viewer':
+      specifier: ^2.1.2
+      version: 2.1.2
+    '@astrojs/starlight':
+      specifier: ^0.29.2
+      version: 0.29.2
+    '@astrojs/svelte':
+      specifier: ^6.0.2
+      version: 6.0.2
+    '@changesets/cli':
+      specifier: ^2.27.10
+      version: 2.27.10
+    '@types/node':
+      specifier: ^22.10.2
+      version: 22.10.2
+    astro:
+      specifier: ^4.16.17
+      version: 4.16.17
+    astro-integration-kit:
+      specifier: ^0.17.0
+      version: 0.17.0
+    nanostores:
+      specifier: ^0.11.3
+      version: 0.11.3
+    sass-embedded:
+      specifier: ^1.82.0
+      version: 1.82.0
+    sharp:
+      specifier: ^0.32.6
+      version: 0.32.6
+    svelte:
+      specifier: ^5.8.0
+      version: 5.8.0
+    ts-deepmerge:
+      specifier: ^7.0.2
+      version: 7.0.2
+    tsup:
+      specifier: ^8.3.5
+      version: 8.3.5
+    turbo:
+      specifier: ^2.3.3
+      version: 2.3.3
+  peer:
+    astro:
+      specifier: ^4
+      version: 4.16.17
+
 importers:
 
   .:
     devDependencies:
       '@changesets/cli':
-        specifier: ^2.27.10
+        specifier: 'catalog:'
         version: 2.27.10
       turbo:
-        specifier: ^2.3.3
+        specifier: 'catalog:'
         version: 2.3.3
 
   apps/docs:
     dependencies:
       '@astrojs/starlight':
-        specifier: ^0.29.2
+        specifier: 'catalog:'
         version: 0.29.2(astro@4.16.17(@types/node@22.10.2)(rollup@4.28.0)(sass-embedded@1.82.0)(sass@1.82.0)(typescript@5.7.2))
       astro:
-        specifier: ^4.16.17
+        specifier: 'catalog:'
         version: 4.16.17(@types/node@22.10.2)(rollup@4.28.0)(sass-embedded@1.82.0)(sass@1.82.0)(typescript@5.7.2)
       sharp:
-        specifier: ^0.32.6
+        specifier: 'catalog:'
         version: 0.32.6
     devDependencies:
       '@astro-tools/client-directives':
@@ -43,94 +92,95 @@ importers:
         specifier: workspace:*
         version: link:../../packages/transfer-state
       '@astrojs/svelte':
-        specifier: ^6.0.2
+        specifier: 'catalog:'
         version: 6.0.2(@types/node@22.10.2)(astro@4.16.17(@types/node@22.10.2)(rollup@4.28.0)(sass-embedded@1.82.0)(sass@1.82.0)(typescript@5.7.2))(sass-embedded@1.82.0)(sass@1.82.0)(svelte@5.8.0)(typescript@5.7.2)
       astro-integration-kit:
-        specifier: ^0.17.0
+        specifier: 'catalog:'
         version: 0.17.0(astro@4.16.17(@types/node@22.10.2)(rollup@4.28.0)(sass-embedded@1.82.0)(sass@1.82.0)(typescript@5.7.2))
       nanostores:
-        specifier: ^0.11.3
+        specifier: 'catalog:'
         version: 0.11.3
       sass-embedded:
-        specifier: ^1.82.0
+        specifier: 'catalog:'
         version: 1.82.0
       svelte:
-        specifier: ^5.8.0
+        specifier: 'catalog:'
         version: 5.8.0
 
   packages/client-directives:
     dependencies:
       astro:
-        specifier: ^4.16.17
+        specifier: catalog:peer
         version: 4.16.17(@types/node@22.10.2)(rollup@4.28.0)(sass-embedded@1.82.0)(sass@1.82.0)(typescript@5.7.2)
       astro-integration-kit:
-        specifier: ^0.17.0
+        specifier: 'catalog:'
         version: 0.17.0(astro@4.16.17(@types/node@22.10.2)(rollup@4.28.0)(sass-embedded@1.82.0)(sass@1.82.0)(typescript@5.7.2))
     devDependencies:
       tsup:
-        specifier: ^8.3.5
+        specifier: 'catalog:'
         version: 8.3.5(postcss@8.4.49)(typescript@5.7.2)
 
   packages/http-client:
     devDependencies:
       tsup:
-        specifier: ^8.3.5
+        specifier: 'catalog:'
         version: 8.3.5(postcss@8.4.49)(typescript@5.7.2)
 
   packages/i18n:
     dependencies:
       '@astro-tools/transfer-state':
-        specifier: ^0.2.3
+        specifier: workspace:^
         version: link:../transfer-state
       astro-integration-kit:
-        specifier: ^0.17.0
+        specifier: 'catalog:'
         version: 0.17.0(astro@4.16.17(@types/node@22.10.2)(rollup@4.28.0)(sass-embedded@1.82.0)(sass@1.82.0)(typescript@5.7.2))
       ts-deepmerge:
-        specifier: ^7.0.2
+        specifier: 'catalog:'
         version: 7.0.2
     devDependencies:
       '@types/node':
-        specifier: ^22.10.2
+        specifier: 'catalog:'
         version: 22.10.2
       astro:
-        specifier: ^4.16.0
+        specifier: 'catalog:'
         version: 4.16.17(@types/node@22.10.2)(rollup@4.28.0)(sass-embedded@1.82.0)(sass@1.82.0)(typescript@5.7.2)
       tsup:
-        specifier: ^8.3.5
+        specifier: 'catalog:'
         version: 8.3.5(postcss@8.4.49)(typescript@5.7.2)
 
   packages/reactive-transfer-state:
+    dependencies:
+      astro-integration-kit:
+        specifier: 'catalog:'
+        version: 0.17.0(astro@4.16.17(@types/node@22.10.2)(rollup@4.28.0)(sass-embedded@1.82.0)(sass@1.82.0)(typescript@5.7.2))
     devDependencies:
       '@astro-tools/transfer-state':
         specifier: workspace:*
         version: link:../transfer-state
       astro:
-        specifier: ^4.16.0
+        specifier: 'catalog:'
         version: 4.16.17(@types/node@22.10.2)(rollup@4.28.0)(sass-embedded@1.82.0)(sass@1.82.0)(typescript@5.7.2)
-      astro-integration-kit:
-        specifier: ^0.17.0
-        version: 0.17.0(astro@4.16.17(@types/node@22.10.2)(rollup@4.28.0)(sass-embedded@1.82.0)(sass@1.82.0)(typescript@5.7.2))
       nanostores:
-        specifier: ^0.11.3
+        specifier: 'catalog:'
         version: 0.11.3
       tsup:
-        specifier: ^8.3.5
+        specifier: 'catalog:'
         version: 8.3.5(postcss@8.4.49)(typescript@5.7.2)
 
   packages/transfer-state:
     dependencies:
       '@alenaksu/json-viewer':
-        specifier: ^2.1.2
+        specifier: 'catalog:'
         version: 2.1.2
+      astro-integration-kit:
+        specifier: 'catalog:'
+        version: 0.17.0(astro@4.16.17(@types/node@22.10.2)(rollup@4.28.0)(sass-embedded@1.82.0)(sass@1.82.0)(typescript@5.7.2))
     devDependencies:
       astro:
-        specifier: ^4.16.0
+        specifier: 'catalog:'
         version: 4.16.17(@types/node@22.10.2)(rollup@4.28.0)(sass-embedded@1.82.0)(sass@1.82.0)(typescript@5.7.2)
-      astro-integration-kit:
-        specifier: ^0.17.0
-        version: 0.17.0(astro@4.16.17(@types/node@22.10.2)(rollup@4.28.0)(sass-embedded@1.82.0)(sass@1.82.0)(typescript@5.7.2))
       tsup:
-        specifier: ^8.3.5
+        specifier: 'catalog:'
         version: 8.3.5(postcss@8.4.49)(typescript@5.7.2)
 
 packages:

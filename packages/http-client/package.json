@@ -37,6 +37,6 @@
 	"type": "module",
 	"peerDependencies": {},
 	"devDependencies": {
-		"tsup": "^8.3.5"
+		"tsup": "catalog:"
 	}
 }
