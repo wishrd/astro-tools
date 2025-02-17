@@ -45,18 +45,16 @@
 	},
 	"type": "module",
 	"peerDependencies": {
-		"astro": "^4.16.0"
+		"astro": "catalog:peer"
 	},
 	"dependencies": {
-		"@astro-tools/transfer-state": "^0.2.3",
-		"astro-integration-kit": "^0.17.0",
-		"ts-deepmerge": "^7.0.2"
+		"@astro-tools/transfer-state": "workspace:^",
+		"astro-integration-kit": "catalog:",
+		"ts-deepmerge": "catalog:"
 	},
 	"devDependencies": {
-		"@astro-tools/transfer-state": "workspace:*",
-		"@types/node": "^22.10.2",
-		"astro": "^4.16.0",
-		"astro-integration-kit": "^0.17.0",
-		"tsup": "^8.3.5"
+		"@types/node": "catalog:",
+		"astro": "catalog:",
+		"tsup": "catalog:"
 	}
 }

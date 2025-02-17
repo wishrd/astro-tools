@@ -11,20 +11,20 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/starlight": "^0.29.2",
-    "astro": "^4.16.17",
-    "sharp": "^0.32.6"
+    "@astrojs/starlight": "catalog:",
+    "astro": "catalog:",
+    "sharp": "catalog:"
   },
   "devDependencies": {
-    "@astrojs/svelte": "^6.0.2",
+    "@astrojs/svelte": "catalog:",
     "@astro-tools/client-directives": "workspace:*",
     "@astro-tools/i18n": "workspace:*",
     "@astro-tools/http-client": "workspace:*",
     "@astro-tools/reactive-transfer-state": "workspace:*",
     "@astro-tools/transfer-state": "workspace:*",
-    "astro-integration-kit": "^0.17.0",
-    "nanostores": "^0.11.3",
-    "svelte": "^5.8.0",
-    "sass-embedded": "^1.82.0"
+    "astro-integration-kit": "catalog:",
+    "nanostores": "catalog:",
+    "svelte": "catalog:",
+    "sass-embedded": "catalog:"
   }
 }
