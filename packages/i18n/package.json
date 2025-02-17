@@ -1,6 +1,6 @@
 {
 	"name": "@astro-tools/i18n",
-	"version": "0.3.0",
+	"version": "0.3.1",
 	"description": "Type-safe i18n integration for Astro which translates in runtime",
 	"license": "MIT",
 	"repository": {
