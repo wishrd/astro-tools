@@ -6,4 +6,4 @@
 "@astro-tools/transfer-state": patch
 ---
 
-Add compatibility with Astro 5 trough peer dependencies
+Add compatibility with Astro 5 through peer dependencies
