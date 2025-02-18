@@ -1,6 +1,6 @@
 {
 	"name": "@astro-tools/transfer-state",
-	"version": "0.2.4",
+	"version": "0.2.5",
 	"description": "A state management integration for having request isolated state transferred from server to client",
 	"license": "MIT",
 	"repository": {

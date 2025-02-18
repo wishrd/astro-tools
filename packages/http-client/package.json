@@ -1,6 +1,6 @@
 {
 	"name": "@astro-tools/http-client",
-	"version": "0.1.1",
+	"version": "0.1.2",
 	"description": "Tiny http library wrapping the Fetch API which adds some features",
 	"license": "MIT",
 	"repository": {

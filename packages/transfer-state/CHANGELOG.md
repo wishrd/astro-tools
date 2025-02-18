@@ -1,5 +1,11 @@
 # @astro-tools/transfer-state
 
+## 0.2.5
+
+### Patch Changes
+
+- 9204b7f: Add compatibility with Astro 5 through peer dependencies
+
 ## 0.2.4
 
 ### Patch Changes

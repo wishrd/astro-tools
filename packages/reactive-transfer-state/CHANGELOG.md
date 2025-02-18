@@ -1,5 +1,13 @@
 # @astro-tools/reactive-transfer-state
 
+## 0.2.3
+
+### Patch Changes
+
+- 9204b7f: Add compatibility with Astro 5 through peer dependencies
+- Updated dependencies [9204b7f]
+  - @astro-tools/transfer-state@0.2.5
+
 ## 0.2.2
 
 ### Patch Changes
