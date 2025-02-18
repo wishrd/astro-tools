@@ -1,5 +1,11 @@
 # @astro-tools/http-client
 
+## 0.1.2
+
+### Patch Changes
+
+- 9204b7f: Add compatibility with Astro 5 through peer dependencies
+
 ## 0.1.1
 
 ### Patch Changes
