@@ -82,6 +82,7 @@
 		"astro-integration-kit": "catalog:"
 	},
 	"devDependencies": {
+		"astro": "catalog:",
 		"tsup": "catalog:"
 	}
 }
