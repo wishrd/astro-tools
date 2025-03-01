@@ -61,7 +61,7 @@ export const i18n = defineIntegration({
           const content = [
             `import type { I18nUseOptions } from '@astro-tools/i18n';`,
             ``,
-            `export function use(options: I18nUseOptions): Promise<void>;`,
+            `export function use<T>(options: I18nUseOptions<T>): Promise<void>;`,
             `export function locale(): string;`,
             `export function fallbackLocale(): string;`,
             ``,

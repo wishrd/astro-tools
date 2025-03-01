@@ -123,6 +123,8 @@ This provider loads the proper translations for a `locale: string`:
   </Tabs>
 </Example>
 
+> A context can be recieved as second argument which is arbitrary data coming from the `use` function explained below.
+
 #### `I18nPluralProvider`
 
 This provider selects the proper plural from a translation using the `count: number` argument.
@@ -152,6 +154,12 @@ It is recommended to create a wrapper with your own logic following DRY principl
     <Code code={useTranslationsRaw} lang="typescript" />
   </TabItem>
 </Tabs>
+
+#### Context
+
+There is a `context` option that be used in the `use` function for pass arbitrary data to the translation provider. For example, the context could be used to load partial translations.
+
+> The context won't be transferred to the client side, so it can be any type of data.
 
 ### Translate
 
