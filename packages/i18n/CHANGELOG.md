@@ -1,5 +1,11 @@
 # @astro-tools/i18n
 
+## 0.4.0
+
+### Minor Changes
+
+- 49bd21e: Add context option for the "use" function to pass arbitrary data to the translate provider
+
 ## 0.3.2
 
 ### Patch Changes
