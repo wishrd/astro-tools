@@ -10,7 +10,7 @@ import { execAsync } from './utils/exec-async.mjs';
 import { directories } from './utils/directories.mjs';
 
 const { config: configFile } = yargs(process.argv.slice(2)).option('config', { type: 'string' }).help().argv;
-const configFilePath = join(process.cwd(), configFile || '.repo-docs.mjs');
+const configFilePath = join(process.cwd(), configFile || '.mdocs.mjs');
 
 const config = await import(configFilePath).then(f => f.default);
 
@@ -34,3 +34,6 @@ await execAsync('npm run build', { cwd: executionDir, stdio: 'inherit', env: { .
 const destDir = join(process.cwd(), config.dest);
 await rm(destDir, { recursive: true, force: true });
 await cp(join(executionDir, 'dist'), destDir, { recursive: true });
+
+// Remove temporal files
+await rm(executionDir, { recursive: true, force: true });

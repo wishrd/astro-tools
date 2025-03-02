@@ -1,5 +1,5 @@
 ---
-"@astro-tools/repo-docs": major
+"@astro-tools/mdocs": major
 ---
 
-CLI for generating a documentation website from the repository markdown files using Astro Starlight under the hood
+First version of this CLI for generating a documentation website from markdown files of the execution directory using Astro Starlight under the hood

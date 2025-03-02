@@ -153,26 +153,7 @@ importers:
         specifier: 'catalog:'
         version: 8.4.0(postcss@8.5.3)(typescript@5.7.3)
 
-  packages/reactive-transfer-state:
-    dependencies:
-      astro-integration-kit:
-        specifier: 'catalog:'
-        version: 0.18.0(astro@5.4.1(@types/node@22.13.8)(rollup@4.34.8)(sass-embedded@1.85.1)(typescript@5.7.3))
-    devDependencies:
-      '@astro-tools/transfer-state':
-        specifier: workspace:*
-        version: link:../transfer-state
-      astro:
-        specifier: 'catalog:'
-        version: 5.4.1(@types/node@22.13.8)(rollup@4.34.8)(sass-embedded@1.85.1)(typescript@5.7.3)
-      nanostores:
-        specifier: 'catalog:'
-        version: 0.11.4
-      tsup:
-        specifier: 'catalog:'
-        version: 8.4.0(postcss@8.5.3)(typescript@5.7.3)
-
-  packages/repo-docs:
+  packages/mdocs:
     dependencies:
       '@astrojs/starlight':
         specifier: ^0.32.2
@@ -193,6 +174,25 @@ importers:
       create-astro:
         specifier: 'catalog:'
         version: 4.11.1
+
+  packages/reactive-transfer-state:
+    dependencies:
+      astro-integration-kit:
+        specifier: 'catalog:'
+        version: 0.18.0(astro@5.4.1(@types/node@22.13.8)(rollup@4.34.8)(sass-embedded@1.85.1)(typescript@5.7.3))
+    devDependencies:
+      '@astro-tools/transfer-state':
+        specifier: workspace:*
+        version: link:../transfer-state
+      astro:
+        specifier: 'catalog:'
+        version: 5.4.1(@types/node@22.13.8)(rollup@4.34.8)(sass-embedded@1.85.1)(typescript@5.7.3)
+      nanostores:
+        specifier: 'catalog:'
+        version: 0.11.4
+      tsup:
+        specifier: 'catalog:'
+        version: 8.4.0(postcss@8.5.3)(typescript@5.7.3)
 
   packages/transfer-state:
     dependencies:
