@@ -1,0 +1,61 @@
+---
+package: mdocs
+title: mdocs
+description: CLI for generating a documentation website from markdown files of the working directory using Astro Starlight under the hood
+sidebar:
+  order: 1
+---
+import { Code, Tabs, TabItem, Aside, Steps } from '@astrojs/starlight/components';
+
+import BetaAdvice from '@/components/BetaAdvice.astro';
+
+<BetaAdvice />
+
+This library provides a CLI for generating a documentation website from markdown files.
+It is using [Astro Starlight](https://starlight.astro.build/) under the hood, which provides a beautiful UI and a nice user experience.
+
+Mostly everything supported by Astro Starlight is supported by this CLI.
+This library has a Astro Starlight template in which copies every markdown file of the working directory into the default `content/docs` collection folder,
+then executes the build of the project using the configuration file `.mdocs.mjs` of the working directory and copies the result to the desired destination folder.
+
+## Setup
+
+Install the library using your preferred package manager:
+```
+npm i -g @astro-tools/mdocs
+```
+
+> The library could be installed local to the project if needed.
+
+## Use
+
+The configuration related to the @astro-tools/mdocs and Astro Starlight could be defined in the working directory file `.mdocs.mjs`.
+
+> Alternatively, the CLI could receive an argument `--config` with the config file path.
+
+The minimum config file is as follows:
+
+```javscript
+export default {
+  starlight: {
+    title: 'My Docs',
+  }
+}
+```
+
+### Options
+
+The libraries tries to minimize the configuration required to build the documentation. In any case, there are some options that can be used for your needs.
+
+#### pattern
+
+Glob patterns to filter the documentation files to include and copy into the Astro Starlight `content/docs` directory.
+
+The default value is ```['!**/node_modules/', `**/[^_]*.{${extensions.join(',')}}`]```.
+
+#### starlight
+
+The configuration that is going to be used for the Astro Starlight integration.
+The required properties can be checked in the Astro Starlight [configuration reference page](https://starlight.astro.build/reference/configuration/).
+
+> Currently, only the `title` property is required.

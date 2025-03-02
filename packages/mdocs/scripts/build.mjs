@@ -7,33 +7,35 @@ import yargs from 'yargs';
 
 import { transform } from './utils/transform.mjs';
 import { execAsync } from './utils/exec-async.mjs';
-import { directories } from './utils/directories.mjs';
+import { workDir, folder, file } from './utils/paths.mjs';
+import { DEFAULT_PATTERN } from './utils/pattern.mjs';
 
 const { config: configFile } = yargs(process.argv.slice(2)).option('config', { type: 'string' }).help().argv;
-const configFilePath = join(process.cwd(), configFile || '.mdocs.mjs');
+const configFilePath = join(process.cwd(), configFile || file.config);
 
 const config = await import(configFilePath).then(f => f.default);
 
+const temporalDir = workDir.temporal();
+
 // Copy template
-if (!existsSync(directories.temporal)) await mkdir(directories.temporal);
-const executionDir = await mkdtemp(join(directories.temporal, '/'));
-await cp(directories.template, executionDir, { recursive: true });
+if (!existsSync(temporalDir)) await mkdir(temporalDir, { recursive: true });
+const executionDir = await mkdtemp(join(temporalDir, '/'));
+await cp(workDir.template(), executionDir, { recursive: true });
 
 // Copy markdown files
-const extensions = ['markdown', 'mdown', 'mkdn', 'mkd', 'mdwn', 'md', 'mdx'];
-const filePaths = await glob(config.pattern || ['!**/node_modules/', `**/[^_]*.{${extensions.join(',')}}`]);
+const filePaths = await glob(config.pattern || DEFAULT_PATTERN);
 const files = filePaths.map(file => ({ input: file, output: config.transform ? config.transform(file) : transform(file) }))
-const contentDirectory = join(executionDir, 'src', 'content', 'docs');
+const contentDirectory = join(executionDir, folder.starlightContent);
 const cpPromises = files.map(file => cp(join(process.cwd(), file.input), join(contentDirectory, file.output)));
 await Promise.all(cpPromises);
 
 // Build docs
-await execAsync('npm run build', { cwd: executionDir, stdio: 'inherit', env: { ...process.env, REPO_DOCS_CONFIG_FILE: configFilePath } });
+await execAsync(join(workDir.cli(), './node_modules/.bin/astro build'), { cwd: executionDir, stdio: 'inherit', env: { ...process.env, REPO_DOCS_CONFIG_FILE: configFilePath } });
 
 // Copy result to destination directory
-const destDir = join(process.cwd(), config.dest);
+const destDir = workDir.destination();
 await rm(destDir, { recursive: true, force: true });
-await cp(join(executionDir, 'dist'), destDir, { recursive: true });
+await cp(join(executionDir, folder.starlightDist), destDir, { recursive: true });
 
 // Remove temporal files
 await rm(executionDir, { recursive: true, force: true });
