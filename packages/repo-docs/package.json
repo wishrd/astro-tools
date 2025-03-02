@@ -1,0 +1,45 @@
+{
+	"name": "@astro-tools/repo-docs",
+	"version": "0.0.0",
+	"description": "CLI for generating a documentation website from the repository markdown files using Astro Starlight under the hood",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/wishrd/astro-tools",
+		"directory": "packages/repo-docs"
+	},
+	"homepage": "https://astro-tools.pages.dev",
+	"keywords": [
+		"astro",
+    "starlight",
+		"withastro",
+		"docs",
+    "documentation"
+	],
+	"author": {
+		"name": "wishrd"
+	},
+	"publishConfig": {
+		"access": "public"
+	},
+	"sideEffects": false,
+	"files": [
+    "template",
+    "scripts"
+	],
+  "bin": "scripts/build.mjs",
+	"scripts": {
+    "template": "node scripts/template.mjs"
+	},
+	"type": "module",
+	"dependencies": {
+    "@astrojs/starlight": "^0.32.2",
+		"astro": "^5.4.1",
+    "glob": "catalog:",
+    "sharp": "^0.32.5",
+    "yargs": "catalog:"
+	},
+  "devDependencies": {
+    "create-astro": "catalog:"
+  }
+}
