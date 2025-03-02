@@ -27,7 +27,7 @@
 		"template",
 		"scripts"
 	],
-	"bin": "scripts/build.mjs",
+	"bin": "scripts/cli.mjs",
 	"scripts": {
 		"template": "node scripts/template.mjs"
 	},

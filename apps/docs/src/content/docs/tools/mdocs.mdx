@@ -24,12 +24,13 @@ Install the library using your preferred package manager:
 ```
 npm i -g @astro-tools/mdocs
 ```
-
 > The library could be installed local to the project if needed.
+
+After installing, the command `mdocs` should be available in your terminal.
 
 ## Use
 
-The configuration related to the @astro-tools/mdocs and Astro Starlight could be defined in the working directory file `.mdocs.mjs`.
+The configuration related to the @astro-tools/mdocs and Astro Starlight must be defined in the working directory file `.mdocs.mjs`.
 
 > Alternatively, the CLI could receive an argument `--config` with the config file path.
 
@@ -43,6 +44,22 @@ export default {
 }
 ```
 
+Then execute the command `mdocs` in the working directory with the previous file:
+```sh
+mdocs
+```
+
+The output should be similar to the following:
+```terminal
+[INFO] Copying template...
+[INFO] Copying documentation files...
+[INFO] Building docs...
+<Astro Starlight logs>
+[INFO] Copying result into the destination folder...
+[INFO] Removing temporal files...
+[INFO] Documentation generated successfully!
+```
+
 ### Options
 
 The libraries tries to minimize the configuration required to build the documentation. In any case, there are some options that can be used for your needs.
@@ -52,6 +69,12 @@ The libraries tries to minimize the configuration required to build the document
 Glob patterns to filter the documentation files to include and copy into the Astro Starlight `content/docs` directory.
 
 The default value is ```['!**/node_modules/', `**/[^_]*.{${extensions.join(',')}}`]```.
+
+#### transform
+
+Function of type `(path: string) => string` that transform the input file path, allowing to modify the output directory and filename.
+
+The default function replaces `README` by `index`.
 
 #### starlight
 
