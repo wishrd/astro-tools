@@ -1,5 +1,11 @@
 # @astro-tools/mdocs
 
+## 1.0.1
+
+### Patch Changes
+
+- 037aa35: Fix cli invoke script and clarify config file options
+
 ## 1.0.0
 
 ### Major Changes
