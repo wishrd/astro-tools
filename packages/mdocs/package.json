@@ -1,6 +1,6 @@
 {
 	"name": "@astro-tools/mdocs",
-	"version": "0.0.0",
+	"version": "1.0.0",
 	"description": "CLI for generating a documentation website from markdown files of the execution directory using Astro Starlight under the hood",
 	"license": "MIT",
 	"repository": {
@@ -11,10 +11,10 @@
 	"homepage": "https://astro-tools.pages.dev",
 	"keywords": [
 		"astro",
-    "starlight",
+		"starlight",
 		"withastro",
 		"docs",
-    "documentation"
+		"documentation"
 	],
 	"author": {
 		"name": "wishrd"
@@ -24,22 +24,22 @@
 	},
 	"sideEffects": false,
 	"files": [
-    "template",
-    "scripts"
+		"template",
+		"scripts"
 	],
-  "bin": "scripts/build.mjs",
+	"bin": "scripts/build.mjs",
 	"scripts": {
-    "template": "node scripts/template.mjs"
+		"template": "node scripts/template.mjs"
 	},
 	"type": "module",
 	"dependencies": {
-    "@astrojs/starlight": "^0.32.2",
+		"@astrojs/starlight": "^0.32.2",
 		"astro": "^5.4.1",
-    "glob": "catalog:",
-    "sharp": "^0.32.5",
-    "yargs": "catalog:"
+		"glob": "catalog:",
+		"sharp": "^0.32.5",
+		"yargs": "catalog:"
 	},
-  "devDependencies": {
-    "create-astro": "catalog:"
-  }
+	"devDependencies": {
+		"create-astro": "catalog:"
+	}
 }
