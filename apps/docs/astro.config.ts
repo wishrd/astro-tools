@@ -40,6 +40,10 @@ export default defineConfig({
           label: 'Network',
 					autogenerate: { directory: 'network' },
         },
+        {
+          label: 'Tools',
+					autogenerate: { directory: 'tools' },
+        },
 			],
       components: {
         PageTitle: './src/components/overrides/PageTitle.astro',

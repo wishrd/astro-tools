@@ -10,6 +10,8 @@ catalog:
   '@types/node': ^22.13.8
   astro: ^5.4.1
   astro-integration-kit: ^0.18.0
+  create-astro: ^4.11.1
+  glob: ^11.0.1
   nanostores: ^0.11.4
   sass-embedded: ^1.85.1
   sharp: ^0.33.5
@@ -17,6 +19,7 @@ catalog:
   tsup: ^8.4.0
   ts-deepmerge: ^7.0.2
   turbo: ^2.4.4
+  yargs: ^17.7.2
 
 catalogs:
   peer:
