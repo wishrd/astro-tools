@@ -7,15 +7,15 @@ catalog:
   '@astrojs/starlight': ^0.32.2
   '@astrojs/svelte': ^7.0.5
   '@changesets/cli': ^2.28.1
-  '@types/node': ^22.13.8
-  astro: ^5.4.1
+  '@types/node': ^22.13.9
+  astro: ^5.4.2
   astro-integration-kit: ^0.18.0
   create-astro: ^4.11.1
   glob: ^11.0.1
   nanostores: ^0.11.4
   sass-embedded: ^1.85.1
   sharp: ^0.33.5
-  svelte: ^5.20.5
+  svelte: ^5.22.1
   tsup: ^8.4.0
   ts-deepmerge: ^7.0.2
   turbo: ^2.4.4

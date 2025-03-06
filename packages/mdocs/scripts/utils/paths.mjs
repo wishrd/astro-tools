@@ -15,6 +15,7 @@ export const file = {
 export const folder = {
   template: 'template',
   starlightContent: join('src', 'content', 'docs'),
+  starlightAssets: join('src', 'assets'),
   starlightDist: 'dist',
 }
 

@@ -1,13 +1,13 @@
 import { existsSync } from 'node:fs';
-import { cp, mkdtemp, mkdir, rm } from 'node:fs/promises';
-import { join } from 'node:path';
+import { cp, mkdtemp, mkdir, rm, writeFile } from 'node:fs/promises';
+import { dirname, join } from 'node:path';
 
 import { glob } from 'glob';
 
-import { transform } from './utils/transform.mjs';
 import { execAsync } from './utils/exec-async.mjs';
 import { workDir, folder } from './utils/paths.mjs';
 import { DEFAULT_PATTERN } from './utils/pattern.mjs';
+import { processContentFile } from './utils/process-content-file.mjs';
 
 export async function build({ config, configPath }) {
   const temporalDir = workDir.temporal();
@@ -18,12 +18,21 @@ export async function build({ config, configPath }) {
   const executionDir = await mkdtemp(join(temporalDir, '/'));
   await cp(workDir.template(), executionDir, { recursive: true });
 
-  // Copy markdown files
+  // Copy markdown files and related assets
   console.info('[INFO] Copying documentation files...');
   const filePaths = await glob(config.pattern || DEFAULT_PATTERN);
-  const files = filePaths.map(file => ({ input: file, output: config.transform ? config.transform(file) : transform(file) }))
-  const contentDirectory = join(executionDir, folder.starlightContent);
-  const cpPromises = files.map(file => cp(join(process.cwd(), file.input), join(contentDirectory, file.output)));
+
+  const promises = filePaths.map(filePath => processContentFile(filePath, config.transformers, { executionDir, contentDir: folder.starlightContent, assetsDir: folder.starlightAssets }));
+  const files = await Promise.all(promises);
+
+  const cpPromises = files.flat().map(async file => {
+    if (!file.content) {
+      return cp(file.input, file.output);
+    }
+
+    await mkdir(dirname(file.output), { recursive: true });
+    await writeFile(file.output, file.content);
+  });
   await Promise.all(cpPromises);
 
   // Build docs

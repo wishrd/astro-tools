@@ -70,11 +70,31 @@ Glob patterns to filter the documentation files to include and copy into the Ast
 
 The default value is ```['!**/node_modules/', `**/[^_]*.{${extensions.join(',')}}`]```.
 
-#### transform
+#### transformers
 
-Function of type `(path: string) => string` that transform the input file path, allowing to modify the output directory and filename.
+Functions of type `(file: File, context: Context) => File[] | File` that transform the input file, allowing to modify the output path (including the file name) and the content (if available).
 
-The default function replaces `README` by `index`.
+The `File` type is:
+```typescript
+interface File {
+  input: string;
+  output: string;
+  content?: string;
+}
+```
+
+The `Context` type is:
+```typescript
+interface Context {
+  executionDir: string; // absolute path to the root of the temporal project folder
+  contentDir: string; // relative to the executionDir
+  assetsDir: string; // relative to the executionDir
+}
+```
+
+When returning an array, the first position must be the result of transforming the incoming file. Following files will be added to the processing queue from the start.
+
+The default transformers replaces `README` by `index` and process the image assets hashing and copying it. Any custom transformer will be executed before the default transformers.
 
 #### starlight
 
