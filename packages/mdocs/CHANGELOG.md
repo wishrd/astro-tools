@@ -1,5 +1,11 @@
 # @astro-tools/mdocs
 
+## 1.1.0
+
+### Minor Changes
+
+- c93250d: Add support for image assets
+
 ## 1.0.1
 
 ### Patch Changes
