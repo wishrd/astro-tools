@@ -19,11 +19,11 @@ catalogs:
       specifier: ^2.28.1
       version: 2.28.1
     '@types/node':
-      specifier: ^22.13.8
-      version: 22.13.8
+      specifier: ^22.13.9
+      version: 22.13.9
     astro:
-      specifier: ^5.4.1
-      version: 5.4.1
+      specifier: ^5.4.2
+      version: 5.4.2
     astro-integration-kit:
       specifier: ^0.18.0
       version: 0.18.0
@@ -43,8 +43,8 @@ catalogs:
       specifier: ^0.33.5
       version: 0.33.5
     svelte:
-      specifier: ^5.20.5
-      version: 5.20.5
+      specifier: ^5.22.1
+      version: 5.22.1
     ts-deepmerge:
       specifier: ^7.0.2
       version: 7.0.2
@@ -73,10 +73,10 @@ importers:
     dependencies:
       '@astrojs/starlight':
         specifier: 'catalog:'
-        version: 0.32.2(astro@5.4.1(@types/node@22.13.8)(rollup@4.34.8)(sass-embedded@1.85.1)(typescript@5.7.3))
+        version: 0.32.2(astro@5.4.2(@types/node@22.13.9)(rollup@4.34.8)(sass-embedded@1.85.1)(typescript@5.7.3))
       astro:
         specifier: 'catalog:'
-        version: 5.4.1(@types/node@22.13.8)(rollup@4.34.8)(sass-embedded@1.85.1)(typescript@5.7.3)
+        version: 5.4.2(@types/node@22.13.9)(rollup@4.34.8)(sass-embedded@1.85.1)(typescript@5.7.3)
       sharp:
         specifier: 'catalog:'
         version: 0.33.5
@@ -98,10 +98,10 @@ importers:
         version: link:../../packages/transfer-state
       '@astrojs/svelte':
         specifier: 'catalog:'
-        version: 7.0.5(@types/node@22.13.8)(astro@5.4.1(@types/node@22.13.8)(rollup@4.34.8)(sass-embedded@1.85.1)(typescript@5.7.3))(sass-embedded@1.85.1)(svelte@5.20.5)(typescript@5.7.3)
+        version: 7.0.5(@types/node@22.13.9)(astro@5.4.2(@types/node@22.13.9)(rollup@4.34.8)(sass-embedded@1.85.1)(typescript@5.7.3))(sass-embedded@1.85.1)(svelte@5.22.1)(typescript@5.7.3)
       astro-integration-kit:
         specifier: 'catalog:'
-        version: 0.18.0(astro@5.4.1(@types/node@22.13.8)(rollup@4.34.8)(sass-embedded@1.85.1)(typescript@5.7.3))
+        version: 0.18.0(astro@5.4.2(@types/node@22.13.9)(rollup@4.34.8)(sass-embedded@1.85.1)(typescript@5.7.3))
       nanostores:
         specifier: 'catalog:'
         version: 0.11.4
@@ -110,17 +110,17 @@ importers:
         version: 1.85.1
       svelte:
         specifier: 'catalog:'
-        version: 5.20.5
+        version: 5.22.1
 
   packages/client-directives:
     dependencies:
       astro-integration-kit:
         specifier: 'catalog:'
-        version: 0.18.0(astro@5.4.1(@types/node@22.13.8)(rollup@4.34.8)(sass-embedded@1.85.1)(typescript@5.7.3))
+        version: 0.18.0(astro@5.4.2(@types/node@22.13.9)(rollup@4.34.8)(sass-embedded@1.85.1)(typescript@5.7.3))
     devDependencies:
       astro:
         specifier: 'catalog:'
-        version: 5.4.1(@types/node@22.13.8)(rollup@4.34.8)(sass-embedded@1.85.1)(typescript@5.7.3)
+        version: 5.4.2(@types/node@22.13.9)(rollup@4.34.8)(sass-embedded@1.85.1)(typescript@5.7.3)
       tsup:
         specifier: 'catalog:'
         version: 8.4.0(postcss@8.5.3)(typescript@5.7.3)
@@ -138,17 +138,17 @@ importers:
         version: link:../transfer-state
       astro-integration-kit:
         specifier: 'catalog:'
-        version: 0.18.0(astro@5.4.1(@types/node@22.13.8)(rollup@4.34.8)(sass-embedded@1.85.1)(typescript@5.7.3))
+        version: 0.18.0(astro@5.4.2(@types/node@22.13.9)(rollup@4.34.8)(sass-embedded@1.85.1)(typescript@5.7.3))
       ts-deepmerge:
         specifier: 'catalog:'
         version: 7.0.2
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
-        version: 22.13.8
+        version: 22.13.9
       astro:
         specifier: 'catalog:'
-        version: 5.4.1(@types/node@22.13.8)(rollup@4.34.8)(sass-embedded@1.85.1)(typescript@5.7.3)
+        version: 5.4.2(@types/node@22.13.9)(rollup@4.34.8)(sass-embedded@1.85.1)(typescript@5.7.3)
       tsup:
         specifier: 'catalog:'
         version: 8.4.0(postcss@8.5.3)(typescript@5.7.3)
@@ -157,10 +157,10 @@ importers:
     dependencies:
       '@astrojs/starlight':
         specifier: ^0.32.2
-        version: 0.32.2(astro@5.4.1(@types/node@22.13.8)(rollup@4.34.8)(sass-embedded@1.85.1)(typescript@5.7.3))
+        version: 0.32.2(astro@5.4.2(@types/node@22.13.9)(rollup@4.34.8)(sass-embedded@1.85.1)(typescript@5.7.3))
       astro:
         specifier: ^5.4.1
-        version: 5.4.1(@types/node@22.13.8)(rollup@4.34.8)(sass-embedded@1.85.1)(typescript@5.7.3)
+        version: 5.4.2(@types/node@22.13.9)(rollup@4.34.8)(sass-embedded@1.85.1)(typescript@5.7.3)
       glob:
         specifier: 'catalog:'
         version: 11.0.1
@@ -179,14 +179,14 @@ importers:
     dependencies:
       astro-integration-kit:
         specifier: 'catalog:'
-        version: 0.18.0(astro@5.4.1(@types/node@22.13.8)(rollup@4.34.8)(sass-embedded@1.85.1)(typescript@5.7.3))
+        version: 0.18.0(astro@5.4.2(@types/node@22.13.9)(rollup@4.34.8)(sass-embedded@1.85.1)(typescript@5.7.3))
     devDependencies:
       '@astro-tools/transfer-state':
         specifier: workspace:*
         version: link:../transfer-state
       astro:
         specifier: 'catalog:'
-        version: 5.4.1(@types/node@22.13.8)(rollup@4.34.8)(sass-embedded@1.85.1)(typescript@5.7.3)
+        version: 5.4.2(@types/node@22.13.9)(rollup@4.34.8)(sass-embedded@1.85.1)(typescript@5.7.3)
       nanostores:
         specifier: 'catalog:'
         version: 0.11.4
@@ -201,11 +201,11 @@ importers:
         version: 2.1.2
       astro-integration-kit:
         specifier: 'catalog:'
-        version: 0.18.0(astro@5.4.1(@types/node@22.13.8)(rollup@4.34.8)(sass-embedded@1.85.1)(typescript@5.7.3))
+        version: 0.18.0(astro@5.4.2(@types/node@22.13.9)(rollup@4.34.8)(sass-embedded@1.85.1)(typescript@5.7.3))
     devDependencies:
       astro:
         specifier: 'catalog:'
-        version: 5.4.1(@types/node@22.13.8)(rollup@4.34.8)(sass-embedded@1.85.1)(typescript@5.7.3)
+        version: 5.4.2(@types/node@22.13.9)(rollup@4.34.8)(sass-embedded@1.85.1)(typescript@5.7.3)
       tsup:
         specifier: 'catalog:'
         version: 8.4.0(postcss@8.5.3)(typescript@5.7.3)
@@ -831,6 +831,11 @@ packages:
   '@shikijs/vscode-textmate@10.0.2':
     resolution: {integrity: sha512-83yeghZ2xxin3Nj8z1NMd/NCuca+gsYXswywDy5bHvwlWL8tpTQmzGeUuHd9FC3E/SBEMvzJRwWEOz5gGes9Qg==}
 
+  '@sveltejs/acorn-typescript@1.0.5':
+    resolution: {integrity: sha512-IwQk4yfwLdibDlrXVE04jTZYlLnwsTT2PIOQQGNLWfjavGifnk1JD1LcZjZaBTRcxZu2FfPfNLOE04DSu9lqtQ==}
+    peerDependencies:
+      acorn: ^8.9.0
+
   '@sveltejs/vite-plugin-svelte-inspector@4.0.1':
     resolution: {integrity: sha512-J/Nmb2Q2y7mck2hyCX4ckVHcR5tu2J+MtBEQqpDrrgELZ2uvraQcK/ioCV61AqkdXFgriksOKIceDcQmqnGhVw==}
     engines: {node: ^18.0.0 || ^20.0.0 || >=22}
@@ -885,11 +890,8 @@ packages:
   '@types/node@17.0.45':
     resolution: {integrity: sha512-w+tIMs3rq2afQdsPJlODhoUEKzFP1ayaoyl1CcnwtIlsVe7K7bA1NGm4s3PraqTLlXnbIN84zuBlxBWo1u9BLw==}
 
-  '@types/node@22.13.4':
-    resolution: {integrity: sha512-ywP2X0DYtX3y08eFVx5fNIw7/uIv8hYUKgXoK8oayJlLnKcRfEYCxWMVE1XagUdVtCJlZT1AU4LXEABW+L1Peg==}
-
-  '@types/node@22.13.8':
-    resolution: {integrity: sha512-G3EfaZS+iOGYWLLRCEAXdWK9my08oHNZ+FHluRiggIYJPOXzhOiDgpVCUHaUvyIC5/fj7C/p637jdzC666AOKQ==}
+  '@types/node@22.13.9':
+    resolution: {integrity: sha512-acBjXdRJ3A6Pb3tqnw9HZmyR3Fiol3aGxRCK1x3d+6CDAMjl7I649wpSd+yNURCjbOUGu9tqtLKnTGxmK6CyGw==}
 
   '@types/sax@1.2.7':
     resolution: {integrity: sha512-rO73L89PJxeYM3s3pPPjiPgVVcymqU490g0YO5n5By0k2Erzj6tay/4lr1CHAAU4JyOWd1rpQ8bCf6cZfHU96A==}
@@ -910,11 +912,6 @@ packages:
     resolution: {integrity: sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==}
     peerDependencies:
       acorn: ^6.0.0 || ^7.0.0 || ^8.0.0
-
-  acorn-typescript@1.4.13:
-    resolution: {integrity: sha512-xsc9Xv0xlVfwp2o7sQ+GCQ1PgbkdcpWdTzrwXxO3xDMTAywVS3oXVOcOHuRjAPkS4P9b+yc/qNF15460v+jp4Q==}
-    peerDependencies:
-      acorn: '>=8.9.0'
 
   acorn@8.14.0:
     resolution: {integrity: sha512-cl669nCJTZBsL97OF4kUQm5g5hC2uihk0NxY3WENAC0TYdILVkAyHymAntgxGkl7K+t0cXIrH5siy5S4XkFycA==}
@@ -993,8 +990,8 @@ packages:
     peerDependencies:
       astro: ^4.12.0 || ^5.0.0
 
-  astro@5.4.1:
-    resolution: {integrity: sha512-z9BiBz8pV7pZVn1evZv/9bJil3A9UZNyEjDFH3IjD87ioz95HHGLgbjRbbqF1EwSy8JOLKlMNyuQPqjrX8xqWw==}
+  astro@5.4.2:
+    resolution: {integrity: sha512-9Z3fAniIRJaK/o43OroZA1wHUIU+qHiOR9ovlVT/2XQaN25QRXScIsKWlFp0G/zrx5OuuoJ+QnaoHHW061u26A==}
     engines: {node: ^18.17.1 || ^20.3.0 || >=22.0.0, npm: '>=9.6.5', pnpm: '>=7.1.0'}
     hasBin: true
 
@@ -1051,10 +1048,6 @@ packages:
   better-path-resolve@1.0.0:
     resolution: {integrity: sha512-pbnl5XzGBdrFU/wT4jqmJVPn2B6UHPBOhzMQkY/SPUPB6QtUXtmBHBIwCbXJol93mOpGMnQyP/+BB19q04xj7g==}
     engines: {node: '>=4'}
-
-  binary-extensions@2.3.0:
-    resolution: {integrity: sha512-Ceh+7ox5qe7LJuLHoY0feh3pHuUDHAcRUeyL2VYghZwfpkNIy/+8Ocg0a3UuSoYzavmylwuLWQOf3hl0jjMMIw==}
-    engines: {node: '>=8'}
 
   bl@4.1.0:
     resolution: {integrity: sha512-1W07cM9gS6DcLperZfFSj+bWLtaPGSOHWhPiGzXmvVJbRLdG82sH/Kn8EtW1VqWVA54AKf2h5k5BbnIbwF3h6w==}
@@ -1114,10 +1107,6 @@ packages:
 
   chardet@0.7.0:
     resolution: {integrity: sha512-mT8iDcrh03qDGRRmoA2hmBJnxpllMR+0/0qlzjqZES6NdiWDcZkCNAk4rPFZ9Q85r27unkiNNg8ZOiwZXBHwcA==}
-
-  chokidar@3.6.0:
-    resolution: {integrity: sha512-7VT13fmjotKpGipCW9JEQAusEPE+Ei8nl6/g4FBAmIm0GOOLMua9NDDo/DWp0ZAxCr3cPq5ZpBqmPAQgDda2Pw==}
-    engines: {node: '>= 8.10.0'}
 
   chokidar@4.0.3:
     resolution: {integrity: sha512-Qgzu8kfBvo+cA4962jnP1KkS6Dop5NS6g7R5LFYJr4b8Ub94PPQXUksCw9PvXoeXPRRddRNC5C1JQUR2SMGtnA==}
@@ -1610,10 +1599,6 @@ packages:
 
   is-arrayish@0.3.2:
     resolution: {integrity: sha512-eVRqCvVlZbuw3GrM63ovNSNAeA1K16kaR/LRY/92w0zxQ5/1YzwblUX652i4Xs9RwAGjW9d9y6X88t8OaAJfWQ==}
-
-  is-binary-path@2.1.0:
-    resolution: {integrity: sha512-ZMERYes6pDydyuGidse7OsHxtbI7WVeUEozgR/g7rd0xUimYNlvZRE/K2MgZTjWy725IfelLeVcEM97mmtRGXw==}
-    engines: {node: '>=8'}
 
   is-decimal@2.0.1:
     resolution: {integrity: sha512-AAB9hiomQs5DXWcRB1rqsxGUstbRroFOPPVAomNk/3XHR5JyEZChOyTWe2oayKnsSsr/kcGqF+z6yuH6HHpN0A==}
@@ -2198,10 +2183,6 @@ packages:
     resolution: {integrity: sha512-Q8qQfPiZ+THO/3ZrOrO0cJJKfpYCagtMUkXbnEfmgUjwXg6z/WBeOyS9APBBPCTSiDV+s4SwQGu8yFsiMRIudg==}
     engines: {node: '>=4'}
 
-  postcss@8.5.2:
-    resolution: {integrity: sha512-MjOadfU3Ys9KYoX0AdkBlFEF1Vx37uCCeN4ZHnmwm9FfpbsGWMZeBLMmmpY+6Ocqod7mkdZ0DT31OlbsFrLlkA==}
-    engines: {node: ^10 || ^12 || >=14}
-
   postcss@8.5.3:
     resolution: {integrity: sha512-dle9A3yYxlBSrt8Fu+IpjGT8SY8hN0mlaA6GY8t0P5PjIOZemULz/E2Bnm/2dcUOena75OTNkHI76uZBNUUq3A==}
     engines: {node: ^10 || ^12 || >=14}
@@ -2255,10 +2236,6 @@ packages:
   readable-stream@3.6.2:
     resolution: {integrity: sha512-9u/sniCrY3D5WdsERHzHE4G2YCXqoG5FTHUiCC4SIbr6XcLZBY05ya9EKjYek9O5xOAwjGq+1JdGBAS7Q9ScoA==}
     engines: {node: '>= 6'}
-
-  readdirp@3.6.0:
-    resolution: {integrity: sha512-hOS089on8RduqdbhvQ5Z37A0ESjsqz6qnRcffsMU3495FuTdqSm+7bhJ29JvIOsBDEEnan5DPu9t3To9VRlMzA==}
-    engines: {node: '>=8.10.0'}
 
   readdirp@4.1.2:
     resolution: {integrity: sha512-GDhwkLfywWL2s6vEjyhri+eXmfH6j1L7JE27WhqLeYzoh/A3DBaYGEj2H/HFZCn/kMfim73FXxEJTw06WtxQwg==}
@@ -2651,8 +2628,8 @@ packages:
       svelte: ^3.55 || ^4.0.0-next.0 || ^4.0 || ^5.0.0-next.0
       typescript: ^4.9.4 || ^5.0.0
 
-  svelte@5.20.5:
-    resolution: {integrity: sha512-dpu2lTPVsAAgZFKpF7A9741sBCdXGogfxFU4aQeVgun7GVNCSVheTzj0FsT7g9OsLhBaMX4lKLwVIvmzQGytmQ==}
+  svelte@5.22.1:
+    resolution: {integrity: sha512-b9DQGnfrZc+km4u3j6qkEY87pYe23yfgBT03CkeBlYST+Wzij7ut1o0BSoQ+UmiyAO1nPh9DMJJCoGDdUOrunw==}
     engines: {node: '>=18'}
 
   sync-child-process@1.0.2:
@@ -2699,10 +2676,6 @@ packages:
 
   tinyexec@0.3.2:
     resolution: {integrity: sha512-KQQR9yN7R5+OSwaK0XQoj22pwHoTlgYqmUscPYoknOoWCWfj/5/ABTMRi69FrKU5ffPVh5QcFikpWJI/P1ocHA==}
-
-  tinyglobby@0.2.11:
-    resolution: {integrity: sha512-32TmKeeKUahv0Go8WmQgiEp9Y21NuxjwjqiRC1nrUB51YacfSwuB44xgXD+HdIppmMRgjQNPdrHyA6vIybYZ+g==}
-    engines: {node: '>=12.0.0'}
 
   tinyglobby@0.2.12:
     resolution: {integrity: sha512-qkf4trmKSIiMTs/E63cxH+ojC2unam7rJ0WrauAzpT3ECNTxGRMlaXxVbfxMUC/w0LaYk6jQ4y/nGR9uBO3tww==}
@@ -2867,27 +2840,27 @@ packages:
     resolution: {integrity: sha512-rBJeI5CXAlmy1pV+617WB9J63U6XcazHHF2f2dbJix4XzpUF0RS3Zbj0FGIOCAva5P/d/GBOYaACQ1w+0azUkg==}
     engines: {node: '>= 4.0.0'}
 
-  unstorage@1.14.4:
-    resolution: {integrity: sha512-1SYeamwuYeQJtJ/USE1x4l17LkmQBzg7deBJ+U9qOBoHo15d1cDxG4jM31zKRgF7pG0kirZy4wVMX6WL6Zoscg==}
+  unstorage@1.15.0:
+    resolution: {integrity: sha512-m40eHdGY/gA6xAPqo8eaxqXgBuzQTlAKfmB1iF7oCKXE1HfwHwzDJBywK+qQGn52dta+bPlZluPF7++yR3p/bg==}
     peerDependencies:
       '@azure/app-configuration': ^1.8.0
       '@azure/cosmos': ^4.2.0
       '@azure/data-tables': ^13.3.0
-      '@azure/identity': ^4.5.0
+      '@azure/identity': ^4.6.0
       '@azure/keyvault-secrets': ^4.9.0
       '@azure/storage-blob': ^12.26.0
       '@capacitor/preferences': ^6.0.3
-      '@deno/kv': '>=0.8.4'
+      '@deno/kv': '>=0.9.0'
       '@netlify/blobs': ^6.5.0 || ^7.0.0 || ^8.1.0
       '@planetscale/database': ^1.19.0
       '@upstash/redis': ^1.34.3
-      '@vercel/blob': '>=0.27.0'
+      '@vercel/blob': '>=0.27.1'
       '@vercel/kv': ^1.0.1
       aws4fetch: ^1.0.20
       db0: '>=0.2.1'
       idb-keyval: ^6.2.1
       ioredis: ^5.4.2
-      uploadthing: ^7.4.1
+      uploadthing: ^7.4.4
     peerDependenciesMeta:
       '@azure/app-configuration':
         optional: true
@@ -2981,8 +2954,8 @@ packages:
       yaml:
         optional: true
 
-  vitefu@1.0.5:
-    resolution: {integrity: sha512-h4Vflt9gxODPFNGPwp4zAMZRpZR7eslzwH2c5hn5kNZ5rhnKyRJ50U+yGCdc2IRaBs8O4haIgLNGrV5CrpMsCA==}
+  vitefu@1.0.6:
+    resolution: {integrity: sha512-+Rex1GlappUyNN6UfwbVZne/9cYC4+R2XDk9xkNXBKMw6HQagdX9PgZ8V2v1WUSK1wfBLp7qbI1+XSNIlB1xmA==}
     peerDependencies:
       vite: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0
     peerDependenciesMeta:
@@ -3052,8 +3025,8 @@ packages:
     resolution: {integrity: sha512-b4JR1PFR10y1mKjhHY9LaGo6tmrgjit7hxVIeAmyMw3jegXR4dhYqLaQF5zMXZxY7tLpMyJeLjr1C4rLmkVe8g==}
     engines: {node: '>=12.20'}
 
-  yocto-spinner@0.2.0:
-    resolution: {integrity: sha512-Qu6WAqNLGleB687CCGcmgHIo8l+J19MX/32UrSMfbf/4L8gLoxjpOYoiHT1asiWyqvjRZbgvOhLlvne6E5Tbdw==}
+  yocto-spinner@0.2.1:
+    resolution: {integrity: sha512-lHHxjh0bXaLgdJy3cNnVb/F9myx3CkhrvSOEVTkaUgNMXnYFa2xYPVhtGnqhh3jErY2gParBOHallCbc7NrlZQ==}
     engines: {node: '>=18.19'}
 
   yoctocolors@2.1.1:
@@ -3063,8 +3036,8 @@ packages:
   zimmerframe@1.1.2:
     resolution: {integrity: sha512-rAbqEGa8ovJy4pyBxZM70hg4pE6gDgaQ0Sl9M3enG3I0d6H4XSAM3GeNGLKnsBpuijUow064sf7ww1nutC5/3w==}
 
-  zod-to-json-schema@3.24.1:
-    resolution: {integrity: sha512-3h08nf3Vw3Wl3PK+q3ow/lIil81IT2Oa7YpQyUUDsEWbXveMesdfK1xBd2RhCkynwZndAxixji/7SYJJowr62w==}
+  zod-to-json-schema@3.24.3:
+    resolution: {integrity: sha512-HIAfWdYIt1sssHfYZFCXp4rU1w2r8hVVXYIlmoa0r0gABLs5di3RCqPU5DDROogVz1pAdYBaz7HK5n9pSUNs3A==}
     peerDependencies:
       zod: ^3.24.1
 
@@ -3152,12 +3125,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/mdx@4.0.8(astro@5.4.1(@types/node@22.13.8)(rollup@4.34.8)(sass-embedded@1.85.1)(typescript@5.7.3))':
+  '@astrojs/mdx@4.0.8(astro@5.4.2(@types/node@22.13.9)(rollup@4.34.8)(sass-embedded@1.85.1)(typescript@5.7.3))':
     dependencies:
       '@astrojs/markdown-remark': 6.1.0
       '@mdx-js/mdx': 3.1.0(acorn@8.14.0)
       acorn: 8.14.0
-      astro: 5.4.1(@types/node@22.13.8)(rollup@4.34.8)(sass-embedded@1.85.1)(typescript@5.7.3)
+      astro: 5.4.2(@types/node@22.13.9)(rollup@4.34.8)(sass-embedded@1.85.1)(typescript@5.7.3)
       es-module-lexer: 1.6.0
       estree-util-visit: 2.0.0
       hast-util-to-html: 9.0.4
@@ -3181,16 +3154,16 @@ snapshots:
       stream-replace-string: 2.0.0
       zod: 3.24.2
 
-  '@astrojs/starlight@0.32.2(astro@5.4.1(@types/node@22.13.8)(rollup@4.34.8)(sass-embedded@1.85.1)(typescript@5.7.3))':
+  '@astrojs/starlight@0.32.2(astro@5.4.2(@types/node@22.13.9)(rollup@4.34.8)(sass-embedded@1.85.1)(typescript@5.7.3))':
     dependencies:
-      '@astrojs/mdx': 4.0.8(astro@5.4.1(@types/node@22.13.8)(rollup@4.34.8)(sass-embedded@1.85.1)(typescript@5.7.3))
+      '@astrojs/mdx': 4.0.8(astro@5.4.2(@types/node@22.13.9)(rollup@4.34.8)(sass-embedded@1.85.1)(typescript@5.7.3))
       '@astrojs/sitemap': 3.2.1
       '@pagefind/default-ui': 1.3.0
       '@types/hast': 3.0.4
       '@types/js-yaml': 4.0.9
       '@types/mdast': 4.0.4
-      astro: 5.4.1(@types/node@22.13.8)(rollup@4.34.8)(sass-embedded@1.85.1)(typescript@5.7.3)
-      astro-expressive-code: 0.40.2(astro@5.4.1(@types/node@22.13.8)(rollup@4.34.8)(sass-embedded@1.85.1)(typescript@5.7.3))
+      astro: 5.4.2(@types/node@22.13.9)(rollup@4.34.8)(sass-embedded@1.85.1)(typescript@5.7.3)
+      astro-expressive-code: 0.40.2(astro@5.4.2(@types/node@22.13.9)(rollup@4.34.8)(sass-embedded@1.85.1)(typescript@5.7.3))
       bcp-47: 2.1.0
       hast-util-from-html: 2.0.3
       hast-util-select: 6.0.3
@@ -3212,14 +3185,14 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/svelte@7.0.5(@types/node@22.13.8)(astro@5.4.1(@types/node@22.13.8)(rollup@4.34.8)(sass-embedded@1.85.1)(typescript@5.7.3))(sass-embedded@1.85.1)(svelte@5.20.5)(typescript@5.7.3)':
+  '@astrojs/svelte@7.0.5(@types/node@22.13.9)(astro@5.4.2(@types/node@22.13.9)(rollup@4.34.8)(sass-embedded@1.85.1)(typescript@5.7.3))(sass-embedded@1.85.1)(svelte@5.22.1)(typescript@5.7.3)':
     dependencies:
-      '@sveltejs/vite-plugin-svelte': 5.0.3(svelte@5.20.5)(vite@6.2.0(@types/node@22.13.8)(sass-embedded@1.85.1))
-      astro: 5.4.1(@types/node@22.13.8)(rollup@4.34.8)(sass-embedded@1.85.1)(typescript@5.7.3)
-      svelte: 5.20.5
-      svelte2tsx: 0.7.34(svelte@5.20.5)(typescript@5.7.3)
+      '@sveltejs/vite-plugin-svelte': 5.0.3(svelte@5.22.1)(vite@6.2.0(@types/node@22.13.9)(sass-embedded@1.85.1))
+      astro: 5.4.2(@types/node@22.13.9)(rollup@4.34.8)(sass-embedded@1.85.1)(typescript@5.7.3)
+      svelte: 5.22.1
+      svelte2tsx: 0.7.34(svelte@5.22.1)(typescript@5.7.3)
       typescript: 5.7.3
-      vite: 6.2.0(@types/node@22.13.8)(sass-embedded@1.85.1)
+      vite: 6.2.0(@types/node@22.13.9)(sass-embedded@1.85.1)
     transitivePeerDependencies:
       - '@types/node'
       - jiti
@@ -3500,8 +3473,8 @@ snapshots:
       hast-util-to-html: 9.0.4
       hast-util-to-text: 4.0.2
       hastscript: 9.0.0
-      postcss: 8.5.2
-      postcss-nested: 6.2.0(postcss@8.5.2)
+      postcss: 8.5.3
+      postcss-nested: 6.2.0(postcss@8.5.3)
       unist-util-visit: 5.0.0
       unist-util-visit-parents: 6.0.1
 
@@ -3805,25 +3778,29 @@ snapshots:
 
   '@shikijs/vscode-textmate@10.0.2': {}
 
-  '@sveltejs/vite-plugin-svelte-inspector@4.0.1(@sveltejs/vite-plugin-svelte@5.0.3(svelte@5.20.5)(vite@6.2.0(@types/node@22.13.8)(sass-embedded@1.85.1)))(svelte@5.20.5)(vite@6.2.0(@types/node@22.13.8)(sass-embedded@1.85.1))':
+  '@sveltejs/acorn-typescript@1.0.5(acorn@8.14.0)':
     dependencies:
-      '@sveltejs/vite-plugin-svelte': 5.0.3(svelte@5.20.5)(vite@6.2.0(@types/node@22.13.8)(sass-embedded@1.85.1))
+      acorn: 8.14.0
+
+  '@sveltejs/vite-plugin-svelte-inspector@4.0.1(@sveltejs/vite-plugin-svelte@5.0.3(svelte@5.22.1)(vite@6.2.0(@types/node@22.13.9)(sass-embedded@1.85.1)))(svelte@5.22.1)(vite@6.2.0(@types/node@22.13.9)(sass-embedded@1.85.1))':
+    dependencies:
+      '@sveltejs/vite-plugin-svelte': 5.0.3(svelte@5.22.1)(vite@6.2.0(@types/node@22.13.9)(sass-embedded@1.85.1))
       debug: 4.4.0
-      svelte: 5.20.5
-      vite: 6.2.0(@types/node@22.13.8)(sass-embedded@1.85.1)
+      svelte: 5.22.1
+      vite: 6.2.0(@types/node@22.13.9)(sass-embedded@1.85.1)
     transitivePeerDependencies:
       - supports-color
 
-  '@sveltejs/vite-plugin-svelte@5.0.3(svelte@5.20.5)(vite@6.2.0(@types/node@22.13.8)(sass-embedded@1.85.1))':
+  '@sveltejs/vite-plugin-svelte@5.0.3(svelte@5.22.1)(vite@6.2.0(@types/node@22.13.9)(sass-embedded@1.85.1))':
     dependencies:
-      '@sveltejs/vite-plugin-svelte-inspector': 4.0.1(@sveltejs/vite-plugin-svelte@5.0.3(svelte@5.20.5)(vite@6.2.0(@types/node@22.13.8)(sass-embedded@1.85.1)))(svelte@5.20.5)(vite@6.2.0(@types/node@22.13.8)(sass-embedded@1.85.1))
+      '@sveltejs/vite-plugin-svelte-inspector': 4.0.1(@sveltejs/vite-plugin-svelte@5.0.3(svelte@5.22.1)(vite@6.2.0(@types/node@22.13.9)(sass-embedded@1.85.1)))(svelte@5.22.1)(vite@6.2.0(@types/node@22.13.9)(sass-embedded@1.85.1))
       debug: 4.4.0
       deepmerge: 4.3.1
       kleur: 4.1.5
       magic-string: 0.30.17
-      svelte: 5.20.5
-      vite: 6.2.0(@types/node@22.13.8)(sass-embedded@1.85.1)
-      vitefu: 1.0.5(vite@6.2.0(@types/node@22.13.8)(sass-embedded@1.85.1))
+      svelte: 5.22.1
+      vite: 6.2.0(@types/node@22.13.9)(sass-embedded@1.85.1)
+      vitefu: 1.0.6(vite@6.2.0(@types/node@22.13.9)(sass-embedded@1.85.1))
     transitivePeerDependencies:
       - supports-color
 
@@ -3865,17 +3842,13 @@ snapshots:
 
   '@types/node@17.0.45': {}
 
-  '@types/node@22.13.4':
-    dependencies:
-      undici-types: 6.20.0
-
-  '@types/node@22.13.8':
+  '@types/node@22.13.9':
     dependencies:
       undici-types: 6.20.0
 
   '@types/sax@1.2.7':
     dependencies:
-      '@types/node': 22.13.4
+      '@types/node': 22.13.9
 
   '@types/trusted-types@2.0.7': {}
 
@@ -3886,10 +3859,6 @@ snapshots:
   '@ungap/structured-clone@1.3.0': {}
 
   acorn-jsx@5.3.2(acorn@8.14.0):
-    dependencies:
-      acorn: 8.14.0
-
-  acorn-typescript@1.4.13(acorn@8.14.0):
     dependencies:
       acorn: 8.14.0
 
@@ -3942,18 +3911,18 @@ snapshots:
 
   astring@1.9.0: {}
 
-  astro-expressive-code@0.40.2(astro@5.4.1(@types/node@22.13.8)(rollup@4.34.8)(sass-embedded@1.85.1)(typescript@5.7.3)):
+  astro-expressive-code@0.40.2(astro@5.4.2(@types/node@22.13.9)(rollup@4.34.8)(sass-embedded@1.85.1)(typescript@5.7.3)):
     dependencies:
-      astro: 5.4.1(@types/node@22.13.8)(rollup@4.34.8)(sass-embedded@1.85.1)(typescript@5.7.3)
+      astro: 5.4.2(@types/node@22.13.9)(rollup@4.34.8)(sass-embedded@1.85.1)(typescript@5.7.3)
       rehype-expressive-code: 0.40.2
 
-  astro-integration-kit@0.18.0(astro@5.4.1(@types/node@22.13.8)(rollup@4.34.8)(sass-embedded@1.85.1)(typescript@5.7.3)):
+  astro-integration-kit@0.18.0(astro@5.4.2(@types/node@22.13.9)(rollup@4.34.8)(sass-embedded@1.85.1)(typescript@5.7.3)):
     dependencies:
-      astro: 5.4.1(@types/node@22.13.8)(rollup@4.34.8)(sass-embedded@1.85.1)(typescript@5.7.3)
+      astro: 5.4.2(@types/node@22.13.9)(rollup@4.34.8)(sass-embedded@1.85.1)(typescript@5.7.3)
       pathe: 1.1.2
       recast: 0.23.9
 
-  astro@5.4.1(@types/node@22.13.8)(rollup@4.34.8)(sass-embedded@1.85.1)(typescript@5.7.3):
+  astro@5.4.2(@types/node@22.13.9)(rollup@4.34.8)(sass-embedded@1.85.1)(typescript@5.7.3):
     dependencies:
       '@astrojs/compiler': 2.10.4
       '@astrojs/internal-helpers': 0.6.0
@@ -4003,16 +3972,16 @@ snapshots:
       tsconfck: 3.1.5(typescript@5.7.3)
       ultrahtml: 1.5.3
       unist-util-visit: 5.0.0
-      unstorage: 1.14.4
+      unstorage: 1.15.0
       vfile: 6.0.3
-      vite: 6.2.0(@types/node@22.13.8)(sass-embedded@1.85.1)
-      vitefu: 1.0.5(vite@6.2.0(@types/node@22.13.8)(sass-embedded@1.85.1))
+      vite: 6.2.0(@types/node@22.13.9)(sass-embedded@1.85.1)
+      vitefu: 1.0.6(vite@6.2.0(@types/node@22.13.9)(sass-embedded@1.85.1))
       which-pm: 3.0.1
       xxhash-wasm: 1.1.0
       yargs-parser: 21.1.1
-      yocto-spinner: 0.2.0
+      yocto-spinner: 0.2.1
       zod: 3.24.2
-      zod-to-json-schema: 3.24.1(zod@3.24.2)
+      zod-to-json-schema: 3.24.3(zod@3.24.2)
       zod-to-ts: 1.2.0(typescript@5.7.3)(zod@3.24.2)
     optionalDependencies:
       sharp: 0.33.5
@@ -4101,8 +4070,6 @@ snapshots:
     dependencies:
       is-windows: 1.0.2
 
-  binary-extensions@2.3.0: {}
-
   bl@4.1.0:
     dependencies:
       buffer: 5.7.1
@@ -4159,18 +4126,6 @@ snapshots:
   character-reference-invalid@2.0.1: {}
 
   chardet@0.7.0: {}
-
-  chokidar@3.6.0:
-    dependencies:
-      anymatch: 3.1.3
-      braces: 3.0.3
-      glob-parent: 5.1.2
-      is-binary-path: 2.1.0
-      is-glob: 4.0.3
-      normalize-path: 3.0.0
-      readdirp: 3.6.0
-    optionalDependencies:
-      fsevents: 2.3.3
 
   chokidar@4.0.3:
     dependencies:
@@ -4781,10 +4736,6 @@ snapshots:
       is-decimal: 2.0.1
 
   is-arrayish@0.3.2: {}
-
-  is-binary-path@2.1.0:
-    dependencies:
-      binary-extensions: 2.3.0
 
   is-decimal@2.0.1: {}
 
@@ -5603,21 +5554,15 @@ snapshots:
     optionalDependencies:
       postcss: 8.5.3
 
-  postcss-nested@6.2.0(postcss@8.5.2):
+  postcss-nested@6.2.0(postcss@8.5.3):
     dependencies:
-      postcss: 8.5.2
+      postcss: 8.5.3
       postcss-selector-parser: 6.1.2
 
   postcss-selector-parser@6.1.2:
     dependencies:
       cssesc: 3.0.0
       util-deprecate: 1.0.2
-
-  postcss@8.5.2:
-    dependencies:
-      nanoid: 3.3.8
-      picocolors: 1.1.1
-      source-map-js: 1.2.1
 
   postcss@8.5.3:
     dependencies:
@@ -5687,10 +5632,6 @@ snapshots:
       inherits: 2.0.4
       string_decoder: 1.3.0
       util-deprecate: 1.0.2
-
-  readdirp@3.6.0:
-    dependencies:
-      picomatch: 2.3.1
 
   readdirp@4.1.2: {}
 
@@ -6188,20 +6129,20 @@ snapshots:
     dependencies:
       has-flag: 4.0.0
 
-  svelte2tsx@0.7.34(svelte@5.20.5)(typescript@5.7.3):
+  svelte2tsx@0.7.34(svelte@5.22.1)(typescript@5.7.3):
     dependencies:
       dedent-js: 1.0.1
       pascal-case: 3.1.2
-      svelte: 5.20.5
+      svelte: 5.22.1
       typescript: 5.7.3
 
-  svelte@5.20.5:
+  svelte@5.22.1:
     dependencies:
       '@ampproject/remapping': 2.3.0
       '@jridgewell/sourcemap-codec': 1.5.0
+      '@sveltejs/acorn-typescript': 1.0.5(acorn@8.14.0)
       '@types/estree': 1.0.6
       acorn: 8.14.0
-      acorn-typescript: 1.4.13(acorn@8.14.0)
       aria-query: 5.3.2
       axobject-query: 4.1.0
       clsx: 2.1.1
@@ -6276,11 +6217,6 @@ snapshots:
 
   tinyexec@0.3.2: {}
 
-  tinyglobby@0.2.11:
-    dependencies:
-      fdir: 6.4.3(picomatch@4.0.2)
-      picomatch: 4.0.2
-
   tinyglobby@0.2.12:
     dependencies:
       fdir: 6.4.3(picomatch@4.0.2)
@@ -6330,7 +6266,7 @@ snapshots:
       source-map: 0.8.0-beta.0
       sucrase: 3.35.0
       tinyexec: 0.3.2
-      tinyglobby: 0.2.11
+      tinyglobby: 0.2.12
       tree-kill: 1.2.2
     optionalDependencies:
       postcss: 8.5.3
@@ -6444,10 +6380,10 @@ snapshots:
 
   universalify@0.1.2: {}
 
-  unstorage@1.14.4:
+  unstorage@1.15.0:
     dependencies:
       anymatch: 3.1.3
-      chokidar: 3.6.0
+      chokidar: 4.0.3
       destr: 2.0.3
       h3: 1.15.0
       lru-cache: 10.4.3
@@ -6474,19 +6410,19 @@ snapshots:
       '@types/unist': 3.0.3
       vfile-message: 4.0.2
 
-  vite@6.2.0(@types/node@22.13.8)(sass-embedded@1.85.1):
+  vite@6.2.0(@types/node@22.13.9)(sass-embedded@1.85.1):
     dependencies:
       esbuild: 0.25.0
       postcss: 8.5.3
       rollup: 4.34.8
     optionalDependencies:
-      '@types/node': 22.13.8
+      '@types/node': 22.13.9
       fsevents: 2.3.3
       sass-embedded: 1.85.1
 
-  vitefu@1.0.5(vite@6.2.0(@types/node@22.13.8)(sass-embedded@1.85.1)):
+  vitefu@1.0.6(vite@6.2.0(@types/node@22.13.9)(sass-embedded@1.85.1)):
     optionalDependencies:
-      vite: 6.2.0(@types/node@22.13.8)(sass-embedded@1.85.1)
+      vite: 6.2.0(@types/node@22.13.9)(sass-embedded@1.85.1)
 
   web-namespaces@2.0.1: {}
 
@@ -6552,7 +6488,7 @@ snapshots:
 
   yocto-queue@1.1.1: {}
 
-  yocto-spinner@0.2.0:
+  yocto-spinner@0.2.1:
     dependencies:
       yoctocolors: 2.1.1
 
@@ -6560,7 +6496,7 @@ snapshots:
 
   zimmerframe@1.1.2: {}
 
-  zod-to-json-schema@3.24.1(zod@3.24.2):
+  zod-to-json-schema@3.24.3(zod@3.24.2):
     dependencies:
       zod: 3.24.2
 
