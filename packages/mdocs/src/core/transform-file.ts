@@ -1,5 +1,13 @@
-export async function transformFile(file, transformers, context) {
-  let extraFiles = [];
+import { Context } from '../models/context.js';
+import { ProcessedFile } from '../models/processed-file.js';
+import { Transformer } from '../models/transformer.js';
+
+export async function transformFile(
+  file: ProcessedFile,
+  transformers: Transformer[],
+  context: Context
+): Promise<ProcessedFile[]> {
+  let extraFiles: ProcessedFile[] = [];
 
   for (let i = 0; i < transformers.length; i++) {
     const result = await transformers[i](file, context);

@@ -1,8 +1,8 @@
 import { join } from 'node:path';
 import { copyFile, mkdir, rm } from 'node:fs/promises';
 
-import { execAsync } from './utils/exec-async.mjs';
-import { workDir, folder } from './utils/paths.mjs';
+import { execAsync } from '../src/core/exec-async.js';
+import { workDir, folder } from '../src/core/paths.js';
 
 const templateDir = workDir.template();
 

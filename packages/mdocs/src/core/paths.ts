@@ -10,19 +10,20 @@ const OUTPUT_DEST_FOLDER = 'dist';
 
 export const file = {
   config: '.mdocs.mjs',
-}
+};
 
 export const folder = {
+  files: 'files',
   template: 'template',
   starlightContent: join('src', 'content', 'docs'),
   starlightAssets: join('src', 'assets'),
   starlightDist: 'dist',
-}
+};
 
 export const workDir = {
   cli: () => projectCwd,
   template: () => join(projectCwd, folder.template),
-  files: () => join(projectCwd, 'scripts', 'files'),
+  files: () => join(projectCwd, folder.files),
   temporal: () => join(projectCwd, OUTPUT_BUILD_FOLDER),
   destination: () => join(process.cwd(), OUTPUT_FOLDER, OUTPUT_DEST_FOLDER),
-}
+};
