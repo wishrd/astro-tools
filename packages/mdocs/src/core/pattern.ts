@@ -1,2 +1,3 @@
-const extensions = ['markdown', 'mdown', 'mkdn', 'mkd', 'mdwn', 'md', 'mdx'] as const;
-export const DEFAULT_PATTERN = ['!**/node_modules/', `**/[^_]*.{${extensions.join(',')}}`] as const;
+const DEFAULT_EXTENSIONS = ['markdown', 'mdown', 'mkdn', 'mkd', 'mdwn', 'md', 'mdx'];
+
+export const DEFAULT_PATTERN = ['!**/node_modules/', `**/[^_]*.{${DEFAULT_EXTENSIONS.join(',')}}`];

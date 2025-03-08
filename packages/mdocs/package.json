@@ -27,26 +27,30 @@
 		"template",
 		"files"
 	],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
 	"bin": "dist/cli.js",
 	"scripts": {
-		"dev": "tsup --watch",
 		"build": "tsup",
     "template": "tsx scripts/template.ts"
 	},
 	"type": "module",
 	"dependencies": {
 		"@astrojs/starlight": "^0.32.2",
-		"astro": "^5.4.1",
+		"astro": "^5.4.2",
 		"glob": "catalog:",
 		"sharp": "^0.32.5",
 		"yargs": "catalog:"
 	},
 	"devDependencies": {
 		"create-astro": "catalog:",
-		"@types/node": "^20.11.24",
-		"@types/yargs": "^17.0.32",
+		"@types/node": "catalog:",
+		"@types/yargs": "catalog:",
 		"tsup": "catalog:",
-    "tsx": "^4.19.3",
-		"typescript": "^5.3.3"
+    "tsx": "catalog:"
 	}
 }

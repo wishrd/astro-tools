@@ -7,8 +7,8 @@ import { execAsync } from './exec-async.js';
 import { workDir, folder } from './paths.js';
 import { DEFAULT_PATTERN } from './pattern.js';
 import { processContentFile } from './process-content-file.js';
-import { Config } from '../models/config.js';
-import { ProcessedFile } from '../models/processed-file.js';
+import type { Config } from '../models/config.js';
+import type { ProcessedFile } from '../models/processed-file.js';
 
 interface BuildOptions {
   config: Config;
@@ -51,8 +51,7 @@ export async function build({ config, configPath }: BuildOptions): Promise<void>
   console.info('[INFO] Building docs...');
   await execAsync(join(workDir.cli(), './node_modules/.bin/astro build'), {
     cwd: executionDir,
-    stdio: 'inherit',
-    env: { ...process.env, REPO_DOCS_CONFIG_FILE: configPath }
+    env: { ...process.env, REPO_DOCS_CONFIG_FILE: configPath },
   });
 
   // Copy result to destination directory
@@ -63,7 +62,7 @@ export async function build({ config, configPath }: BuildOptions): Promise<void>
 
   // Remove temporal files
   console.info('[INFO] Removing temporal files...');
-  await rm(executionDir, { recursive: true, force: true });
+  // await rm(executionDir, { recursive: true, force: true });
 
   console.info('[INFO] Documentation generated successfully!');
 }

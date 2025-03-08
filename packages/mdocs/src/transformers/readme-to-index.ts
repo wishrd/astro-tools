@@ -1,5 +1,5 @@
-import { ProcessedFile } from '../models/processed-file.js';
+import type { Transformer } from '../models/transformer.js';
 
-export async function readmeToIndexTransformer(file: ProcessedFile): Promise<ProcessedFile> {
+export const readmeToIndexTransformer: Transformer = async (file) => {
   return { ...file, output: file.output.replace('README', 'index') };
 }

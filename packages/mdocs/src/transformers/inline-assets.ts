@@ -1,10 +1,10 @@
 import { hash } from 'node:crypto';
 import { resolve, extname, join, relative, dirname } from 'node:path';
 
-import { Context } from '../models/context.js';
-import { ProcessedFile } from '../models/processed-file.js';
+import type { ProcessedFile } from '../models/processed-file.js';
+import type { Transformer } from '../models/transformer.js';
 
-export async function inlineAssetsTransformer(file: ProcessedFile, { executionDir, assetsDir }: Context): Promise<ProcessedFile[]> {
+export const inlineAssetsTransformer: Transformer = async (file, { executionDir, assetsDir }) => {
   if (!file.content) {
     return [file];
   }

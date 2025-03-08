@@ -6,7 +6,7 @@ import { hideBin } from 'yargs/helpers';
 
 import { build } from './core/build.js';
 import { file } from './core/paths.js';
-import { Config } from './models/config.js';
+import type { Config } from './models/config.js';
 
 const { config: configFile } = yargs(hideBin(process.argv))
   .option('config', { type: 'string' })

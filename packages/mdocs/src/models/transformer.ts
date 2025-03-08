@@ -1,4 +1,4 @@
-import { Context } from './context.js';
-import { ProcessedFile } from './processed-file.js';
+import type { Context } from './context.ts';
+import type { ProcessedFile } from './processed-file.ts';
 
 export type Transformer = (file: ProcessedFile, context: Context) => Promise<ProcessedFile | ProcessedFile[]>;

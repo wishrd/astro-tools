@@ -1,17 +1,16 @@
 import { defineConfig } from 'tsup';
 
-export default defineConfig((options) => {
-	const dev = !!options.watch;
+export default defineConfig(() => {
 	return {
-		entry: ["src/**/cli.ts", "src/**/template.ts"],
+		entry: ["src/**/*"],
 		format: ["esm"],
 		target: "node20",
-		bundle: true,
+		bundle: false,
 		dts: true,
-		sourcemap: true,
+		sourcemap: false,
 		clean: true,
-		splitting: true,
-		minify: !dev,
+		splitting: false,
+		minify: false,
 		tsconfig: "tsconfig.json"
 	};
 });

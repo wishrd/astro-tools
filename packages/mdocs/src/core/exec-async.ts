@@ -1,4 +1,4 @@
-import { exec, ExecOptions } from 'node:child_process';
+import { exec, type ExecOptions } from 'node:child_process';
 
 export function execAsync(command: string, options?: ExecOptions): Promise<void> {
   return new Promise((resolve, reject) => {
@@ -11,7 +11,7 @@ export function execAsync(command: string, options?: ExecOptions): Promise<void>
       resolve();
     });
 
-    childProcess.stdout.on('data', (data) => process.stdout.write(data));
-    childProcess.stderr.on('data', (data) => process.stderr.write(data));
+    childProcess.stdout?.on('data', (data) => process.stdout.write(data));
+    childProcess.stderr?.on('data', (data) => process.stderr.write(data));
   });
 }

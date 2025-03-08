@@ -1,8 +1,8 @@
-import { StarlightConfig } from './starlight-config.js';
-import { Transformer } from './transformer.js';
+import type { StarlightUserConfigWithPlugins } from '@astrojs/starlight/utils/plugins';
+import type { Transformer } from './transformer.js';
 
 export interface Config {
-  pattern?: string[];
+  pattern?: string | string[];
   transformers?: Transformer[];
-  starlight: StarlightConfig;
+  starlight: StarlightUserConfigWithPlugins;
 }
