@@ -72,11 +72,11 @@ The default value is ```['!**/node_modules/', `**/[^_]*.{${extensions.join(',')}
 
 #### transformers
 
-Functions of type `(file: File, context: Context) => File[] | File` that transform the input file, allowing to modify the output path (including the file name) and the content (if available).
+Functions of type `(file: ProcessedFile, context: Context) => Promise<ProcessedFile[] | ProcessedFile>` that transform the input file, allowing to modify the output path (including the file name) and the content (if available).
 
-The `File` type is:
+The `ProcessedFile` type is:
 ```typescript
-interface File {
+interface ProcessedFile {
   input: string;
   output: string;
   content?: string;
@@ -94,7 +94,8 @@ interface Context {
 
 When returning an array, the first position must be the result of transforming the incoming file. Following files will be added to the processing queue from the start.
 
-The default transformers replaces `README` by `index` and process the image assets hashing and copying it. Any custom transformer will be executed before the default transformers.
+The default transformers replaces `README` by `index` and process the image assets hashing and copying it.
+Any custom transformer will replace the default transformers so, to include any default transformer, import it from `@astro-tools/mdocs`.
 
 #### starlight
 
