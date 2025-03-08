@@ -1,6 +1,6 @@
 {
 	"name": "@astro-tools/mdocs",
-	"version": "1.1.0",
+	"version": "1.2.0",
 	"description": "CLI for generating a documentation website from markdown files of the execution directory using Astro Starlight under the hood",
 	"license": "MIT",
 	"repository": {
@@ -27,16 +27,16 @@
 		"template",
 		"files"
 	],
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "default": "./dist/index.js"
-    }
-  },
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"default": "./dist/index.js"
+		}
+	},
 	"bin": "dist/cli.js",
 	"scripts": {
 		"build": "tsup",
-    "template": "tsx scripts/template.ts"
+		"template": "tsx scripts/template.ts"
 	},
 	"type": "module",
 	"dependencies": {
@@ -51,6 +51,6 @@
 		"@types/node": "catalog:",
 		"@types/yargs": "catalog:",
 		"tsup": "catalog:",
-    "tsx": "catalog:"
+		"tsx": "catalog:"
 	}
 }
