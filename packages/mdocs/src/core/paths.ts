@@ -17,6 +17,7 @@ export const folder = {
   template: 'template',
   starlightContent: join('src', 'content', 'docs'),
   starlightAssets: join('src', 'assets'),
+  starlightPublic: join('public'),
   starlightDist: 'dist',
 };
 

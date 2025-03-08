@@ -47,6 +47,11 @@ export async function build({ config, configPath }: BuildOptions): Promise<void>
   });
   await Promise.all(cpPromises);
 
+  // Public assets
+  if (config.assets?.public) {
+    cp(join(process.cwd(), config.assets.public), join(executionDir, folder.starlightPublic), { recursive: true });
+  }
+
   // Build docs
   console.info('[INFO] Building docs...');
   await execAsync(join(workDir.cli(), './node_modules/.bin/astro build'), {

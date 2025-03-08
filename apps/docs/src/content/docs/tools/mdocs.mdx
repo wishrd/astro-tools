@@ -70,6 +70,21 @@ Glob patterns to filter the documentation files to include and copy into the Ast
 
 The default value is ```['!**/node_modules/', `**/[^_]*.{${extensions.join(',')}}`]```.
 
+#### assets
+
+Assets to be copied into the Astro assets directories. it has the following options:
+``` javascript
+{
+  assets: {
+    // The content of the folder will be copied into
+    // the /public directory of Astro Starlight temporal project
+    public: './docs/assets'
+  }
+}
+```
+
+For example, with the `assets.public` option, the default `favicon.svg` can be overriden.
+
 #### transformers
 
 Functions of type `(file: ProcessedFile, context: Context) => Promise<ProcessedFile[] | ProcessedFile>` that transform the input file, allowing to modify the output path (including the file name) and the content (if available).
