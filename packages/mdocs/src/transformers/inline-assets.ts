@@ -1,17 +1,20 @@
 import { hash } from 'node:crypto';
 import { resolve, extname, join, relative, dirname } from 'node:path';
 
-export function inlineAssetsTransformer(file, { executionDir, assetsDir }) {
+import type { ProcessedFile } from '../models/processed-file.js';
+import type { Transformer } from '../models/transformer.js';
+
+export const inlineAssetsTransformer: Transformer = async (file, { executionDir, assetsDir }) => {
   if (!file.content) {
-    return file;
+    return [file];
   }
 
   const matches = file.content.match(/\!\[[\w|\s]+\](\([\.\/\w\s-_]+\))/gmi);
   if (!matches) {
-    return file;
+    return [file];
   }
 
-  const assets = [];
+  const assets: ProcessedFile[] = [];
 
   let content = file.content;
 
@@ -28,6 +31,7 @@ export function inlineAssetsTransformer(file, { executionDir, assetsDir }) {
     assets.push({
       input: resolve(dirname(file.input), assetPath),
       output: absoluteOutputPath,
+      content: '', // This will be filled by the file system operations
     });
   }
 

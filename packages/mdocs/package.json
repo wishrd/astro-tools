@@ -25,21 +25,32 @@
 	"sideEffects": false,
 	"files": [
 		"template",
-		"scripts"
+		"files"
 	],
-	"bin": "scripts/cli.mjs",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+	"bin": "dist/cli.js",
 	"scripts": {
-		"template": "node scripts/template.mjs"
+		"build": "tsup",
+    "template": "tsx scripts/template.ts"
 	},
 	"type": "module",
 	"dependencies": {
 		"@astrojs/starlight": "^0.32.2",
-		"astro": "^5.4.1",
+		"astro": "^5.4.2",
 		"glob": "catalog:",
 		"sharp": "^0.32.5",
 		"yargs": "catalog:"
 	},
 	"devDependencies": {
-		"create-astro": "catalog:"
+		"create-astro": "catalog:",
+		"@types/node": "catalog:",
+		"@types/yargs": "catalog:",
+		"tsup": "catalog:",
+    "tsx": "catalog:"
 	}
 }

@@ -1,15 +1,19 @@
 #!/usr/bin/env node
 
 import { join } from 'node:path';
-
 import yargs from 'yargs';
+import { hideBin } from 'yargs/helpers';
 
-import { build } from './build.mjs';
-import { file } from './utils/paths.mjs';
+import { build } from './core/build.js';
+import { file } from './core/paths.js';
+import type { Config } from './models/config.js';
 
-const { config: configFile } = yargs(process.argv.slice(2)).option('config', { type: 'string' }).help().argv;
+const { config: configFile } = yargs(hideBin(process.argv))
+  .option('config', { type: 'string' })
+  .help()
+  .argv as { config?: string };
 
-let config;
+let config: Config;
 const configPath = join(process.cwd(), configFile || file.config);
 
 try {
