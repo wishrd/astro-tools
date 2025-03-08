@@ -1,5 +1,11 @@
 # @astro-tools/mdocs
 
+## 1.2.1
+
+### Patch Changes
+
+- f362d4b: Fix included files in the package
+
 ## 1.2.0
 
 ### Minor Changes
