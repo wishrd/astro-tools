@@ -1,5 +1,11 @@
 # @astro-tools/mdocs
 
+## 1.2.0
+
+### Minor Changes
+
+- a5bc80d: Migrate to typescript, export transformers and fix transformers override
+
 ## 1.1.0
 
 ### Minor Changes
