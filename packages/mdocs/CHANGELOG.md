@@ -1,5 +1,11 @@
 # @astro-tools/mdocs
 
+## 1.3.0
+
+### Minor Changes
+
+- c247935: Support public assets that will be copied into the /public folder of the Astro Starlight project
+
 ## 1.2.1
 
 ### Patch Changes
