@@ -1,15 +1,17 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
+import { onMount } from 'svelte';
 
-  import { listenHydration } from '@/libs/examples/hydration';
+import { listenHydration } from '@/libs/examples/hydration';
 
-  export let id: string;
+export let id: string;
 
-  let status = 'Static';
+let status = 'Static';
 
-  onMount(() => {
-    listenHydration(id, () => status = 'Hydrated');
+onMount(() => {
+  listenHydration(id, () => {
+    status = 'Hydrated';
   });
+});
 </script>
 
 <span>{status}</span>

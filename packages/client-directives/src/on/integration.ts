@@ -9,19 +9,23 @@ const customClientDirectiveSchema = z.object({
 type CustomClientDirective = z.infer<typeof customClientDirectiveSchema>;
 
 export const onClientDirective = defineIntegration({
-	name: '@astro-tools/client-directives/on',
+  name: '@astro-tools/client-directives/on',
   optionsSchema: z.object({
     directives: z.array(customClientDirectiveSchema),
   }),
-	setup({ options }) {
+  setup({ options }) {
     const { resolve } = createResolver(import.meta.url);
 
-		return {
-			hooks: {
+    return {
+      hooks: {
         'astro:config:setup': ({ addClientDirective, injectScript }) => {
           const addClientDirectivePath = resolve('./add-client-directive.js');
-          const customDirectiveMapper = (directive: CustomClientDirective) => `addClientDirective('${directive.name}', () => import('${directive.entrypoint}').then(d => d.default));`;
-          injectScript('before-hydration', `import { addClientDirective } from '${addClientDirectivePath}'; ${options.directives.map(directive => customDirectiveMapper(directive)).join(' ')}`);
+          const customDirectiveMapper = (directive: CustomClientDirective) =>
+            `addClientDirective('${directive.name}', () => import('${directive.entrypoint}').then(d => d.default));`;
+          injectScript(
+            'before-hydration',
+            `import { addClientDirective } from '${addClientDirectivePath}'; ${options.directives.map((directive) => customDirectiveMapper(directive)).join(' ')}`,
+          );
 
           addClientDirective({
             name: 'on',
@@ -33,8 +37,8 @@ export const onClientDirective = defineIntegration({
             filename: 'types.d.ts',
             content: `import 'astro'; declare module 'astro' { interface AstroClientDirectives { 'client:on'?: string; } }`,
           });
-        }
+        },
       },
-		};
-	},
+    };
+  },
 });

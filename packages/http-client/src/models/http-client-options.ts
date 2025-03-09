@@ -1,6 +1,10 @@
 export type HttpClientBodyAdapter<T, K> = (body: T) => K;
 
-export type HttpClientSearch = string[][] | Record<string, string> | string | URLSearchParams;
+export type HttpClientSearch =
+  | string[][]
+  | Record<string, string>
+  | string
+  | URLSearchParams;
 
 export interface HttpClientOptions<T, K> {
   path: string;

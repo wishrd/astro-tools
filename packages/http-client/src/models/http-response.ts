@@ -25,4 +25,7 @@ export interface HttpClientRequestError {
   error: Error | null;
 }
 
-export type HttpClientResponse<T> = HttpClientResponseSuccess<T> | HttpClientResponseError | HttpClientRequestError;
+export type HttpClientResponse<T> =
+  | HttpClientResponseSuccess<T>
+  | HttpClientResponseError
+  | HttpClientRequestError;

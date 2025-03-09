@@ -3,9 +3,13 @@ import { getI18nProviders } from '../state/providers.ts';
 import { getI18nState } from '../state/translations.ts';
 import { interpolate } from './utils/interpolate.ts';
 
-export function t(key: string, countOrValues?: I18nValues | number, values?: I18nValues): string {
+export function t(
+  key: string,
+  countOrValues?: I18nValues | number,
+  values?: I18nValues,
+): string {
   const state = getI18nState();
-  let translation = state.translations[key];
+  const translation = state.translations[key];
   if (!translation) {
     return key;
   }
@@ -23,6 +27,7 @@ export function t(key: string, countOrValues?: I18nValues | number, values?: I18
   }
 
   const pluralResolver = getI18nProviders().plural({ locale: state.locale });
-  const pluralTranslation = pluralResolver(translation, countOrValues) || `${key}$${countOrValues}`;
+  const pluralTranslation =
+    pluralResolver(translation, countOrValues) || `${key}$${countOrValues}`;
   return interpolate(pluralTranslation, values);
 }

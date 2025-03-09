@@ -12,9 +12,10 @@ function parseOptions(value: string): Array<Configuration> {
     throw new Error('client:on directive is empty');
   }
 
-  const directives = value.split(';').map(directive => directive.trim());
-  const configurations = directives.map(directive => {
-    let name = '', options = '';
+  const directives = value.split(';').map((directive) => directive.trim());
+  const configurations = directives.map((directive) => {
+    let name = '';
+    let options = '';
 
     const separatorIndex = directive.indexOf(' ');
     if (separatorIndex > 0) {
@@ -41,12 +42,18 @@ const clientDirective: ClientDirective = async (load, options, el) => {
   for (const configuration of configurations) {
     const clientDirectiveLoader = store.get(configuration.name);
     if (!clientDirectiveLoader) {
-      throw new Error(`Directive with name "${configuration.name}" does not exists`);
+      throw new Error(
+        `Directive with name "${configuration.name}" does not exists`,
+      );
     }
 
     const directive = await clientDirectiveLoader();
-    directive(load, { name: configuration.name, value: configuration.options }, el);
+    directive(
+      load,
+      { name: configuration.name, value: configuration.options },
+      el,
+    );
   }
-}
+};
 
 export default clientDirective;

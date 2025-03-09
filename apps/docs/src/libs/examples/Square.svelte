@@ -1,16 +1,16 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
-  import { notifyHydration } from '@/libs/examples/hydration';
+import { notifyHydration } from '@/libs/examples/hydration';
+import { onMount } from 'svelte';
 
-  export let id: string;
-  export let text: string;
+export let id: string;
+export let text: string;
 
-  let hydrated = false;
+let hydrated = false;
 
-  onMount(() => {
-    hydrated = true;
-    notifyHydration(id);
-  });
+onMount(() => {
+  hydrated = true;
+  notifyHydration(id);
+});
 </script>
 
 <button

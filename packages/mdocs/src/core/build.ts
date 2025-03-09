@@ -1,21 +1,24 @@
 import { existsSync } from 'node:fs';
-import { cp, mkdtemp, mkdir, rm, writeFile } from 'node:fs/promises';
+import { cp, mkdir, mkdtemp, rm, writeFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
 import { glob } from 'glob';
 
-import { execAsync } from './exec-async.js';
-import { workDir, folder } from './paths.js';
-import { DEFAULT_PATTERN } from './pattern.js';
-import { processContentFile } from './process-content-file.js';
 import type { Config } from '../models/config.js';
 import type { ProcessedFile } from '../models/processed-file.js';
+import { execAsync } from './exec-async.js';
+import { folder, workDir } from './paths.js';
+import { DEFAULT_PATTERN } from './pattern.js';
+import { processContentFile } from './process-content-file.js';
 
 interface BuildOptions {
   config: Config;
   configPath: string;
 }
 
-export async function build({ config, configPath }: BuildOptions): Promise<void> {
+export async function build({
+  config,
+  configPath,
+}: BuildOptions): Promise<void> {
   const temporalDir = workDir.temporal();
 
   // Copy template
@@ -32,8 +35,8 @@ export async function build({ config, configPath }: BuildOptions): Promise<void>
     processContentFile(filePath, config.transformers, {
       executionDir,
       contentDir: folder.starlightContent,
-      assetsDir: folder.starlightAssets
-    })
+      assetsDir: folder.starlightAssets,
+    }),
   );
   const files = await Promise.all(promises);
 
@@ -49,7 +52,11 @@ export async function build({ config, configPath }: BuildOptions): Promise<void>
 
   // Public assets
   if (config.assets?.public) {
-    cp(join(process.cwd(), config.assets.public), join(executionDir, folder.starlightPublic), { recursive: true });
+    cp(
+      join(process.cwd(), config.assets.public),
+      join(executionDir, folder.starlightPublic),
+      { recursive: true },
+    );
   }
 
   // Build docs
@@ -63,7 +70,9 @@ export async function build({ config, configPath }: BuildOptions): Promise<void>
   console.info('[INFO] Copying result into the destination folder...');
   const destDir = workDir.destination();
   await rm(destDir, { recursive: true, force: true });
-  await cp(join(executionDir, folder.starlightDist), destDir, { recursive: true });
+  await cp(join(executionDir, folder.starlightDist), destDir, {
+    recursive: true,
+  });
 
   // Remove temporal files
   console.info('[INFO] Removing temporal files...');

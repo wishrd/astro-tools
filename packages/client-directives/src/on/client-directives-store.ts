@@ -6,7 +6,10 @@ declare global {
 
 export function getClientDirectivesStore(): Map<string, ClientDirectiveLoader> {
   if (!globalThis.astroToolsOnClientDirectiveStore) {
-    globalThis.astroToolsOnClientDirectiveStore = new Map<string, ClientDirectiveLoader>();
+    globalThis.astroToolsOnClientDirectiveStore = new Map<
+      string,
+      ClientDirectiveLoader
+    >();
   }
 
   return globalThis.astroToolsOnClientDirectiveStore;

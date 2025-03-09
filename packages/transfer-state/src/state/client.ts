@@ -6,7 +6,9 @@ let store: TransferState;
 function getStore(): TransferState {
   if (!store) {
     const state = document.getElementById('astro-tools-transfer-state');
-    const stateObject = JSON.parse(state !== null ? (state.textContent || '{}') : '{}');
+    const stateObject = JSON.parse(
+      state !== null ? state.textContent || '{}' : '{}',
+    );
     store = stateObject;
   }
 
@@ -14,7 +16,10 @@ function getStore(): TransferState {
 }
 
 export function getState<T>(key: StateKey): T | null {
-  return getStore()[typeof key === 'string' ? key : key.name] as T | undefined || null;
+  return (
+    (getStore()[typeof key === 'string' ? key : key.name] as T | undefined) ||
+    null
+  );
 }
 
 export function setState<T>(key: StateKey, value: T | null): void {

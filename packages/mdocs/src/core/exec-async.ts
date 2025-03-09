@@ -1,6 +1,9 @@
-import { exec, type ExecOptions } from 'node:child_process';
+import { type ExecOptions, exec } from 'node:child_process';
 
-export function execAsync(command: string, options?: ExecOptions): Promise<void> {
+export function execAsync(
+  command: string,
+  options?: ExecOptions,
+): Promise<void> {
   return new Promise((resolve, reject) => {
     const childProcess = exec(command, options, (error) => {
       if (error) {

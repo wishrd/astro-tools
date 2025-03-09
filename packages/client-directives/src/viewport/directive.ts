@@ -16,6 +16,6 @@ const clientDirective: ClientDirective = (load, _, el) => {
   });
 
   observer.observe(el.firstElementChild);
-}
+};
 
 export default clientDirective;

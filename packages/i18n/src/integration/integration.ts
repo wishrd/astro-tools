@@ -1,4 +1,10 @@
-import { addIntegration, addVirtualImports, createResolver, defineIntegration, hasIntegration } from 'astro-integration-kit';
+import {
+  addIntegration,
+  addVirtualImports,
+  createResolver,
+  defineIntegration,
+  hasIntegration,
+} from 'astro-integration-kit';
 import { z } from 'astro/zod';
 
 import { transferState } from '@astro-tools/transfer-state';
@@ -8,7 +14,9 @@ import { getTranslateFn } from './helpers/get-translate-fn.ts';
 const VIRTUAL_MODULE_ID = '@astro-tools:i18n';
 
 const pluralSchema = z.record(z.string(), z.string());
-const typesLoaderSchema = z.function().returns(z.promise(z.record(z.string(), z.string().or(pluralSchema))));
+const typesLoaderSchema = z
+  .function()
+  .returns(z.promise(z.record(z.string(), z.string().or(pluralSchema))));
 
 export type I18nIntegrationTypesLoader = z.infer<typeof typesLoaderSchema>;
 
@@ -19,7 +27,7 @@ export const i18n = defineIntegration({
     providers: z.object({
       plural: z.string(),
       translations: z.string(),
-    })
+    }),
   }),
   setup: ({ name, options }) => {
     const { resolve } = createResolver(import.meta.url);
@@ -27,12 +35,16 @@ export const i18n = defineIntegration({
     return {
       hooks: {
         'astro:config:setup': (hookOptions) => {
-          if (!hasIntegration(hookOptions, { name: '@astro-tools/transfer-state' })) {
-						addIntegration(hookOptions, {
-							ensureUnique: true,
-							integration: transferState(),
-						});
-					}
+          if (
+            !hasIntegration(hookOptions, {
+              name: '@astro-tools/transfer-state',
+            })
+          ) {
+            addIntegration(hookOptions, {
+              ensureUnique: true,
+              integration: transferState(),
+            });
+          }
 
           addVirtualImports(hookOptions, {
             name,
@@ -43,15 +55,15 @@ export const i18n = defineIntegration({
                   `import { init } from '${resolve('./core/init.js')}';`,
                   `import translationsProvider from '${options.providers.translations}';`,
                   `import pluralProvider from '${options.providers.plural}';`,
-                  ``,
-                  `init({ providers: { translations: translationsProvider, plural: pluralProvider } });`,
-                  ``,
+                  '',
+                  'init({ providers: { translations: translationsProvider, plural: pluralProvider } });',
+                  '',
                   `export { use } from '${resolve('./core/use.js')}';`,
                   `export { locale } from '${resolve('./core/locale.js')}';`,
                   `export { fallbackLocale } from '${resolve('./core/fallback-locale.js')}';`,
                   `export { t } from '${resolve('./core/translate.js')}';`,
                 ].join('\n'),
-              }
+              },
             ],
           });
         },
@@ -60,11 +72,11 @@ export const i18n = defineIntegration({
 
           const content = [
             `import type { I18nUseOptions } from '@astro-tools/i18n';`,
-            ``,
-            `export function use<T>(options: I18nUseOptions<T>): Promise<void>;`,
-            `export function locale(): string;`,
-            `export function fallbackLocale(): string;`,
-            ``,
+            '',
+            'export function use<T>(options: I18nUseOptions<T>): Promise<void>;',
+            'export function locale(): string;',
+            'export function fallbackLocale(): string;',
+            '',
             translateFn,
           ].join('\n');
 
@@ -72,8 +84,8 @@ export const i18n = defineIntegration({
             filename: 'types.d.ts',
             content: `declare module '${VIRTUAL_MODULE_ID}' {\n${content}\n}`,
           });
-        }
-      }
-    }
+        },
+      },
+    };
   },
 });

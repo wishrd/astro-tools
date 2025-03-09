@@ -15,7 +15,7 @@ export function setI18nState(value: I18nTranslationsState): void {
 export function getI18nState(): I18nTranslationsState {
   const state = getState<I18nTranslationsState>('i18n');
   if (!state) {
-    throw new Error(`i18n is not configured!`);
+    throw new Error('i18n is not configured!');
   }
 
   return state;

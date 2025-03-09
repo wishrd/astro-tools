@@ -8,7 +8,7 @@ export function setI18nProviders(providers: I18nProviders): void {
 
 export function getI18nProviders(): I18nProviders {
   if (!i18nProviders) {
-    throw new Error(`i18n is not configured!`);
+    throw new Error('i18n is not configured!');
   }
 
   return i18nProviders;

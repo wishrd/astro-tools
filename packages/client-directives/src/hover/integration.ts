@@ -1,12 +1,12 @@
 import { createResolver, defineIntegration } from 'astro-integration-kit';
 
 export const hoverClientDirective = defineIntegration({
-	name: '@astro-tools/client-directives/hover',
-	setup() {
+  name: '@astro-tools/client-directives/hover',
+  setup() {
     const { resolve } = createResolver(import.meta.url);
 
-		return {
-			hooks: {
+    return {
+      hooks: {
         'astro:config:setup': ({ addClientDirective }) => {
           addClientDirective({
             name: 'hover',
@@ -18,8 +18,8 @@ export const hoverClientDirective = defineIntegration({
             filename: 'types.d.ts',
             content: `import 'astro'; declare module 'astro' { interface AstroClientDirectives { 'client:hover'?: boolean; } }`,
           });
-        }
+        },
       },
-		};
-	},
+    };
+  },
 });

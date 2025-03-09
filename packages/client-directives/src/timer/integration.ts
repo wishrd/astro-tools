@@ -1,12 +1,12 @@
 import { createResolver, defineIntegration } from 'astro-integration-kit';
 
 export const timerClientDirective = defineIntegration({
-	name: '@astro-tools/client-directives/timer',
-	setup() {
+  name: '@astro-tools/client-directives/timer',
+  setup() {
     const { resolve } = createResolver(import.meta.url);
 
-		return {
-			hooks: {
+    return {
+      hooks: {
         'astro:config:setup': ({ addClientDirective }) => {
           addClientDirective({
             name: 'timer',
@@ -18,8 +18,8 @@ export const timerClientDirective = defineIntegration({
             filename: 'types.d.ts',
             content: `import 'astro'; declare module 'astro' { interface AstroClientDirectives { 'client:timer'?: string; } }`,
           });
-        }
+        },
       },
-		};
-	},
+    };
+  },
 });

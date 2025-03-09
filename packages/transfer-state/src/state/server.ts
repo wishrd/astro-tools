@@ -1,6 +1,6 @@
-import { stateStorage } from '../state-storage.ts';
-import type { StateKey } from '../models/state-key.ts';
 import type { ServerTransferState } from '../models/server-transfer-state.ts';
+import type { StateKey } from '../models/state-key.ts';
+import { stateStorage } from '../state-storage.ts';
 
 function getStore(): ServerTransferState {
   const store = stateStorage.getStore();
@@ -12,7 +12,11 @@ function getStore(): ServerTransferState {
 }
 
 export function getState<T>(key: StateKey): T | null {
-  return getStore()[typeof key === 'string' ? key : key.name]?.value as T | undefined || null;
+  return (
+    (getStore()[typeof key === 'string' ? key : key.name]?.value as
+      | T
+      | undefined) || null
+  );
 }
 
 export function setState<T>(key: StateKey, value: T | null): void {

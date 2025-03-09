@@ -1,10 +1,14 @@
-import { addVirtualImports, createResolver, defineIntegration } from 'astro-integration-kit';
+import {
+  addVirtualImports,
+  createResolver,
+  defineIntegration,
+} from 'astro-integration-kit';
 
 import toolbarIcon from './toolbar/icon.ts';
 
 const VIRTUAL_MODULE_ID = '@astro-tools:transfer-state';
 
-export const transferState =  defineIntegration({
+export const transferState = defineIntegration({
   name: '@astro-tools/transfer-state',
   setup: ({ name }) => {
     const { resolve } = createResolver(import.meta.url);
@@ -31,7 +35,7 @@ export const transferState =  defineIntegration({
                 id: VIRTUAL_MODULE_ID,
                 content: `export * from '${resolve('./state/client.js')}'`,
                 context: 'client',
-              }
+              },
             ],
           });
 
@@ -47,8 +51,8 @@ export const transferState =  defineIntegration({
             filename: 'types.d.ts',
             content: `declare module '@astro-tools:transfer-state' { export type StateKey = string | { name: string; transfer: boolean }; export const getState: <T>(key: StateKey) => T; export const setState: <T>(key: StateKey, value: T) => void; }`,
           });
-        }
-      }
-    }
+        },
+      },
+    };
   },
 });

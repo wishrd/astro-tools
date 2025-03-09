@@ -4,7 +4,12 @@
   "private": true,
   "type": "module",
   "packageManager": "pnpm@9.14.4",
+  "scripts": {
+    "lint": "biome check --write",
+    "build": "turbo build"
+  },
   "devDependencies": {
+    "@biomejs/biome": "catalog:",
     "@changesets/cli": "catalog:",
     "turbo": "catalog:"
   }

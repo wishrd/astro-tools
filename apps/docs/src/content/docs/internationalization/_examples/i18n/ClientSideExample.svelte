@@ -1,21 +1,21 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
+import { onMount } from 'svelte';
 
-  import Output from '@/libs/examples/Output.svelte';
-  import { notifyHydration } from '@/libs/examples/hydration';
+import Output from '@/libs/examples/Output.svelte';
+import { notifyHydration } from '@/libs/examples/hydration';
 
-  import { t } from '@astro-tools:i18n';
+import { t } from '@astro-tools:i18n';
 
-  export let id: string;
+export let id: string;
 
-  let hydrated = false;
-  let stars = 0;
+let hydrated = false;
+let stars = 0;
 
-  onMount(() => {
-    setInterval(() => stars++, 1000);
-    hydrated = true;
-    notifyHydration(id);
-  });
+onMount(() => {
+  setInterval(() => stars++, 1000);
+  hydrated = true;
+  notifyHydration(id);
+});
 </script>
 
 <p>{stars}</p>

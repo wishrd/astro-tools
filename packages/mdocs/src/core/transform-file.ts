@@ -5,16 +5,21 @@ import type { Transformer } from '../models/transformer.js';
 export async function transformFile(
   file: ProcessedFile,
   transformers: Transformer[],
-  context: Context
+  context: Context,
 ): Promise<ProcessedFile[]> {
   let workingFile = file;
   let extraFiles: ProcessedFile[] = [];
 
   for (let i = 0; i < transformers.length; i++) {
-    const result = await transformers[i]!(workingFile, context);
+    const transformer = transformers[i];
+    if (!transformer) {
+      throw new Error(`Invalid transformer value at position ${i}`);
+    }
+
+    const result = await transformer(workingFile, context);
     if (Array.isArray(result)) {
       if (!result[0]) {
-        throw new Error(`Transformer result array is empty!`);
+        throw new Error('Transformer result array is empty!');
       }
 
       workingFile = result[0];
@@ -27,6 +32,10 @@ export async function transformFile(
     }
   }
 
-  const files = await Promise.all(extraFiles.map(extraFile => transformFile(extraFile, transformers, context)));
+  const files = await Promise.all(
+    extraFiles.map((extraFile) =>
+      transformFile(extraFile, transformers, context),
+    ),
+  );
   return [workingFile].concat(files.flat());
 }

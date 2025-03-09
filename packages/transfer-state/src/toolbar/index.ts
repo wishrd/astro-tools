@@ -50,7 +50,8 @@ export default defineToolbarApp({
       }
 
       if (!textContent) {
-        toolbarWindowContent.textContent = 'Transfer state content is not valid';
+        toolbarWindowContent.textContent =
+          'Transfer state content is not valid';
       } else {
         if (Object.keys(textContent).length > 0) {
           await import('@alenaksu/json-viewer');

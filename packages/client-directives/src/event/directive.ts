@@ -5,10 +5,14 @@ const clientDirective: ClientDirective = (load, options) => {
     throw new Error('client:event directive value is empty');
   }
 
-  window.addEventListener(options.value, async () => {
-    const hydrate = await load();
-    await hydrate();
-  }, { once: true });
-}
+  window.addEventListener(
+    options.value,
+    async () => {
+      const hydrate = await load();
+      await hydrate();
+    },
+    { once: true },
+  );
+};
 
 export default clientDirective;

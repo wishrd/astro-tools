@@ -1,10 +1,16 @@
-import { addIntegration, addVirtualImports, createResolver, defineIntegration, hasIntegration } from 'astro-integration-kit';
+import {
+  addIntegration,
+  addVirtualImports,
+  createResolver,
+  defineIntegration,
+  hasIntegration,
+} from 'astro-integration-kit';
 
 import { transferState } from '@astro-tools/transfer-state';
 
 const VIRTUAL_MODULE_ID = '@astro-tools:reactive-transfer-state';
 
-export const reactiveTransferState =  defineIntegration({
+export const reactiveTransferState = defineIntegration({
   name: '@astro-tools/reactive-transfer-state',
   setup: ({ name }) => {
     const { resolve } = createResolver(import.meta.url);
@@ -12,12 +18,14 @@ export const reactiveTransferState =  defineIntegration({
     return {
       hooks: {
         'astro:config:setup': (options) => {
-          if (!hasIntegration(options, { name: '@astro-tools/transfer-state' })) {
-						addIntegration(options, {
-							ensureUnique: true,
-							integration: transferState(),
-						});
-					}
+          if (
+            !hasIntegration(options, { name: '@astro-tools/transfer-state' })
+          ) {
+            addIntegration(options, {
+              ensureUnique: true,
+              integration: transferState(),
+            });
+          }
 
           addVirtualImports(options, {
             name,
@@ -25,7 +33,7 @@ export const reactiveTransferState =  defineIntegration({
               {
                 id: VIRTUAL_MODULE_ID,
                 content: `export * from '${resolve('./with-transfer-state.js')}'`,
-              }
+              },
             ],
           });
         },
@@ -34,8 +42,8 @@ export const reactiveTransferState =  defineIntegration({
             filename: 'types.d.ts',
             content: `declare module '@astro-tools:reactive-transfer-state' { import type { ReadableAtom } from 'nanostores'; import type { StateKey } from '@astro-tools:transfer-state'; export function withTransferState<T extends ReadableAtom<unknown>>(key: StateKey, store: T): T; }`,
           });
-        }
-      }
-    }
+        },
+      },
+    };
   },
 });

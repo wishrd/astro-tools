@@ -1,12 +1,12 @@
 import { createResolver, defineIntegration } from 'astro-integration-kit';
 
 export const eventClientDirective = defineIntegration({
-	name: '@astro-tools/client-directives/event',
-	setup() {
+  name: '@astro-tools/client-directives/event',
+  setup() {
     const { resolve } = createResolver(import.meta.url);
 
-		return {
-			hooks: {
+    return {
+      hooks: {
         'astro:config:setup': ({ addClientDirective }) => {
           addClientDirective({
             name: 'event',
@@ -18,8 +18,8 @@ export const eventClientDirective = defineIntegration({
             filename: 'types.d.ts',
             content: `import 'astro'; declare module 'astro' { interface AstroClientDirectives { 'client:event'?: string; } }`,
           });
-        }
+        },
       },
-		};
-	},
+    };
+  },
 });
