@@ -46,6 +46,10 @@ export default defineConfig({
           autogenerate: { directory: 'tools' },
         },
       ],
+      tableOfContents: {
+        minHeadingLevel: 2,
+        maxHeadingLevel: 4,
+      },
       components: {
         PageTitle: './src/components/overrides/PageTitle.astro',
       },

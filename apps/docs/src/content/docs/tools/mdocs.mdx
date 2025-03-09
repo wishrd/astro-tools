@@ -14,6 +14,9 @@ Mostly everything supported by Astro Starlight is supported by this CLI.
 This library has a Astro Starlight template in which copies every markdown file of the working directory into the default `content/docs` collection folder,
 then executes the build of the project using the configuration file `.mdocs.mjs` of the working directory and copies the result to the desired destination folder.
 
+> The goal of this library is having a CLI with the minimum configuration to generate documentation with a nice UI and UX without effort.
+There are a lot of flexible and powerful tools for more complex requirements.
+
 ## Setup
 
 Install the library using your preferred package manager:
@@ -64,7 +67,7 @@ The libraries tries to minimize the configuration required to build the document
 
 Glob patterns to filter the documentation files to include and copy into the Astro Starlight `content/docs` directory.
 
-The default value is ```['!**/node_modules/', `**/[^_]*.{${extensions.join(',')}}`]```.
+The default value is ```['!**/node_modules/', `**/[^_]*.{${extensions.join(',')}}`]```, being `extensions` one of `markdown, mdown, mkdn, mkd, mdwn, md, mdx`.
 
 #### assets
 
