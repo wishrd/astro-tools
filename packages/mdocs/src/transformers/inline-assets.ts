@@ -3,12 +3,13 @@ import { dirname, extname, join, relative, resolve } from 'node:path';
 
 import type { ProcessedFile } from '../models/processed-file.js';
 import type { Transformer } from '../models/transformer.js';
+import { isAnyMarkdown } from './utils/is-markdown.js';
 
 export const inlineAssetsTransformer: Transformer = async (
   file,
   { executionDir, assetsDir },
 ) => {
-  if (!file.content) {
+  if (!file.content || !isAnyMarkdown(file.output)) {
     return [file];
   }
 

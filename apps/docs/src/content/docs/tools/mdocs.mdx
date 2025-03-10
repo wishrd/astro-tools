@@ -108,7 +108,11 @@ interface Context {
 
 When returning an array, the first position must be the result of transforming the incoming file. Following files will be added to the processing queue from the start.
 
-The default transformers replaces `README` by `index` and process the image assets hashing and copying it.
+The default transformers are the following in this order:
+1. Removes heading level 1 (`# Title`) and adds its content to the MDX attribute `title`.
+1. Replace filename `README` by `index`.
+1. Copies image assets into the temporal folder.
+
 Any custom transformer will replace the default transformers so, to include any default transformer, import it from `@astro-tools/mdocs`.
 
 #### starlight

@@ -6,9 +6,10 @@ import type { ProcessedFile } from '../models/processed-file.js';
 import type { Transformer } from '../models/transformer.js';
 import { inlineAssetsTransformer } from '../transformers/inline-assets.js';
 import { readmeToIndexTransformer } from '../transformers/readme-to-index.js';
+import { mdToMdxTransformer } from '../transformers/md-to-mdx.js';
 import { transformFile } from './transform-file.js';
 
-const defaultTransformers = [readmeToIndexTransformer, inlineAssetsTransformer];
+const defaultTransformers = [mdToMdxTransformer, readmeToIndexTransformer, inlineAssetsTransformer];
 
 async function getContentFile(
   filePath: string,

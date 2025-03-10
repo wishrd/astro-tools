@@ -1,12 +1,4 @@
-const DEFAULT_EXTENSIONS = [
-  'markdown',
-  'mdown',
-  'mkdn',
-  'mkd',
-  'mdwn',
-  'md',
-  'mdx',
-];
+import { DEFAULT_EXTENSIONS } from './extensions.js';
 
 export const DEFAULT_PATTERN = [
   '!**/node_modules/',
