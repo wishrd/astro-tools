@@ -1,5 +1,11 @@
 # @astro-tools/mdocs
 
+## 1.4.0
+
+### Minor Changes
+
+- c6cf577: Transform markdown file heading into the mdx title attribute
+
 ## 1.3.0
 
 ### Minor Changes
