@@ -4,12 +4,10 @@ import { join } from 'node:path';
 import type { Context } from '../models/context.js';
 import type { ProcessedFile } from '../models/processed-file.js';
 import type { Transformer } from '../models/transformer.js';
-import { inlineAssetsTransformer } from '../transformers/inline-assets.js';
-import { readmeToIndexTransformer } from '../transformers/readme-to-index.js';
-import { mdToMdxTransformer } from '../transformers/md-to-mdx.js';
 import { transformFile } from './transform-file.js';
+import { getTransformer, type TransformerDefinition, type TransformId } from '../transformers/index.js';
 
-const defaultTransformers = [mdToMdxTransformer, readmeToIndexTransformer, inlineAssetsTransformer];
+const defaultTransformers: TransformId[] = ['md-to-mdx', 'readme-to-index', 'local-assets'];
 
 async function getContentFile(
   filePath: string,
@@ -26,10 +24,10 @@ async function getContentFile(
 
 export async function processContentFile(
   filePath: string,
-  customTransformers: Transformer[] | undefined,
+  customTransformers: (Transformer | TransformerDefinition | TransformId)[] | undefined,
   context: Context,
 ): Promise<ProcessedFile[]> {
-  const transformers = customTransformers || defaultTransformers;
+  const transformers = (customTransformers || defaultTransformers).map(t => typeof t === 'function' ? t : getTransformer(t));
   const file = await getContentFile(filePath, context);
   return await transformFile(file, transformers, context);
 }

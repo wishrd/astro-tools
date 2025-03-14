@@ -1,4 +1,4 @@
-import type { Transformer } from '../models/transformer';
+import type { TransformerFactory } from '../models/transformer.js';
 import { isAnyMarkdown, isExtendedMarkdown } from './utils/is-markdown.js';
 
 const MDX_ATTRIBUTES = /^---\n/;
@@ -8,7 +8,7 @@ function generateMdxAttributes(title: string): string {
   return `---\ntitle: '${title}'\n---\n`;
 }
 
-export const mdToMdxTransformer: Transformer = async (file) => {
+export const mdToMdxTransformer: TransformerFactory<void> = () => async (file) => {
   if (!file.content || !isAnyMarkdown(file.output)) {
     return file;
   }

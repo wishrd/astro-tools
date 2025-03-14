@@ -59,6 +59,83 @@ The output should be similar to the following:
 [INFO] Documentation generated successfully!
 ```
 
+### Transformers
+
+This library uses transformers for modifying the input files before using it.
+Transformations are being executed in a pipe, using the output of the previous transformation. New files will be added to the transformation pipe from the start.
+
+There are several default transformers but any custom transformer can be added through the `.mdocs.mjs` file. The default transformers should be enough for most of the projects.
+
+The default transformers are being executed in this order:
+1. `md-to-mdx`
+1. `readme-to-index`
+1. `local-assets`
+
+Each default transformer has a `TransformId` that can be used to reference it in the `transformers` option (see below).
+
+#### md-to-mdx
+
+This transformer removes the level 1 heading (eg. `# Title`) and adds its content to the MDX attribute `title`. The transformer ID is `md-to-mdx` and it has no options.
+
+#### readme-to-index
+
+This transformer replace root filename `README` to `index` and renames every `README` or `index` file to its parent folder name.
+
+The transformer ID is `readme-to-index` and the options are the following:
+```typescript
+interface ReadmeToIndexTransformerOptions {
+  flat?: boolean;
+}
+```
+
+##### `flat?: boolean`
+
+Removes the parent folder when there is one, renaming the markdown file to the parent folder name. To disable it, set it to `false`. Defaults to `true`.
+
+#### local-assets
+
+This transformer processes any local image assets (relative path) of any markdown file content including it in the output website. The transformer ID is `local-assets` and it has no options.
+
+#### path-mapping
+
+This transformer modifies the output path of any markdown file following the regex rules, cleaning up the website and sidebar tree of undersired routes.
+
+It is not included by default. The transformer ID is `path-mapping` and the options are the following:
+```typescript
+type PathMappingTransformerOptions = {
+  mappings: PathMappingTransformerMapping[];
+};
+```
+
+##### `mappings: PathMappingTransformerMapping[]`
+
+List of mappings to use for transforming the files. Every mapping will be executed over each file, in the declaration order. The type of the mapping is as follows:
+```typescript
+interface PathMappingTransformerMapping {
+  from: string | RegExp;
+  to: string;
+};
+```
+
+For example, for removing the `src` folder from the input file `./packages/my-package/src/sub-library/index.mdx`, use:
+```javascript
+export default {
+  transformers: [
+    'md-to-mdx',
+    'readme-to-index',
+    {
+      id: 'path-mapping',
+      options: {
+        mappings: [{ from: /(\/?)src\//, to: '$1' }],
+      },
+    },
+    'local-assets',
+  ],
+}
+```
+
+<Aside type="note">The replacement will use the relative path of the file from the temporal content directory, which initially is the execution working directory.</Aside>
+
 ### Options
 
 The libraries tries to minimize the configuration required to build the documentation. In any case, there are some options that can be used for your needs.
@@ -73,7 +150,7 @@ The default value is ```['!**/node_modules/', `**/[^_]*.{${extensions.join(',')}
 
 Assets to be copied into the Astro assets directories. it has the following options:
 ``` javascript
-{
+export default {
   assets: {
     // The content of the folder will be copied into
     // the /public directory of Astro Starlight temporal project
@@ -108,12 +185,38 @@ interface Context {
 
 When returning an array, the first position must be the result of transforming the incoming file. Following files will be added to the processing queue from the start.
 
-The default transformers are the following in this order:
-1. Removes heading level 1 (`# Title`) and adds its content to the MDX attribute `title`.
-1. Replace filename `README` by `index`.
-1. Copies image assets into the temporal folder.
+<Aside type="caution">Adding custom transfomers will remove the default transfomers from the transform pipe. You have to include them explicity as in the example below.</Aside>
 
-Any custom transformer will replace the default transformers so, to include any default transformer, import it from `@astro-tools/mdocs`.
+To include any default transformer, reference it by `TransformId` in the `transfomers` option. This way allows to use the transformer without explicitly importing it. For example:
+```javascript
+export default {
+  transfomers: [
+    (file, context) => { /* your custom logic */ },
+    'md-to-mdx',
+    {
+      id: 'path-mapping',
+      options: {
+        mappings: [
+          { from: /(\/?)src\//, to: '$1' },
+        ],
+      },
+    }
+  ]
+}
+```
+
+> The declaration order will be the execution order.
+
+For using the default transformers in your custom transformers, just import them from `@astro-tools/mdocs` using the `getTransformer(id: TransformerId | TransformerDefinition): Transformer` function:
+```javascript
+export default function (file, context) {
+  const mdToMdxTransformer = getTransformer('md-to-mdx');
+
+  // your custom logic
+
+  return mdToMdxTransformer(file, context);
+}
+```
 
 #### starlight
 
