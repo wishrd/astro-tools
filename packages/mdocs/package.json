@@ -1,6 +1,6 @@
 {
   "name": "@astro-tools/mdocs",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "CLI for generating a documentation website from markdown files of the execution directory using Astro Starlight under the hood",
   "license": "MIT",
   "repository": {
