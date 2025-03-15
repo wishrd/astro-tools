@@ -1,5 +1,11 @@
 # @astro-tools/http-client
 
+## 0.1.4
+
+### Patch Changes
+
+- 1518492: Do not minify and bundle the library delegating on the bundler using the library
+
 ## 0.1.3
 
 ### Patch Changes
