@@ -8,7 +8,7 @@
     "url": "https://github.com/wishrd/astro-tools",
     "directory": "packages/client-directives"
   },
-  "homepage": "https://astro-tools.pages.dev",
+  "homepage": "https://astro-tools.pages.dev/client-directives/on/",
   "keywords": ["astro", "withastro", "client-directives"],
   "author": {
     "name": "wishrd"

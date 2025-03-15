@@ -8,7 +8,7 @@
     "url": "https://github.com/wishrd/astro-tools",
     "directory": "packages/transfer-state"
   },
-  "homepage": "https://astro-tools.pages.dev",
+  "homepage": "https://astro-tools.pages.dev/state-management/transfer-state/",
   "keywords": ["astro", "withastro", "transfer", "state"],
   "author": {
     "name": "wishrd"

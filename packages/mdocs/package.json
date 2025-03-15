@@ -8,7 +8,7 @@
     "url": "https://github.com/wishrd/astro-tools",
     "directory": "packages/mdocs"
   },
-  "homepage": "https://astro-tools.pages.dev",
+  "homepage": "https://astro-tools.pages.dev/tools/mdocs/",
   "keywords": [
     "astro",
     "starlight",

@@ -8,7 +8,7 @@
     "url": "https://github.com/wishrd/astro-tools",
     "directory": "packages/reactive-transfer-state"
   },
-  "homepage": "https://astro-tools.pages.dev",
+  "homepage": "https://astro-tools.pages.dev/state-management/reactive-transfer-state/",
   "keywords": ["astro", "withastro", "reactive", "transfer", "state"],
   "author": {
     "name": "wishrd"
