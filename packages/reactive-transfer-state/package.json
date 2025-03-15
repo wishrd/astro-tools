@@ -49,6 +49,7 @@
     "@astro-tools/transfer-state": "workspace:*",
     "astro": "catalog:",
     "nanostores": "catalog:",
-    "tsup": "catalog:"
+    "tsup": "catalog:",
+    "typescript": "catalog:"
   }
 }

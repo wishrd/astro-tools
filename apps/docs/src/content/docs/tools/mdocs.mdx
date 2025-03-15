@@ -35,7 +35,7 @@ The configuration related to the @astro-tools/mdocs and Astro Starlight must be 
 
 The minimum config file is as follows:
 
-```javscript
+```javascript
 export default {
   starlight: {
     title: 'My Docs',
@@ -49,7 +49,7 @@ mdocs
 ```
 
 The output should be similar to the following:
-```terminal
+```sh
 [INFO] Copying template...
 [INFO] Copying documentation files...
 [INFO] Building docs...
@@ -149,7 +149,7 @@ The default value is ```['!**/node_modules/', `**/[^_]*.{${extensions.join(',')}
 #### assets
 
 Assets to be copied into the Astro assets directories. it has the following options:
-``` javascript
+```javascript
 export default {
   assets: {
     // The content of the folder will be copied into

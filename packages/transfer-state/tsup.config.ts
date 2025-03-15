@@ -1,5 +1,8 @@
+import { readFileSync } from 'node:fs';
+
 import { defineConfig } from 'tsup';
-import { peerDependencies } from './package.json';
+
+const { peerDependencies } = JSON.parse(readFileSync('./package.json', 'utf-8'));
 
 export default defineConfig((options) => {
   const dev = !!options.watch;

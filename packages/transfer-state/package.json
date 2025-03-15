@@ -45,6 +45,7 @@
   },
   "devDependencies": {
     "astro": "catalog:",
-    "tsup": "catalog:"
+    "tsup": "catalog:",
+    "typescript": "catalog:"
   }
 }

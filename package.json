@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
-  "packageManager": "pnpm@9.14.4",
+  "packageManager": "pnpm@10.6.3",
   "scripts": {
     "lint": "biome check --write",
     "build": "turbo build"

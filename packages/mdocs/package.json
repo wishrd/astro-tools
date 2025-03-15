@@ -41,10 +41,10 @@
   },
   "type": "module",
   "dependencies": {
-    "@astrojs/starlight": "^0.32.2",
-    "astro": "^5.4.2",
+    "@astrojs/starlight": "catalog:",
+    "astro": "catalog:",
     "glob": "catalog:",
-    "sharp": "^0.32.5",
+    "sharp": "catalog:",
     "yargs": "catalog:"
   },
   "devDependencies": {
@@ -52,6 +52,7 @@
     "@types/node": "catalog:",
     "@types/yargs": "catalog:",
     "tsup": "catalog:",
-    "tsx": "catalog:"
+    "tsx": "catalog:",
+    "typescript": "catalog:"
   }
 }

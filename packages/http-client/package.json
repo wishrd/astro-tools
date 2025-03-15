@@ -37,6 +37,8 @@
   "type": "module",
   "peerDependencies": {},
   "devDependencies": {
-    "tsup": "catalog:"
+    "@types/node": "catalog:",
+    "tsup": "catalog:",
+    "typescript": "catalog:"
   }
 }
