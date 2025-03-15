@@ -4,7 +4,7 @@ import {
   type HttpClientResponseError,
   HttpClientResponseStatus,
   type HttpClientResponseSuccess,
-} from '../models/http-response';
+} from '../models/http-response.js';
 
 export class HttpClientError extends Error {
   constructor(

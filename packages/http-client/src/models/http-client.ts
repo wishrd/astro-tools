@@ -1,5 +1,5 @@
-import type { HttpClientOptions } from './http-client-options.ts';
-import type { HttpClientResponse } from './http-response.ts';
+import type { HttpClientOptions } from './http-client-options.js';
+import type { HttpClientResponse } from './http-response.js';
 
 export type HttpClient = {
   (

@@ -1,13 +1,13 @@
-import type { HttpClientInitOptions } from './models/http-client-init-options.ts';
+import type { HttpClientInitOptions } from './models/http-client-init-options.js';
 import type {
   HttpClientBodyAdapter,
   HttpClientOptions,
-} from './models/http-client-options.ts';
-import type { HttpClient } from './models/http-client.ts';
+} from './models/http-client-options.js';
+import type { HttpClient } from './models/http-client.js';
 import {
   type HttpClientResponse,
   HttpClientResponseStatus,
-} from './models/http-response.ts';
+} from './models/http-response.js';
 
 function mapBody(requestInit: RequestInit): BodyInit | null {
   const headers = new Headers(requestInit.headers);
