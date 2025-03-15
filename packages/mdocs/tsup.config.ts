@@ -2,7 +2,7 @@ import { defineConfig } from 'tsup';
 
 export default defineConfig(() => {
   return {
-    entry: ['src/**/*'],
+    entry: ['src/**/*', '!src/**/*.test.ts'],
     format: ['esm'],
     target: 'node20',
     bundle: false,

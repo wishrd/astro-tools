@@ -36,6 +36,7 @@
   },
   "bin": "dist/cli.js",
   "scripts": {
+    "test": "vitest run",
     "build": "tsup",
     "template": "tsx scripts/template.ts"
   },
@@ -53,6 +54,7 @@
     "@types/yargs": "catalog:",
     "tsup": "catalog:",
     "tsx": "catalog:",
-    "typescript": "catalog:"
+    "typescript": "catalog:",
+    "vitest": "catalog:"
   }
 }

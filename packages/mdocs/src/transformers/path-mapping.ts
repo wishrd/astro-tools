@@ -24,7 +24,7 @@ export const pathMappingTransformer: TransformerFactory<PathMappingTransformerOp
       return file;
     }
 
-    let relativeInput = relative(join(context.executionDir, context.contentDir), file.output);
+    const relativeInput = relative(join(context.executionDir, context.contentDir), file.output);
     let relativeOutput = relativeInput;
 
     for (const mapping of regexMappings) {

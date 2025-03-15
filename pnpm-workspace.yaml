@@ -23,6 +23,7 @@ catalog:
   ts-deepmerge: ^7.0.2
   turbo: ^2.4.4
   typescript: ^5.8.2
+  vitest: ^3.0.8
   yargs: ^17.7.2
 
 catalogs:
