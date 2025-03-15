@@ -1,5 +1,11 @@
 # @astro-tools/transfer-state
 
+## 0.2.6
+
+### Patch Changes
+
+- 202987f: Link packages properly to the documentation page
+
 ## 0.2.5
 
 ### Patch Changes

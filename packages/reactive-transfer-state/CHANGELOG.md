@@ -1,5 +1,13 @@
 # @astro-tools/reactive-transfer-state
 
+## 0.2.4
+
+### Patch Changes
+
+- 202987f: Link packages properly to the documentation page
+- Updated dependencies [202987f]
+  - @astro-tools/transfer-state@0.2.6
+
 ## 0.2.3
 
 ### Patch Changes
