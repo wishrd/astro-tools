@@ -1,5 +1,11 @@
 # @astro-tools/http-client
 
+## 0.1.3
+
+### Patch Changes
+
+- 202987f: Link packages properly to the documentation page
+
 ## 0.1.2
 
 ### Patch Changes

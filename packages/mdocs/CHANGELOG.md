@@ -1,5 +1,11 @@
 # @astro-tools/mdocs
 
+## 1.5.1
+
+### Patch Changes
+
+- 202987f: Link packages properly to the documentation page
+
 ## 1.5.0
 
 ### Minor Changes
