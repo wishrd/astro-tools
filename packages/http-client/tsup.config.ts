@@ -8,7 +8,7 @@ const { peerDependencies } = JSON.parse(
 
 export default defineConfig(() => {
   return {
-    entry: ['src/**/*.ts'],
+    entry: ['src/**/*.ts', '!src/**/*.test.ts'],
     format: ['esm'],
     target: 'node18',
     bundle: false,

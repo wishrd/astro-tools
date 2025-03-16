@@ -157,6 +157,9 @@ importers:
       typescript:
         specifier: 'catalog:'
         version: 5.8.2
+      vitest:
+        specifier: 'catalog:'
+        version: 3.0.8(@types/debug@4.1.12)(@types/node@22.13.10)(sass-embedded@1.85.1)(tsx@4.19.3)
 
   packages/i18n:
     dependencies:

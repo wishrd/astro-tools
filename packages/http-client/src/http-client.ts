@@ -1,6 +1,5 @@
 import type { HttpClientInitOptions } from './models/http-client-init-options.js';
 import type {
-  HttpClientBodyAdapter,
   HttpClientOptions,
 } from './models/http-client-options.js';
 import type { HttpClient } from './models/http-client.js';
@@ -8,37 +7,8 @@ import {
   type HttpClientResponse,
   HttpClientResponseStatus,
 } from './models/http-response.js';
-
-function mapBody(requestInit: RequestInit): BodyInit | null {
-  const headers = new Headers(requestInit.headers);
-
-  if (headers.get('Content-Type') === 'application/json' && requestInit.body) {
-    return JSON.stringify(requestInit.body);
-  }
-
-  return null;
-}
-
-async function parseBody<T, K>(
-  response: Response,
-  adapter?: HttpClientBodyAdapter<T, K>,
-): Promise<K | undefined> {
-  if (!adapter) {
-    return;
-  }
-
-  if (
-    !response.body ||
-    !response.headers.has('Content-Type') ||
-    !response.headers.get('Content-Type')?.includes('application/json')
-  ) {
-    throw new Error(
-      'Cannot parse body, expecting body with Content-Type header value application/json',
-    );
-  }
-
-  return adapter(await response.json());
-}
+import { mapBody } from './utils/map-body.js';
+import { parseBody } from './utils/parse-body.js';
 
 export function httpClient(initOptions: HttpClientInitOptions): HttpClient {
   return async <T, K>(
