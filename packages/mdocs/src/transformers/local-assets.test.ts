@@ -1,14 +1,14 @@
-import { describe, it, expect } from 'vitest';
-import { localAssetsTransformer } from './local-assets';
+import { hash } from 'node:crypto';
+import { describe, expect, it } from 'vitest';
 import type { Context } from '../models/context';
 import type { ProcessedFile } from '../models/processed-file';
-import { hash } from 'node:crypto';
+import { localAssetsTransformer } from './local-assets';
 
 describe('localAssetsTransformer', () => {
   const mockContext: Context = {
     executionDir: '/test/dest',
     contentDir: 'src/content',
-    assetsDir: 'src/assets'
+    assetsDir: 'src/assets',
   };
 
   function getMd5Hash(path: string): string {
@@ -19,7 +19,7 @@ describe('localAssetsTransformer', () => {
     const input: ProcessedFile = {
       input: '/test/source/guide.md',
       output: '/test/dest/src/content/docs/guide.md',
-      content: '# Guide\n\n![My Image](./images/test.png)'
+      content: '# Guide\n\n![My Image](./images/test.png)',
     };
 
     const transformer = localAssetsTransformer();
@@ -30,12 +30,12 @@ describe('localAssetsTransformer', () => {
       {
         input: '/test/source/guide.md',
         output: '/test/dest/src/content/docs/guide.md',
-        content: `# Guide\n\n![My Image](../../assets/${expectedHash}.png)`
+        content: `# Guide\n\n![My Image](../../assets/${expectedHash}.png)`,
       },
       {
         input: '/test/source/images/test.png',
-        output: '/test/dest/src/assets/' + expectedHash + '.png'
-      }
+        output: `/test/dest/src/assets/${expectedHash}.png`,
+      },
     ]);
   });
 
@@ -43,7 +43,8 @@ describe('localAssetsTransformer', () => {
     const input: ProcessedFile = {
       input: '/test/source/guide.md',
       output: '/test/dest/src/content/docs/guide.md',
-      content: '# Guide\n\n![First Image](./images/first.jpg)\n\n![Second Image](./images/second.png)'
+      content:
+        '# Guide\n\n![First Image](./images/first.jpg)\n\n![Second Image](./images/second.png)',
     };
 
     const transformer = localAssetsTransformer();
@@ -55,16 +56,16 @@ describe('localAssetsTransformer', () => {
       {
         input: '/test/source/guide.md',
         output: '/test/dest/src/content/docs/guide.md',
-        content: `# Guide\n\n![First Image](../../assets/${firstHash}.jpg)\n\n![Second Image](../../assets/${secondHash}.png)`
+        content: `# Guide\n\n![First Image](../../assets/${firstHash}.jpg)\n\n![Second Image](../../assets/${secondHash}.png)`,
       },
       {
         input: '/test/source/images/first.jpg',
-        output: '/test/dest/src/assets/' + firstHash + '.jpg'
+        output: `/test/dest/src/assets/${firstHash}.jpg`,
       },
       {
         input: '/test/source/images/second.png',
-        output: '/test/dest/src/assets/' + secondHash + '.png'
-      }
+        output: `/test/dest/src/assets/${secondHash}.png`,
+      },
     ]);
   });
 
@@ -72,7 +73,7 @@ describe('localAssetsTransformer', () => {
     const input: ProcessedFile = {
       input: '/test/source/guide.md',
       output: '/test/dest/src/content/docs/guide.md',
-      content: '# Guide\n\nJust some text without images.'
+      content: '# Guide\n\nJust some text without images.',
     };
 
     const transformer = localAssetsTransformer();
@@ -84,7 +85,7 @@ describe('localAssetsTransformer', () => {
   it('should handle files without content', async () => {
     const input: ProcessedFile = {
       input: '/test/source/guide.md',
-      output: '/test/dest/src/content/docs/guide.md'
+      output: '/test/dest/src/content/docs/guide.md',
     };
 
     const transformer = localAssetsTransformer();
@@ -97,7 +98,7 @@ describe('localAssetsTransformer', () => {
     const input: ProcessedFile = {
       input: '/test/source/data.json',
       output: '/test/dest/src/content/docs/data.json',
-      content: '{"image": "./images/test.png"}'
+      content: '{"image": "./images/test.png"}',
     };
 
     const transformer = localAssetsTransformer();
@@ -110,7 +111,7 @@ describe('localAssetsTransformer', () => {
     const input: ProcessedFile = {
       input: '/test/source/guide.md',
       output: '/test/dest/src/content/docs/guide.md',
-      content: '# Guide\n\n![My Complex Image Title](./images/test.png)'
+      content: '# Guide\n\n![My Complex Image Title](./images/test.png)',
     };
 
     const transformer = localAssetsTransformer();
@@ -121,12 +122,12 @@ describe('localAssetsTransformer', () => {
       {
         input: '/test/source/guide.md',
         output: '/test/dest/src/content/docs/guide.md',
-        content: `# Guide\n\n![My Complex Image Title](../../assets/${expectedHash}.png)`
+        content: `# Guide\n\n![My Complex Image Title](../../assets/${expectedHash}.png)`,
       },
       {
         input: '/test/source/images/test.png',
-        output: '/test/dest/src/assets/' + expectedHash + '.png'
-      }
+        output: `/test/dest/src/assets/${expectedHash}.png`,
+      },
     ]);
   });
 
@@ -134,7 +135,8 @@ describe('localAssetsTransformer', () => {
     const input: ProcessedFile = {
       input: '/test/source/guide.md',
       output: '/test/dest/src/content/docs/guide.md',
-      content: '# Guide\n\n![First](./images/test.png)\n\n![Second](./images/test.png)'
+      content:
+        '# Guide\n\n![First](./images/test.png)\n\n![Second](./images/test.png)',
     };
 
     const transformer = localAssetsTransformer();
@@ -145,12 +147,12 @@ describe('localAssetsTransformer', () => {
       {
         input: '/test/source/guide.md',
         output: '/test/dest/src/content/docs/guide.md',
-        content: `# Guide\n\n![First](../../assets/${expectedHash}.png)\n\n![Second](../../assets/${expectedHash}.png)`
+        content: `# Guide\n\n![First](../../assets/${expectedHash}.png)\n\n![Second](../../assets/${expectedHash}.png)`,
       },
       {
         input: '/test/source/images/test.png',
-        output: '/test/dest/src/assets/' + expectedHash + '.png'
-      }
+        output: `/test/dest/src/assets/${expectedHash}.png`,
+      },
     ]);
   });
 });

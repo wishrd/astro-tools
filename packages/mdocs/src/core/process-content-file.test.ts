@@ -1,8 +1,8 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { processContentFile } from './process-content-file';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import type { Context } from '../models/context';
 import type { ProcessedFile } from '../models/processed-file';
 import type { Transformer } from '../models/transformer';
+import { processContentFile } from './process-content-file';
 
 // Mock the fs promises
 vi.mock('node:fs/promises', () => ({
@@ -18,7 +18,7 @@ describe('processContentFile', () => {
   const mockContext: Context = {
     executionDir: '/test/exec',
     contentDir: 'content',
-    assetsDir: 'assets'
+    assetsDir: 'assets',
   };
 
   beforeEach(() => {
@@ -43,11 +43,15 @@ describe('processContentFile', () => {
     const customTransformer: Transformer = async (file: ProcessedFile) => {
       return {
         ...file,
-        content: file.content + '\nCustom transformed',
+        content: `${file.content}\nCustom transformed`,
       };
     };
 
-    const result = await processContentFile(filePath, [customTransformer], mockContext);
+    const result = await processContentFile(
+      filePath,
+      [customTransformer],
+      mockContext,
+    );
 
     expect(result).toBeInstanceOf(Array);
     expect(result.length).toBeGreaterThan(0);
@@ -55,7 +59,11 @@ describe('processContentFile', () => {
 
   it('should handle transformer definitions and IDs', async () => {
     const filePath = 'test.md';
-    const result = await processContentFile(filePath, ['md-to-mdx'], mockContext);
+    const result = await processContentFile(
+      filePath,
+      ['md-to-mdx'],
+      mockContext,
+    );
 
     expect(result).toBeInstanceOf(Array);
     expect(result.length).toBeGreaterThan(0);

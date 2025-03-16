@@ -1,31 +1,31 @@
-import { describe, it, expect } from 'vitest';
-import { pathMappingTransformer } from './path-mapping';
+import { describe, expect, it } from 'vitest';
 import type { Context } from '../models/context';
 import type { ProcessedFile } from '../models/processed-file';
+import { pathMappingTransformer } from './path-mapping';
 
 describe('pathMappingTransformer', () => {
   const mockContext: Context = {
     executionDir: '/test/dest',
     contentDir: 'src/content/docs',
-    assetsDir: 'src/assets'
+    assetsDir: 'src/assets',
   };
 
   it('should apply string mapping to markdown file', async () => {
     const input: ProcessedFile = {
       input: '/test/source/docs/guide.md',
       output: '/test/dest/src/content/docs/docs/guide.md',
-      content: '# Guide'
+      content: '# Guide',
     };
 
     const transformer = pathMappingTransformer({
-      mappings: [{ from: 'docs', to: 'documentation' }]
+      mappings: [{ from: 'docs', to: 'documentation' }],
     });
     const result = await transformer(input, mockContext);
 
     expect(result).toEqual({
       input: '/test/source/docs/guide.md',
       output: '/test/dest/src/content/docs/documentation/guide.md',
-      content: '# Guide'
+      content: '# Guide',
     });
   });
 
@@ -33,18 +33,18 @@ describe('pathMappingTransformer', () => {
     const input: ProcessedFile = {
       input: '/test/source/docs/v1/guide.md',
       output: '/test/dest/src/content/docs/v1/guide.md',
-      content: '# Guide'
+      content: '# Guide',
     };
 
     const transformer = pathMappingTransformer({
-      mappings: [{ from: /v\d+\//, to: '' }]
+      mappings: [{ from: /v\d+\//, to: '' }],
     });
     const result = await transformer(input, mockContext);
 
     expect(result).toEqual({
       input: '/test/source/docs/v1/guide.md',
       output: '/test/dest/src/content/docs/guide.md',
-      content: '# Guide'
+      content: '# Guide',
     });
   });
 
@@ -52,21 +52,21 @@ describe('pathMappingTransformer', () => {
     const input: ProcessedFile = {
       input: '/test/source/docs/v1/guide.md',
       output: '/test/dest/src/content/docs/docs/v1/guide.md',
-      content: '# Guide'
+      content: '# Guide',
     };
 
     const transformer = pathMappingTransformer({
       mappings: [
         { from: /v\d+\//, to: '' },
-        { from: 'docs', to: 'documentation' }
-      ]
+        { from: 'docs', to: 'documentation' },
+      ],
     });
     const result = await transformer(input, mockContext);
 
     expect(result).toEqual({
       input: '/test/source/docs/v1/guide.md',
       output: '/test/dest/src/content/docs/documentation/guide.md',
-      content: '# Guide'
+      content: '# Guide',
     });
   });
 
@@ -74,11 +74,11 @@ describe('pathMappingTransformer', () => {
     const input: ProcessedFile = {
       input: '/test/source/docs/data.json',
       output: '/test/dest/src/content/docs/docs/data.json',
-      content: '{"key": "value"}'
+      content: '{"key": "value"}',
     };
 
     const transformer = pathMappingTransformer({
-      mappings: [{ from: 'docs', to: 'documentation' }]
+      mappings: [{ from: 'docs', to: 'documentation' }],
     });
     const result = await transformer(input, mockContext);
 
@@ -89,15 +89,15 @@ describe('pathMappingTransformer', () => {
     const input: ProcessedFile = {
       input: '/test/source/docs/guide.md',
       output: '/test/dest/src/content/docs/docs/guide.md',
-      content: '# Guide'
+      content: '# Guide',
     };
 
     const transformer = pathMappingTransformer({
-      mappings: []
+      mappings: [],
     });
 
     await expect(transformer(input, mockContext)).rejects.toThrow(
-      'Array of path mappings with at least one item is required!'
+      'Array of path mappings with at least one item is required!',
     );
   });
 
@@ -105,13 +105,13 @@ describe('pathMappingTransformer', () => {
     const input: ProcessedFile = {
       input: '/test/source/docs/guide.md',
       output: '/test/dest/src/content/docs/docs/guide.md',
-      content: '# Guide'
+      content: '# Guide',
     };
 
     const transformer = pathMappingTransformer();
 
     await expect(transformer(input, mockContext)).rejects.toThrow(
-      'Array of path mappings with at least one item is required!'
+      'Array of path mappings with at least one item is required!',
     );
   });
 
@@ -119,21 +119,21 @@ describe('pathMappingTransformer', () => {
     const input: ProcessedFile = {
       input: '/test/source/docs/api/v2.1/endpoints/users.md',
       output: '/test/dest/src/content/docs/api/v2.1/endpoints/users.md',
-      content: '# API Endpoints'
+      content: '# API Endpoints',
     };
 
     const transformer = pathMappingTransformer({
       mappings: [
         { from: /v\d+\.\d+\//, to: '' },
-        { from: 'endpoints', to: 'reference' }
-      ]
+        { from: 'endpoints', to: 'reference' },
+      ],
     });
     const result = await transformer(input, mockContext);
 
     expect(result).toEqual({
       input: '/test/source/docs/api/v2.1/endpoints/users.md',
       output: '/test/dest/src/content/docs/api/reference/users.md',
-      content: '# API Endpoints'
+      content: '# API Endpoints',
     });
   });
 });

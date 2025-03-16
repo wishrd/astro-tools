@@ -8,31 +8,34 @@ function generateMdxAttributes(title: string): string {
   return `---\ntitle: '${title}'\n---\n`;
 }
 
-export const mdToMdxTransformer: TransformerFactory<void> = () => async (file) => {
-  if (!file.content || !isAnyMarkdown(file.output)) {
-    return file;
-  }
+export const mdToMdxTransformer: TransformerFactory<void> =
+  () => async (file) => {
+    if (!file.content || !isAnyMarkdown(file.output)) {
+      return file;
+    }
 
-  if (MDX_ATTRIBUTES.test(file.content)) {
-    return file;
-  }
+    if (MDX_ATTRIBUTES.test(file.content)) {
+      return file;
+    }
 
-  const heading = file.content.match(FIRST_HEADING);
-  if (!heading || heading.length < 2 || !heading[1]) {
-    return file;
-  }
+    const heading = file.content.match(FIRST_HEADING);
+    if (!heading || heading.length < 2 || !heading[1]) {
+      return file;
+    }
 
-  const headingText = heading[1]?.trim();
-  if (!headingText) {
-    return file;
-  }
+    const headingText = heading[1]?.trim();
+    if (!headingText) {
+      return file;
+    }
 
-  const output = isExtendedMarkdown(file.output) ? file.output : file.output.replace(/\.\w+$/, '.mdx');
-  const content = `${generateMdxAttributes(headingText)}${file.content.replace(heading[0], '')}`;
+    const output = isExtendedMarkdown(file.output)
+      ? file.output
+      : file.output.replace(/\.\w+$/, '.mdx');
+    const content = `${generateMdxAttributes(headingText)}${file.content.replace(heading[0], '')}`;
 
-  return {
-    input: file.input,
-    output,
-    content,
+    return {
+      input: file.input,
+      output,
+      content,
+    };
   };
-}

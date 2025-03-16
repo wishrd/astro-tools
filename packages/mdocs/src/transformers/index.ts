@@ -4,17 +4,29 @@ import { mdToMdxTransformer } from './md-to-mdx.js';
 import { pathMappingTransformer } from './path-mapping.js';
 import { readmeToIndexTransformer } from './readme-to-index.js';
 
-export type TransformId = 'md-to-mdx' | 'readme-to-index' | 'local-assets' | 'path-mapping';
-export type TransformerDefinition = { id: TransformId, options?: any };
+export type TransformId =
+  | 'md-to-mdx'
+  | 'readme-to-index'
+  | 'local-assets'
+  | 'path-mapping';
 
+// biome-ignore lint/suspicious/noExplicitAny: allow factory pattern
+export type TransformerDefinition = { id: TransformId; options?: any };
+
+// biome-ignore lint/suspicious/noExplicitAny: allow factory pattern
 const factory = new Map<TransformId, TransformerFactory<any>>();
 factory.set('md-to-mdx', mdToMdxTransformer);
 factory.set('readme-to-index', readmeToIndexTransformer);
 factory.set('local-assets', localAssetsTransformer);
 factory.set('path-mapping', pathMappingTransformer);
 
-export function getTransformer(idOrDefinition: TransformId | TransformerDefinition): Transformer {
-  let normalizedDefinition = typeof idOrDefinition === 'string' ? { id: idOrDefinition,  } : idOrDefinition;
+export function getTransformer(
+  idOrDefinition: TransformId | TransformerDefinition,
+): Transformer {
+  const normalizedDefinition =
+    typeof idOrDefinition === 'string'
+      ? { id: idOrDefinition }
+      : idOrDefinition;
 
   const transformer = factory.get(normalizedDefinition.id);
   if (!transformer) {

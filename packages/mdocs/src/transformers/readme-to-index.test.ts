@@ -1,20 +1,20 @@
-import { describe, it, expect } from 'vitest';
-import { readmeToIndexTransformer } from './readme-to-index';
+import { describe, expect, it } from 'vitest';
 import type { Context } from '../models/context';
 import type { ProcessedFile } from '../models/processed-file';
+import { readmeToIndexTransformer } from './readme-to-index';
 
 describe('readmeToIndexTransformer', () => {
   const mockContext: Context = {
     executionDir: '/test/dest',
     contentDir: 'src/content/docs',
-    assetsDir: 'src/assets'
+    assetsDir: 'src/assets',
   };
 
   it('should convert readme to index in non-flat mode', async () => {
     const input: ProcessedFile = {
       input: '/test/source/readme.md',
       output: '/test/dest/src/content/docs/readme.md',
-      content: '# Hello World'
+      content: '# Hello World',
     };
 
     const transformer = readmeToIndexTransformer({ flat: false });
@@ -23,7 +23,7 @@ describe('readmeToIndexTransformer', () => {
     expect(result).toEqual({
       input: '/test/source/readme.md',
       output: '/test/dest/src/content/docs/index.md',
-      content: '# Hello World'
+      content: '# Hello World',
     });
   });
 
@@ -31,7 +31,7 @@ describe('readmeToIndexTransformer', () => {
     const input: ProcessedFile = {
       input: '/test/source/getting-started/readme.md',
       output: '/test/dest/src/content/docs/getting-started/readme.md',
-      content: '# Getting Started'
+      content: '# Getting Started',
     };
 
     const transformer = readmeToIndexTransformer({});
@@ -40,7 +40,7 @@ describe('readmeToIndexTransformer', () => {
     expect(result).toEqual({
       input: '/test/source/getting-started/readme.md',
       output: '/test/dest/src/content/docs/getting-started.md',
-      content: '# Getting Started'
+      content: '# Getting Started',
     });
   });
 
@@ -48,7 +48,7 @@ describe('readmeToIndexTransformer', () => {
     const input: ProcessedFile = {
       input: '/test/source/getting-started/README.md',
       output: '/test/dest/src/content/docs/getting-started/README.md',
-      content: '# Getting Started'
+      content: '# Getting Started',
     };
 
     const transformer = readmeToIndexTransformer({});
@@ -57,7 +57,7 @@ describe('readmeToIndexTransformer', () => {
     expect(result).toEqual({
       input: '/test/source/getting-started/README.md',
       output: '/test/dest/src/content/docs/getting-started.md',
-      content: '# Getting Started'
+      content: '# Getting Started',
     });
   });
 
@@ -65,7 +65,7 @@ describe('readmeToIndexTransformer', () => {
     const input: ProcessedFile = {
       input: '/test/source/getting-started/index.md',
       output: '/test/dest/src/content/docs/getting-started/index.md',
-      content: '# Getting Started'
+      content: '# Getting Started',
     };
 
     const transformer = readmeToIndexTransformer({});
@@ -74,7 +74,7 @@ describe('readmeToIndexTransformer', () => {
     expect(result).toEqual({
       input: '/test/source/getting-started/index.md',
       output: '/test/dest/src/content/docs/getting-started.md',
-      content: '# Getting Started'
+      content: '# Getting Started',
     });
   });
 
@@ -82,7 +82,7 @@ describe('readmeToIndexTransformer', () => {
     const input: ProcessedFile = {
       input: '/test/source/getting-started/readme.txt',
       output: '/test/dest/src/content/docs/getting-started/readme.txt',
-      content: '# Getting Started'
+      content: '# Getting Started',
     };
 
     const transformer = readmeToIndexTransformer({});
@@ -95,10 +95,12 @@ describe('readmeToIndexTransformer', () => {
     const input: ProcessedFile = {
       input: '/test/source/getting-started//readme.md',
       output: '/test/dest/src/content/docs/getting-started//readme.md',
-      content: '# Getting Started'
+      content: '# Getting Started',
     };
 
     const transformer = readmeToIndexTransformer({});
-    await expect(transformer(input, mockContext)).rejects.toThrow('Error while transforming /test/dest/src/content/docs/getting-started//readme.md to index');
+    await expect(transformer(input, mockContext)).rejects.toThrow(
+      'Error while transforming /test/dest/src/content/docs/getting-started//readme.md to index',
+    );
   });
 });

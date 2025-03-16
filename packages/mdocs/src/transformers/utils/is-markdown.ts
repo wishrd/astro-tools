@@ -1,7 +1,10 @@
-import { MARKDOWN_EXTENDED_EXTENSIONS, MARKDOWN_EXTENSIONS } from '../../core/extensions.js';
+import {
+  MARKDOWN_EXTENDED_EXTENSIONS,
+  MARKDOWN_EXTENSIONS,
+} from '../../core/extensions.js';
 
 function hasExtension(filePath: string, extensions: Array<string>): boolean {
-  return extensions.some(ext => filePath.endsWith(`.${ext}`));
+  return extensions.some((ext) => filePath.endsWith(`.${ext}`));
 }
 
 export function isMarkdown(filePath: string): boolean {

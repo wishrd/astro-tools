@@ -9,13 +9,7 @@
     "directory": "packages/mdocs"
   },
   "homepage": "https://astro-tools.pages.dev/tools/mdocs/",
-  "keywords": [
-    "astro",
-    "starlight",
-    "withastro",
-    "docs",
-    "documentation"
-  ],
+  "keywords": ["astro", "starlight", "withastro", "docs", "documentation"],
   "author": {
     "name": "wishrd"
   },
@@ -23,11 +17,7 @@
     "access": "public"
   },
   "sideEffects": false,
-  "files": [
-    "dist",
-    "template",
-    "files"
-  ],
+  "files": ["dist", "template", "files"],
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",

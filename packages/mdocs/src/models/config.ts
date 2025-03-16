@@ -1,4 +1,7 @@
-import type { TransformerDefinition, TransformId } from '../transformers/index.js';
+import type {
+  TransformId,
+  TransformerDefinition,
+} from '../transformers/index.js';
 import type { Transformer } from './transformer.js';
 
 export interface ConfigAssets {

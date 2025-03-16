@@ -11,13 +11,18 @@ function isFlat(flat: boolean | undefined | null): boolean {
   return flat === undefined || flat === null || flat === true;
 }
 
-export const readmeToIndexTransformer: TransformerFactory<ReadmeToIndexTransformerOptions> = (options) => {
+export const readmeToIndexTransformer: TransformerFactory<
+  ReadmeToIndexTransformerOptions
+> = (options) => {
   return async (file, context) => {
     if (!isAnyMarkdown(file.output)) {
       return file;
     }
 
-    const resolvedPath = relative(join(context.executionDir, context.contentDir), dirname(file.output));
+    const resolvedPath = relative(
+      join(context.executionDir, context.contentDir),
+      dirname(file.output),
+    );
 
     let output = file.output;
     if (resolvedPath && isFlat(options?.flat)) {
@@ -27,9 +32,12 @@ export const readmeToIndexTransformer: TransformerFactory<ReadmeToIndexTransform
         throw new Error(`Error while transforming ${output} to index`);
       }
 
-      output = output.replace(new RegExp(`${filename}/(readme|index)`, 'i'), filename);
+      output = output.replace(
+        new RegExp(`${filename}/(readme|index)`, 'i'),
+        filename,
+      );
     } else {
-      output = output.replace(new RegExp('readme', 'i'), 'index');
+      output = output.replace(/readme/i, 'index');
     }
 
     return { ...file, output };
