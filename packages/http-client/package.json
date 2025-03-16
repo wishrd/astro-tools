@@ -26,6 +26,7 @@
   "files": ["dist"],
   "scripts": {
     "dev": "tsup --watch",
+    "test": "vitest run",
     "build": "tsup"
   },
   "type": "module",

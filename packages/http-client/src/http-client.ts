@@ -1,7 +1,5 @@
 import type { HttpClientInitOptions } from './models/http-client-init-options.js';
-import type {
-  HttpClientOptions,
-} from './models/http-client-options.js';
+import type { HttpClientOptions } from './models/http-client-options.js';
 import type { HttpClient } from './models/http-client.js';
 import {
   type HttpClientResponse,
