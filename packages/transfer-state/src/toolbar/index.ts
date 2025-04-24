@@ -1,5 +1,7 @@
 import { defineToolbarApp } from 'astro/toolbar';
 
+import { unescapeString } from '../utils/sanitize-string.ts';
+
 function createHeader(text: string): HTMLElement {
   const header = document.createElement('header');
   const title = document.createElement('div');
@@ -44,7 +46,9 @@ export default defineToolbarApp({
       let textContent: string | null = null;
 
       try {
-        textContent = JSON.parse(transferState.textContent);
+        textContent = JSON.parse(transferState.textContent, (_, value) =>
+          typeof value === 'string' ? unescapeString(value) : value,
+        );
       } catch (err) {
         console.error(err);
       }

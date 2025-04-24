@@ -21,9 +21,13 @@ export default defineConfig({
   integrations: [
     starlight({
       title: 'Astro Tools',
-      social: {
-        github: 'https://github.com/wishrd/astro-tools',
-      },
+      social: [
+        {
+          icon: 'github',
+          label: 'GitHub',
+          href: 'https://github.com/wishrd/astro-tools',
+        },
+      ],
       sidebar: [
         {
           label: 'Client directives',

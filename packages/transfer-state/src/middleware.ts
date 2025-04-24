@@ -1,5 +1,5 @@
 import { defineMiddleware } from 'astro/middleware';
-
+import { escapeString } from './utils/sanitize-string.ts';
 import { withTransferState } from './with-transfer-state.ts';
 
 export const onRequest = defineMiddleware(async (_, next) => {
@@ -12,7 +12,11 @@ export const onRequest = defineMiddleware(async (_, next) => {
   const content = await response.text();
   const headCloseIndex = content.indexOf('</head>');
 
-  const newContent = `${content.slice(0, headCloseIndex)}<script id="astro-tools-transfer-state" type="application/json">${JSON.stringify(getTransferState())}</script>${content.slice(headCloseIndex)}`;
+  const serializedTransferState = JSON.stringify(
+    getTransferState(),
+    (_, value) => (typeof value === 'string' ? escapeString(value) : value),
+  );
+  const newContent = `${content.slice(0, headCloseIndex)}<script id="astro-tools-transfer-state" type="application/json">${serializedTransferState}</script>${content.slice(headCloseIndex)}`;
 
   return new Response(newContent, response);
 });

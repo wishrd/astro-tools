@@ -17,3 +17,4 @@ onMount(() => {
 </script>
 
 <Output hydrated={hydrated} text={getState('uuid')} />
+<Output hydrated={hydrated} text={getState('sanitized')} />

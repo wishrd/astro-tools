@@ -26,6 +26,7 @@
   "files": ["dist"],
   "scripts": {
     "dev": "tsup --watch",
+    "test": "vitest run",
     "build": "tsup"
   },
   "type": "module",
@@ -39,6 +40,7 @@
   "devDependencies": {
     "astro": "catalog:",
     "tsup": "catalog:",
-    "typescript": "catalog:"
+    "typescript": "catalog:",
+    "vitest": "catalog:"
   }
 }

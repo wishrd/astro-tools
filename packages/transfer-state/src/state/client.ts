@@ -1,13 +1,14 @@
 import type { StateKey } from '../models/state-key.ts';
 import type { TransferState } from '../models/transfer-state.ts';
-
+import { unescapeString } from '../utils/sanitize-string.ts';
 let store: TransferState;
 
 function getStore(): TransferState {
   if (!store) {
     const state = document.getElementById('astro-tools-transfer-state');
-    const stateObject = JSON.parse(
-      state !== null ? state.textContent || '{}' : '{}',
+    const stateContent = state !== null ? state.textContent || '{}' : '{}';
+    const stateObject = JSON.parse(stateContent, (_, value) =>
+      typeof value === 'string' ? unescapeString(value) : value,
     );
     store = stateObject;
   }

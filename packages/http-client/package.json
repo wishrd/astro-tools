@@ -9,11 +9,7 @@
     "directory": "packages/http-client"
   },
   "homepage": "https://astro-tools.pages.dev/network/http-client/",
-  "keywords": [
-    "http",
-    "http-client",
-    "fetch"
-  ],
+  "keywords": ["http", "http-client", "fetch"],
   "author": {
     "name": "wishrd"
   },
@@ -27,9 +23,7 @@
       "default": "./dist/index.js"
     }
   },
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "scripts": {
     "dev": "tsup --watch",
     "test": "vitest run",
