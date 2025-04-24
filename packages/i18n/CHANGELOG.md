@@ -1,5 +1,12 @@
 # @astro-tools/i18n
 
+## 0.4.2
+
+### Patch Changes
+
+- Updated dependencies [7a058ab]
+  - @astro-tools/transfer-state@0.2.7
+
 ## 0.4.1
 
 ### Patch Changes

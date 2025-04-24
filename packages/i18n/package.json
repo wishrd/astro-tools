@@ -1,6 +1,6 @@
 {
   "name": "@astro-tools/i18n",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "Type-safe i18n integration for Astro which translates in runtime",
   "license": "MIT",
   "repository": {
@@ -9,7 +9,12 @@
     "directory": "packages/i18n"
   },
   "homepage": "https://astro-tools.pages.dev/internationalization/i18n/",
-  "keywords": ["astro", "withastro", "i18n", "translations"],
+  "keywords": [
+    "astro",
+    "withastro",
+    "i18n",
+    "translations"
+  ],
   "author": {
     "name": "wishrd"
   },
@@ -31,7 +36,9 @@
       "default": "./dist/providers/index.js"
     }
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "dev": "tsup --watch",
     "build": "tsup"

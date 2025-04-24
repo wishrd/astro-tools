@@ -1,5 +1,11 @@
 # @astro-tools/transfer-state
 
+## 0.2.7
+
+### Patch Changes
+
+- 7a058ab: Fix XSS vulnerability
+
 ## 0.2.6
 
 ### Patch Changes
