@@ -1,5 +1,12 @@
 # @astro-tools/reactive-transfer-state
 
+## 0.2.5
+
+### Patch Changes
+
+- Updated dependencies [7a058ab]
+  - @astro-tools/transfer-state@0.2.7
+
 ## 0.2.4
 
 ### Patch Changes
