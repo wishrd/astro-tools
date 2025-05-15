@@ -1,5 +1,11 @@
 # @astro-tools/mdocs
 
+## 1.5.2
+
+### Patch Changes
+
+- 7f39b4b: Bump dependencies to latest version and add compatibility with nanostores v1
+
 ## 1.5.1
 
 ### Patch Changes

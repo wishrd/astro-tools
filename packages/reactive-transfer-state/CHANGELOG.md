@@ -1,5 +1,11 @@
 # @astro-tools/reactive-transfer-state
 
+## 0.2.6
+
+### Patch Changes
+
+- 7f39b4b: Bump dependencies to latest version and add compatibility with nanostores v1
+
 ## 0.2.5
 
 ### Patch Changes
