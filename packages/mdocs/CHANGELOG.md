@@ -1,5 +1,11 @@
 # @astro-tools/mdocs
 
+## 2.0.0
+
+### Major Changes
+
+- db0d157: Define "build" and "serve" commands to allow serving the documentation locally after building it
+
 ## 1.5.2
 
 ### Patch Changes
