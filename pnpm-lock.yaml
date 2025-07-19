@@ -82,10 +82,6 @@ catalogs:
 importers:
 
   .:
-    dependencies:
-      '@astro-tools/mdocs':
-        specifier: link:packages/mdocs
-        version: link:packages/mdocs
     devDependencies:
       '@biomejs/biome':
         specifier: 'catalog:'

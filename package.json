@@ -14,11 +14,5 @@
     "@biomejs/biome": "catalog:",
     "@changesets/cli": "catalog:",
     "turbo": "catalog:"
-  },
-  "pnpm": {
-    "overrides": {}
-  },
-  "dependencies": {
-    "@astro-tools/mdocs": "link:packages/mdocs"
   }
 }
