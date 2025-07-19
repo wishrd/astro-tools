@@ -76,7 +76,7 @@ export async function build({
 
   // Remove temporal files
   console.info('[INFO] Removing temporal files...');
-  // await rm(executionDir, { recursive: true, force: true });
+  await rm(executionDir, { recursive: true, force: true });
 
   console.info('[INFO] Documentation generated successfully!');
 }

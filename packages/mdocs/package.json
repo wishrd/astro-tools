@@ -44,12 +44,14 @@
   "dependencies": {
     "@astrojs/starlight": "catalog:",
     "astro": "catalog:",
+    "express": "catalog:",
     "glob": "catalog:",
     "sharp": "catalog:",
     "yargs": "catalog:"
   },
   "devDependencies": {
     "create-astro": "catalog:",
+    "@types/express": "catalog:",
     "@types/node": "catalog:",
     "@types/yargs": "catalog:",
     "tsup": "catalog:",

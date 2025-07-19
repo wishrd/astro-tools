@@ -29,7 +29,7 @@ After installing, the command `mdocs` should be available in your terminal.
 
 ## Use
 
-The configuration related to the @astro-tools/mdocs and Astro Starlight must be defined in the working directory file `.mdocs.mjs`.
+The configuration related to the @astro-tools/mdocs and Astro Starlight must be defined in the file `.mdocs.mjs` of the root directory of the documentation (from where the command will be executed).
 
 > Alternatively, the CLI could receive an argument `--config` with the config file path.
 
@@ -43,12 +43,19 @@ export default {
 }
 ```
 
-Then execute the command `mdocs` in the working directory with the previous file:
+### Commands
+
+#### Build
+
+This command will build the documentation and output the result in the `.mdocs/dist` folder of the working directory.
+Execute the command `mdocs build` in the working directory of the config file (or use the `--config` option):
+
 ```sh
-mdocs
+mdocs build
 ```
 
 The output should be similar to the following:
+
 ```sh
 [INFO] Copying template...
 [INFO] Copying documentation files...
@@ -57,6 +64,18 @@ The output should be similar to the following:
 [INFO] Copying result into the destination folder...
 [INFO] Removing temporal files...
 [INFO] Documentation generated successfully!
+```
+
+#### Serve
+
+To serve the documentation built with the `build` command locally, execute the `serve` command. This command will run a basic http server in `http://localhost:8888` (or the port defined with the option `--port`):
+```sh
+mdocs serve
+```
+
+`The output should be similar to the following:
+```sh
+Serving documentation on http://localhost:8888
 ```
 
 ### Transformers
