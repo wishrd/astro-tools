@@ -1,5 +1,11 @@
 # @astro-tools/mdocs
 
+## 2.0.1
+
+### Patch Changes
+
+- 2e1a68b: Add option "ignore" as ignoring with ! doesn't work through "pattern" option
+
 ## 2.0.0
 
 ### Major Changes
