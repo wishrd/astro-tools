@@ -10,6 +10,7 @@ export interface ConfigAssets {
 
 export interface Config {
   pattern?: string | string[];
+  ignore?: string | string[];
   assets?: ConfigAssets;
   transformers?: (Transformer | TransformerDefinition | TransformId)[];
   starlight: unknown;

@@ -1,13 +1,13 @@
+import { glob } from 'glob';
 import { existsSync } from 'node:fs';
 import { cp, mkdir, mkdtemp, rm, writeFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
-import { glob } from 'glob';
 
 import type { Config } from '../models/config.js';
 import type { ProcessedFile } from '../models/processed-file.js';
 import { execAsync } from './exec-async.js';
+import { DEFAULT_IGNORE, DEFAULT_PATTERN } from './glob.js';
 import { folder, workDir } from './paths.js';
-import { DEFAULT_PATTERN } from './pattern.js';
 import { processContentFile } from './process-content-file.js';
 
 interface BuildOptions {
@@ -29,7 +29,8 @@ export async function build({
 
   // Copy markdown files and related assets
   console.info('[INFO] Copying documentation files...');
-  const filePaths = await glob(config.pattern || DEFAULT_PATTERN);
+  const filePaths = await glob(config.pattern || DEFAULT_PATTERN, { ignore: config.ignore || DEFAULT_IGNORE });
+  filePaths.forEach((filePath: string) => console.log(`[INFO] ${filePath} copied`));
 
   const promises = filePaths.map((filePath: string) =>
     processContentFile(filePath, config.transformers, {
