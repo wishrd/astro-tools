@@ -1,3 +1,11 @@
+---
+package: mdocs
+title: MDocs
+description: CLI for generating a documentation website from markdown files of the working directory using Astro Starlight under the hood
+sidebar:
+  order: 1
+---
+import { Code, Tabs, TabItem, Aside, Steps } from '@astrojs/starlight/components';
 
 This library provides a CLI for generating a documentation website from markdown files.
 It is using [Astro Starlight](https://starlight.astro.build/) under the hood, which provides a beautiful UI and a nice user experience.
@@ -155,7 +163,7 @@ The libraries tries to minimize the configuration required to build the document
 
 Glob patterns to filter the documentation files to include and copy into the Astro Starlight `content/docs` directory.
 
-The default value is ```['**/[^_]*.{${extensions.join(',')}}`]```, being `extensions` one of `markdown, mdown, mkdn, mkd, mdwn, md, mdx`.
+The default value is ```['!**/node_modules/', `**/[^_]*.{${extensions.join(',')}}`]```, being `extensions` one of `markdown, mdown, mkdn, mkd, mdwn, md, mdx`.
 
 #### ignore
 
