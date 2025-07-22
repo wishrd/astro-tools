@@ -8,12 +8,12 @@ export interface ConfigAssets {
   public?: string;
 }
 
-export type ConfigTransformerGroup = (Transformer | TransformerDefinition | TransformId)[];
+export type ConfigTransformer = Transformer | TransformerDefinition | TransformId;
 
 export interface Config {
   pattern?: string | string[];
   ignore?: string | string[];
   assets?: ConfigAssets;
-  transformers?: ConfigTransformerGroup | ConfigTransformerGroup[];
+  transformers?: ConfigTransformer[];
   starlight: unknown;
 }

@@ -7,7 +7,7 @@ import type { Config } from '../models/config.js';
 import type { ProcessedFile } from '../models/processed-file.js';
 import { execAsync } from './exec-async.js';
 import { getContentFile } from './get-content-file.js';
-import { getTransformerGroups } from './get-transformer-groups.js';
+import { getTransformers } from './get-transformers.js';
 import { DEFAULT_IGNORE, DEFAULT_PATTERN } from './glob.js';
 import { folder, workDir } from './paths.js';
 import { transformFile } from './transform-file.js';
@@ -45,22 +45,18 @@ export async function build({
   const filesContents = await Promise.all(filesContentsPromises);
 
   // Process files contents in groups
-  const transformerGroups = getTransformerGroups(config.transformers);
+  const transformers = getTransformers(config.transformers);
 
   let files: ProcessedFile[] = filesContents;
-  let processedFiles: ProcessedFile[] = [];
-  for (const transformerGroup of transformerGroups) {
-    const promises = files.map((file: ProcessedFile) =>
-      transformFile(file, transformerGroup, {
-        executionDir,
-        contentDir: folder.starlightContent,
-        assetsDir: folder.starlightAssets,
-        files,
-      }),
-    );
-    const groupFiles = await Promise.all(promises);
-    processedFiles = processedFiles.concat(groupFiles.flat());
-    files = processedFiles;
+  for (const transformer of transformers) {
+    const promises = files.map((file: ProcessedFile) => transformFile(file, transformer, {
+      executionDir,
+      contentDir: folder.starlightContent,
+      assetsDir: folder.starlightAssets,
+      files,
+    }));
+    const result = await Promise.all(promises);
+    files = result.flat();
   }
 
   // Copy transformed files to the destination directory

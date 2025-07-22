@@ -160,26 +160,6 @@ export default {
 
 <Aside type="note">The replacement will use the relative path of the file from the temporal content directory, which initially is the execution working directory.</Aside>
 
-### Transformer groups
-
-The transformers option allows to declare groups of transformers as an array of arrays. For example:
-
-```javascript
-export default {
-  transformers: [
-    [
-      'md-to-mdx',
-      'readme-to-index',
-    ],
-    [
-      'local-assets',
-    ]
-  ],
-}
-```
-
-Each group of transformers will get as context the properly `files` which has the processed files of the previous group. This way, transformers can be executed in a pipe using the whole context instead of just the current file being processed.
-
 ### Options
 
 The libraries tries to minimize the configuration required to build the documentation. In any case, there are some options that can be used for your needs.
@@ -213,7 +193,7 @@ For example, with the `assets.public` option, the default `favicon.svg` can be o
 
 #### transformers
 
-Functions of type `(file: ProcessedFile, context: Context) => Promise<ProcessedFile[] | ProcessedFile>` that transform the input file, allowing to modify the output path (including the file name) and the content (if available).
+Functions of type `(file: ProcessedFile, context: TransformerContext) => Promise<ProcessedFile[] | ProcessedFile>` that transform the input file, allowing to modify the output path (including the file name) and the content (if available).
 
 The `ProcessedFile` type is:
 ```typescript
@@ -224,12 +204,13 @@ interface ProcessedFile {
 }
 ```
 
-The `Context` type is:
+The `TransformerContext` type is:
 ```typescript
-interface Context {
+interface TransformerContext {
   executionDir: string; // absolute path to the root of the temporal project folder
   contentDir: string; // relative to the executionDir
   assetsDir: string; // relative to the executionDir
+  files: ProcessedFile[]; // files of the previous transformation
 }
 ```
 

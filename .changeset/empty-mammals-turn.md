@@ -2,4 +2,4 @@
 "@astro-tools/mdocs": minor
 ---
 
-Add capabilities to create transformer groups, in which each group will get the transformed files of the previous group
+Instead of pipe each file individually, now we transform all files per transformer, adding the files of the previous transformation to the context of the following.

@@ -33,7 +33,7 @@ describe('processContentFile', () => {
       output: 'test.md',
       content: '# Test Content',
     };
-    const result = await transformFile(file, [], mockContext);
+    const result = await transformFile(file, mdToMdxTransformer(), mockContext);
 
     expect(result).toBeInstanceOf(Array);
     expect(result.length).toBeGreaterThan(0);
@@ -57,7 +57,7 @@ describe('processContentFile', () => {
       };
     };
 
-    const result = await transformFile(file, [customTransformer], mockContext);
+    const result = await transformFile(file, customTransformer, mockContext);
 
     expect(result).toBeInstanceOf(Array);
     expect(result.length).toBeGreaterThan(0);
@@ -71,7 +71,7 @@ describe('processContentFile', () => {
     };
     const result = await transformFile(
       file,
-      [mdToMdxTransformer()],
+      mdToMdxTransformer(),
       mockContext,
     );
 
