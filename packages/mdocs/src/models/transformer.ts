@@ -1,9 +1,9 @@
-import type { Context } from './context.js';
 import type { ProcessedFile } from './processed-file.js';
+import type { TransformContext } from './transform-context.js';
 
 export type Transformer = (
   file: ProcessedFile,
-  context: Context,
+  context: TransformContext,
 ) => Promise<ProcessedFile | ProcessedFile[]>;
 
 export type TransformerFactory<T> = (options?: T) => Transformer;

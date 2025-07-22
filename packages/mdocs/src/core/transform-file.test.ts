@@ -1,8 +1,9 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import type { Context } from '../models/context';
 import type { ProcessedFile } from '../models/processed-file';
+import type { TransformContext } from '../models/transform-context';
 import type { Transformer } from '../models/transformer';
-import { processContentFile } from './process-content-file';
+import { mdToMdxTransformer } from '../transformers/md-to-mdx';
+import { transformFile } from './transform-file';
 
 // Mock the fs promises
 vi.mock('node:fs/promises', () => ({
@@ -15,10 +16,11 @@ vi.mock('./transform-file.js', () => ({
 }));
 
 describe('processContentFile', () => {
-  const mockContext: Context = {
+  const mockContext: TransformContext = {
     executionDir: '/test/exec',
     contentDir: 'content',
     assetsDir: 'assets',
+    files: [],
   };
 
   beforeEach(() => {
@@ -26,8 +28,12 @@ describe('processContentFile', () => {
   });
 
   it('should process a file with default transformers', async () => {
-    const filePath = 'test.md';
-    const result = await processContentFile(filePath, undefined, mockContext);
+    const file = {
+      input: 'test.md',
+      output: 'test.md',
+      content: '# Test Content',
+    };
+    const result = await transformFile(file, [], mockContext);
 
     expect(result).toBeInstanceOf(Array);
     expect(result.length).toBeGreaterThan(0);
@@ -39,7 +45,11 @@ describe('processContentFile', () => {
   });
 
   it('should process a file with custom transformers', async () => {
-    const filePath = 'test.md';
+    const file = {
+      input: 'test.md',
+      output: 'test.md',
+      content: '# Test Content',
+    };
     const customTransformer: Transformer = async (file: ProcessedFile) => {
       return {
         ...file,
@@ -47,40 +57,25 @@ describe('processContentFile', () => {
       };
     };
 
-    const result = await processContentFile(
-      filePath,
-      [customTransformer],
-      mockContext,
-    );
+    const result = await transformFile(file, [customTransformer], mockContext);
 
     expect(result).toBeInstanceOf(Array);
     expect(result.length).toBeGreaterThan(0);
   });
 
   it('should handle transformer definitions and IDs', async () => {
-    const filePath = 'test.md';
-    const result = await processContentFile(
-      filePath,
-      ['md-to-mdx'],
+    const file = {
+      input: 'test.md',
+      output: 'test.md',
+      content: '# Test Content',
+    };
+    const result = await transformFile(
+      file,
+      [mdToMdxTransformer()],
       mockContext,
     );
 
     expect(result).toBeInstanceOf(Array);
     expect(result.length).toBeGreaterThan(0);
-  });
-
-  it('should construct correct input and output paths', async () => {
-    const filePath = 'docs/test.md';
-    const result = await processContentFile(filePath, undefined, mockContext);
-
-    expect(result.length).toBeGreaterThan(0);
-    const processedFile = result[0];
-    if (!processedFile) {
-      throw new Error('Expected at least one processed file');
-    }
-
-    expect(processedFile.input).toContain(filePath);
-    expect(processedFile.output).toContain(mockContext.contentDir);
-    expect(processedFile.output).toContain(mockContext.executionDir);
   });
 });

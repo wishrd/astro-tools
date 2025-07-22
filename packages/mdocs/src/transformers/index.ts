@@ -1,5 +1,6 @@
 import type { Transformer, TransformerFactory } from '../models/transformer.js';
 import { localAssetsTransformer } from './local-assets.js';
+import { localLinksTransformer } from './local-links.js';
 import { mdToMdxTransformer } from './md-to-mdx.js';
 import { pathMappingTransformer } from './path-mapping.js';
 import { readmeToIndexTransformer } from './readme-to-index.js';
@@ -8,6 +9,7 @@ export type TransformId =
   | 'md-to-mdx'
   | 'readme-to-index'
   | 'local-assets'
+  | 'local-links'
   | 'path-mapping';
 
 // biome-ignore lint/suspicious/noExplicitAny: allow factory pattern
@@ -18,6 +20,7 @@ const factory = new Map<TransformId, TransformerFactory<any>>();
 factory.set('md-to-mdx', mdToMdxTransformer);
 factory.set('readme-to-index', readmeToIndexTransformer);
 factory.set('local-assets', localAssetsTransformer);
+factory.set('local-links', localLinksTransformer);
 factory.set('path-mapping', pathMappingTransformer);
 
 export function getTransformer(

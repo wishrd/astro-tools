@@ -1,11 +1,11 @@
-import type { Context } from '../models/context.js';
 import type { ProcessedFile } from '../models/processed-file.js';
+import type { TransformContext } from '../models/transform-context.js';
 import type { Transformer } from '../models/transformer.js';
 
 export async function transformFile(
   file: ProcessedFile,
   transformers: Transformer[],
-  context: Context,
+  context: TransformContext,
 ): Promise<ProcessedFile[]> {
   let workingFile = file;
   let extraFiles: ProcessedFile[] = [];

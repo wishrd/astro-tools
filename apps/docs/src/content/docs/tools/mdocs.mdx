@@ -89,6 +89,7 @@ The default transformers are being executed in this order:
 1. `md-to-mdx`
 1. `readme-to-index`
 1. `local-assets`
+1. `local-links`
 
 Each default transformer has a `TransformId` that can be used to reference it in the `transformers` option (see below).
 
@@ -114,6 +115,10 @@ Removes the parent folder when there is one, renaming the markdown file to the p
 #### local-assets
 
 This transformer processes any local image assets (relative path) of any markdown file content including it in the output website. The transformer ID is `local-assets` and it has no options.
+
+#### local-links
+
+This transformer processes any local link of any markdown file content including it in the output website. The transformer ID is `local-links` and it has no options.
 
 #### path-mapping
 
@@ -154,6 +159,26 @@ export default {
 ```
 
 <Aside type="note">The replacement will use the relative path of the file from the temporal content directory, which initially is the execution working directory.</Aside>
+
+### Transformer groups
+
+The transformers option allows to declare groups of transformers as an array of arrays. For example:
+
+```javascript
+export default {
+  transformers: [
+    [
+      'md-to-mdx',
+      'readme-to-index',
+    ],
+    [
+      'local-assets',
+    ]
+  ],
+}
+```
+
+Each group of transformers will get as context the properly `files` which has the processed files of the previous group. This way, transformers can be executed in a pipe using the whole context instead of just the current file being processed.
 
 ### Options
 
