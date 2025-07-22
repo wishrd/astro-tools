@@ -1,5 +1,11 @@
 # @astro-tools/mdocs
 
+## 2.1.0
+
+### Minor Changes
+
+- f1646b5: Instead of pipe each file individually, now we transform all files per transformer, adding the files of the previous transformation to the context of the following.
+
 ## 2.0.1
 
 ### Patch Changes
