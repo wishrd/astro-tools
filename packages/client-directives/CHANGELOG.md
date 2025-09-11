@@ -1,5 +1,11 @@
 # @astro-tools/client-directives
 
+## 0.1.4
+
+### Patch Changes
+
+- f733838: Fix typing of click client directive which was missing the boolean type https://github.com/wishrd/astro-tools/issues/56. Thanks to @spsDrop.
+
 ## 0.1.3
 
 ### Patch Changes
