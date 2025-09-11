@@ -16,7 +16,7 @@ export const clickClientDirective = defineIntegration({
         'astro:config:done': ({ injectTypes }) => {
           injectTypes({
             filename: 'types.d.ts',
-            content: `import 'astro'; declare module 'astro' { interface AstroClientDirectives { 'client:click'?: string; } }`,
+            content: `import 'astro'; declare module 'astro' { interface AstroClientDirectives { 'client:click'?: boolean | string; } }`,
           });
         },
       },
