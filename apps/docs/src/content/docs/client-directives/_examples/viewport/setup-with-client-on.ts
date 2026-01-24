@@ -1,6 +1,5 @@
-import { defineConfig } from 'astro/config';
-
 import { onClientDirective } from '@astro-tools/client-directives/on';
+import { defineConfig } from 'astro/config';
 
 export default defineConfig({
   integrations: [

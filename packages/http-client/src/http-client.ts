@@ -1,6 +1,6 @@
+import type { HttpClient } from './models/http-client.js';
 import type { HttpClientInitOptions } from './models/http-client-init-options.js';
 import type { HttpClientOptions } from './models/http-client-options.js';
-import type { HttpClient } from './models/http-client.js';
 import {
   type HttpClientResponse,
   HttpClientResponseStatus,
@@ -20,7 +20,9 @@ export function httpClient(initOptions: HttpClientInitOptions): HttpClient {
 
     if (options.search) {
       const search = new URLSearchParams(options.search);
-      search.forEach((value, key) => url.searchParams.append(key, value));
+      search.forEach((value, key) => {
+        url.searchParams.append(key, value);
+      });
     }
 
     const request = new Request(url, {

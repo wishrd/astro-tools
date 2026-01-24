@@ -1,6 +1,5 @@
 import { join } from 'node:path';
 
-
 import { build } from '../core/build.js';
 import { file } from '../core/paths.js';
 import type { Config } from '../models/config.js';
@@ -12,7 +11,7 @@ export async function buildCommand(configFile?: string) {
   try {
     config = await import(configPath).then((f) => f.default);
   } catch (err) {
-    console.error(`[ERROR] Missing configuration file ${configPath}`);
+    console.error(`[ERROR] Missing configuration file ${configPath}: ${err}`);
     process.exit(1);
   }
 

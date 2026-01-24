@@ -1,9 +1,7 @@
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-
-import { defineConfig } from 'astro/config';
-
 import { i18n } from '@astro-tools/i18n';
+import { defineConfig } from 'astro/config';
 
 import { typesLoader } from '@/i18n/types-loader';
 

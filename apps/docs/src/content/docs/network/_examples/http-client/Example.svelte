@@ -1,8 +1,7 @@
 <script lang="ts">
-import Output from '@/libs/examples/Output.svelte';
-import { onMount } from 'svelte';
-
 import { httpClient } from '@astro-tools/http-client';
+import { onMount } from 'svelte';
+import Output from '@/libs/examples/Output.svelte';
 import { exampleBodyAdapter } from './example-body-adapter';
 
 const publicAPIClient = httpClient({

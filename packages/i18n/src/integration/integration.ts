@@ -1,3 +1,5 @@
+import { transferState } from '@astro-tools/transfer-state';
+import { z } from 'astro/zod';
 import {
   addIntegration,
   addVirtualImports,
@@ -5,9 +7,6 @@ import {
   defineIntegration,
   hasIntegration,
 } from 'astro-integration-kit';
-import { z } from 'astro/zod';
-
-import { transferState } from '@astro-tools/transfer-state';
 
 import { getTranslateFn } from './helpers/get-translate-fn.ts';
 

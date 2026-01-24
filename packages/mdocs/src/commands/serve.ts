@@ -9,5 +9,7 @@ export function serveCommand(port?: number) {
   app.use(express.static(destDir));
 
   const p = port || 8888;
-  app.listen(p, () => console.info(`Serving documentation on http://localhost:${p}`));
+  app.listen(p, () =>
+    console.info(`Serving documentation on http://localhost:${p}`),
+  );
 }

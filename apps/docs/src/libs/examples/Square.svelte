@@ -1,6 +1,6 @@
 <script lang="ts">
-import { notifyHydration } from '@/libs/examples/hydration';
 import { onMount } from 'svelte';
+import { notifyHydration } from '@/libs/examples/hydration';
 
 export let id: string;
 export let text: string;

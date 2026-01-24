@@ -9,6 +9,10 @@ const defaultTransformers: TransformId[] = [
   'local-links',
 ];
 
-export function getTransformers(customTransformers?: ConfigTransformer[]): Transformer[] {
-  return (customTransformers || defaultTransformers).map((t) => typeof t === 'function' ? t : getTransformer(t));
+export function getTransformers(
+  customTransformers?: ConfigTransformer[],
+): Transformer[] {
+  return (customTransformers || defaultTransformers).map((t) =>
+    typeof t === 'function' ? t : getTransformer(t),
+  );
 }

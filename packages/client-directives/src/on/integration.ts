@@ -1,5 +1,5 @@
-import { createResolver, defineIntegration } from 'astro-integration-kit';
 import { z } from 'astro/zod';
+import { createResolver, defineIntegration } from 'astro-integration-kit';
 
 const customClientDirectiveSchema = z.object({
   name: z.string(),
