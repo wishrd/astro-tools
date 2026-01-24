@@ -12,7 +12,7 @@ export const localLinksTransformer: TransformerFactory<void> =
     let content = file.content;
 
     const matches = content
-      .match(/!?\[[\w\s\-]+\](\([./\w\s\-]+\))/gim)
+      .match(/!?\[[\w\s-]+\](\([./\w\s-]+\))/gim)
       ?.filter((match) => !match.startsWith('!'));
     if (!matches) {
       return [file];
