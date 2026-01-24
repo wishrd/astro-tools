@@ -38,7 +38,7 @@ export default defineToolbarApp({
 
     const transferState = document.getElementById('astro-tools-transfer-state');
 
-    if (!transferState || !transferState.textContent) {
+    if (!transferState?.textContent) {
       toolbarWindowContent.textContent = 'Transfer state element not found';
     } else if (!transferState.textContent) {
       toolbarWindowContent.textContent = 'Transfer state element is empty';

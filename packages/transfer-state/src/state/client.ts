@@ -1,6 +1,7 @@
 import type { StateKey } from '../models/state-key.ts';
 import type { TransferState } from '../models/transfer-state.ts';
 import { unescapeString } from '../utils/sanitize-string.ts';
+
 let store: TransferState;
 
 function getStore(): TransferState {

@@ -1,10 +1,8 @@
 <script lang="ts">
-import { onMount } from 'svelte';
-
-import Output from '@/libs/examples/Output.svelte';
-import { notifyHydration } from '@/libs/examples/hydration';
-
 import { getState } from '@astro-tools:transfer-state';
+import { onMount } from 'svelte';
+import { notifyHydration } from '@/libs/examples/hydration';
+import Output from '@/libs/examples/Output.svelte';
 
 export let id: string;
 

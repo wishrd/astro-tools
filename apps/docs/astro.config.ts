@@ -1,4 +1,4 @@
-import { dirname, join } from 'node:path';
+import { dirname, join } from 'node:path/posix';
 import { fileURLToPath } from 'node:url';
 import { clickClientDirective } from '@astro-tools/client-directives/click';
 import { eventClientDirective } from '@astro-tools/client-directives/event';

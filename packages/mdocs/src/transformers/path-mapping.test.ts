@@ -1,10 +1,11 @@
 import { describe, expect, it } from 'vitest';
-import type { Context } from '../models/context';
 import type { ProcessedFile } from '../models/processed-file';
 import { pathMappingTransformer } from './path-mapping';
+import type { TransformContext } from '../models/transform-context';
 
 describe('pathMappingTransformer', () => {
-  const mockContext: Context = {
+  const mockContext: TransformContext = {
+    files: [],
     executionDir: '/test/dest',
     contentDir: 'src/content/docs',
     assetsDir: 'src/assets',

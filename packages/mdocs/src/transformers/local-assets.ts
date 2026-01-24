@@ -12,7 +12,7 @@ export const localAssetsTransformer: TransformerFactory<void> =
       return [file];
     }
 
-    const matches = file.content.match(/\!\[[\w|\s]+\](\([\.\/\w\s-_]+\))/gim);
+    const matches = file.content.match(/!\[[\w|\s]+\](\([./\w\s-_]+\))/gim);
     if (!matches) {
       return [file];
     }

@@ -1,7 +1,7 @@
-import { glob } from 'glob';
 import { existsSync } from 'node:fs';
 import { cp, mkdir, mkdtemp, rm, writeFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
+import { glob } from 'glob';
 
 import type { Config } from '../models/config.js';
 import type { ProcessedFile } from '../models/processed-file.js';
@@ -31,7 +31,9 @@ export async function build({
 
   // Copy markdown files and related assets
   console.info('[INFO] Copying documentation files...');
-  const filePaths = await glob(config.pattern || DEFAULT_PATTERN, { ignore: config.ignore || DEFAULT_IGNORE });
+  const filePaths = await glob(config.pattern || DEFAULT_PATTERN, {
+    ignore: config.ignore || DEFAULT_IGNORE,
+  });
 
   // Read initial files contents
   const filesContentsPromises = filePaths.map((filePath: string) =>
@@ -49,12 +51,14 @@ export async function build({
 
   let files: ProcessedFile[] = filesContents;
   for (const transformer of transformers) {
-    const promises = files.map((file: ProcessedFile) => transformFile(file, transformer, {
-      executionDir,
-      contentDir: folder.starlightContent,
-      assetsDir: folder.starlightAssets,
-      files,
-    }));
+    const promises = files.map((file: ProcessedFile) =>
+      transformFile(file, transformer, {
+        executionDir,
+        contentDir: folder.starlightContent,
+        assetsDir: folder.starlightAssets,
+        files,
+      }),
+    );
     const result = await Promise.all(promises);
     files = result.flat();
   }

@@ -1,3 +1,4 @@
+import { transferState } from '@astro-tools/transfer-state';
 import {
   addIntegration,
   addVirtualImports,
@@ -5,8 +6,6 @@ import {
   defineIntegration,
   hasIntegration,
 } from 'astro-integration-kit';
-
-import { transferState } from '@astro-tools/transfer-state';
 
 const VIRTUAL_MODULE_ID = '@astro-tools:reactive-transfer-state';
 

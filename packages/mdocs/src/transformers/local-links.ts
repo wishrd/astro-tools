@@ -11,22 +11,29 @@ export const localLinksTransformer: TransformerFactory<void> =
 
     let content = file.content;
 
-    const matches = content.match(/\!?\[[\w\s-_]+\](\([\.\/\w\s-_]+\))/gim)?.filter(match => !match.startsWith('!'));
+    const matches = content
+      .match(/!?\[[\w\s-]+\](\([./\w\s-]+\))/gim)
+      ?.filter((match) => !match.startsWith('!'));
     if (!matches) {
       return [file];
     }
 
     const linkPaths = new Set(
-      matches
-        .map((match) =>
-          match.substring(match.indexOf('(') + 1, match.length - 1),
-        ),
+      matches.map((match) =>
+        match.substring(match.indexOf('(') + 1, match.length - 1),
+      ),
     );
 
-    linkPaths.forEach(linkPath => {
-      const targetFile = files.find(file => relative(process.cwd(), file.input) === relative(process.cwd(), linkPath));
+    linkPaths.forEach((linkPath) => {
+      const targetFile = files.find(
+        (file) =>
+          relative(process.cwd(), file.input) ===
+          relative(process.cwd(), linkPath),
+      );
       if (targetFile) {
-        const outputPath = parse(relative(join(executionDir, contentDir), targetFile.output));
+        const outputPath = parse(
+          relative(join(executionDir, contentDir), targetFile.output),
+        );
         const link = join('./', outputPath.dir, outputPath.name, '/');
         content = content.replaceAll(linkPath, link);
       }

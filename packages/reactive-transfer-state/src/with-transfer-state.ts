@@ -1,6 +1,5 @@
+import { getState, type StateKey, setState } from '@astro-tools:transfer-state';
 import type { ReadableAtom } from 'nanostores';
-
-import { type StateKey, getState, setState } from '@astro-tools:transfer-state';
 
 export function withTransferState<T extends ReadableAtom<unknown>>(
   key: StateKey,

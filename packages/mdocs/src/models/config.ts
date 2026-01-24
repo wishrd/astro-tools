@@ -1,6 +1,6 @@
 import type {
-  TransformId,
   TransformerDefinition,
+  TransformId,
 } from '../transformers/index.js';
 import type { Transformer } from './transformer.js';
 
@@ -8,7 +8,10 @@ export interface ConfigAssets {
   public?: string;
 }
 
-export type ConfigTransformer = Transformer | TransformerDefinition | TransformId;
+export type ConfigTransformer =
+  | Transformer
+  | TransformerDefinition
+  | TransformId;
 
 export interface Config {
   pattern?: string | string[];

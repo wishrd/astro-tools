@@ -5,7 +5,7 @@ const clientDirective: ClientDirective = (load, options) => {
     throw new Error('client:timer directive value is empty');
   }
 
-  const timeout = Number.parseInt(options.value);
+  const timeout = Number.parseInt(options.value, 10);
 
   setTimeout(async () => {
     const hydrate = await load();

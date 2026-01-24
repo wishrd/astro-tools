@@ -1,10 +1,10 @@
 import { describe, expect, it } from 'vitest';
-import { HttpClientResponseStatus } from '../models/http-response.js';
 import type {
   HttpClientRequestError,
   HttpClientResponseError,
   HttpClientResponseSuccess,
 } from '../models/http-response.js';
+import { HttpClientResponseStatus } from '../models/http-response.js';
 import { HttpClientError, throwOnError } from './throw-on-error.js';
 
 describe('HttpClientError', () => {
