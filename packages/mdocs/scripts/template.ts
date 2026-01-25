@@ -10,7 +10,7 @@ await rm(templateDir, { recursive: true, force: true });
 
 await execAsync(
   [
-    './node_modules/.bin/create-astro',
+    join('.', 'node_modules', '.bin', 'create-astro'),
     folder.template,
     '--template starlight',
     '--no-install',
