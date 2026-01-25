@@ -1,5 +1,11 @@
 # @astro-tools/mdocs
 
+## 2.2.0
+
+### Minor Changes
+
+- bef96f9: Fix template script paths for windows and updates starlight dependency version
+
 ## 2.1.0
 
 ### Minor Changes
