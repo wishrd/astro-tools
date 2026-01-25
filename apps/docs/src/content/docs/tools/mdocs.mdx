@@ -11,7 +11,7 @@ This library provides a CLI for generating a documentation website from markdown
 It is using [Astro Starlight](https://starlight.astro.build/) under the hood, which provides a beautiful UI and a nice user experience.
 
 Mostly everything supported by Astro Starlight is supported by this CLI.
-This library has a Astro Starlight template in which copies every markdown file of the working directory into the default `content/docs` collection folder,
+This library has an Astro Starlight template which copies every markdown file of the working directory into the default `content/docs` collection folder,
 then executes the build of the project using the configuration file `.mdocs.mjs` of the working directory and copies the result to the desired destination folder.
 
 > The goal of this library is having a CLI with the minimum configuration to generate documentation with a nice UI and UX without effort.
@@ -73,7 +73,7 @@ To serve the documentation built with the `build` command locally, execute the `
 mdocs serve
 ```
 
-`The output should be similar to the following:
+The output should be similar to the following:
 ```sh
 Serving documentation on http://localhost:8888
 ```
@@ -122,7 +122,7 @@ This transformer processes any local link of any markdown file content including
 
 #### path-mapping
 
-This transformer modifies the output path of any markdown file following the regex rules, cleaning up the website and sidebar tree of undersired routes.
+This transformer modifies the output path of any markdown file following the regex rules, cleaning up the website and sidebar tree of undesired routes.
 
 It is not included by default. The transformer ID is `path-mapping` and the options are the following:
 ```typescript
@@ -218,10 +218,10 @@ When returning an array, the first position must be the result of transforming t
 
 <Aside type="caution">Adding custom transfomers will remove the default transfomers from the transform pipe. You have to include them explicity as in the example below.</Aside>
 
-To include any default transformer, reference it by `TransformId` in the `transfomers` option. This way allows to use the transformer without explicitly importing it. For example:
+To include any default transformer, reference it by `TransformId` in the `transformers` option. This way allows to use the transformer without explicitly importing it. For example:
 ```javascript
 export default {
-  transfomers: [
+  transformers: [
     (file, context) => { /* your custom logic */ },
     'md-to-mdx',
     {

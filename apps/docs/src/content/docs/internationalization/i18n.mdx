@@ -123,7 +123,7 @@ This provider loads the proper translations for a `locale: string`:
   </Tabs>
 </Example>
 
-> A context can be recieved as second argument which is arbitrary data coming from the `use` function explained below.
+> A context can be received as second argument which is arbitrary data coming from the `use` function explained below.
 
 #### `I18nPluralProvider`
 
@@ -146,8 +146,8 @@ The integration exposes the virtual module `@astro-tools:i18n` with the required
 
 ### Configure
 
-Before render any translation, configure the locale and fallback locale using the function `use(options: I18nUseOptions): Promise<void>`.
-It is recommended to create a wrapper with your own logic following DRY principle:
+Before rendering any translation, configure the locale and fallback locale using the function `use(options: I18nUseOptions): Promise<void>`.
+It is recommended to create a wrapper with your own logic following the DRY principle:
 
 <Tabs>
   <TabItem label="use-translations.ts">
@@ -157,7 +157,7 @@ It is recommended to create a wrapper with your own logic following DRY principl
 
 #### Context
 
-There is a `context` option that be used in the `use` function for pass arbitrary data to the translation provider. For example, the context could be used to load partial translations.
+There is a `context` option that can be used in the `use` function to pass arbitrary data to the translation provider. For example, the context could be used to load partial translations.
 
 > The context won't be transferred to the client side, so it can be any type of data.
 
